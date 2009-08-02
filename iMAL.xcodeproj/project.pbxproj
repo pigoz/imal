@@ -10,6 +10,8 @@
 		2F7446990DB6B7EA00F9684A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7446970DB6B7EA00F9684A /* MainMenu.xib */; };
 		770B37ED0679A11B001EADE2 /* iMAL_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* iMAL_DataModel.xcdatamodel */; };
 		77C8280E06725ACE000B614F /* iMAL_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */; };
+		7B2AC6611025D5D1004559D0 /* toolbar_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AC6601025D5D1004559D0 /* toolbar_add.png */; };
+		7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */; };
 		7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5610199C48007B3B7F /* PreferencesController.m */; };
 		7B939F5210199C27007B3B7F /* MBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5110199C27007B3B7F /* MBPreferencesController.m */; };
 		7B939F6110199CCE007B3B7F /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */; };
@@ -49,6 +51,8 @@
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		77C8280B06725ACE000B614F /* iMAL_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMAL_AppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMAL_AppDelegate.m; sourceTree = "<group>"; };
+		7B2AC6601025D5D1004559D0 /* toolbar_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_add.png; sourceTree = "<group>"; };
+		7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_refresh.png; sourceTree = "<group>"; };
 		7B939F5010199C27007B3B7F /* MBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPreferencesController.h; sourceTree = "<group>"; };
 		7B939F5110199C27007B3B7F /* MBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBPreferencesController.m; sourceTree = "<group>"; };
 		7B939F5510199C48007B3B7F /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7B2AC6621025D5D5004559D0 /* Images */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
 				2F7446970DB6B7EA00F9684A /* MainMenu.xib */,
@@ -166,6 +171,15 @@
 				770B37EC0679A11B001EADE2 /* iMAL_DataModel.xcdatamodel */,
 			);
 			name = Models;
+			sourceTree = "<group>";
+		};
+		7B2AC6621025D5D5004559D0 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */,
+				7B2AC6601025D5D1004559D0 /* toolbar_add.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 		7B939F4810199C05007B3B7F /* Preferences */ = {
@@ -240,6 +254,8 @@
 				2F7446990DB6B7EA00F9684A /* MainMenu.xib in Resources */,
 				7B939F6310199D9C007B3B7F /* PreferencesMAL.xib in Resources */,
 				7BBBAB1910256BCB00E33747 /* PreferencesGeneral.xib in Resources */,
+				7B2AC6611025D5D1004559D0 /* toolbar_add.png in Resources */,
+				7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
