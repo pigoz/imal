@@ -14,6 +14,13 @@
 
 @implementation PreferencesController
 
++ (void) initialize
+{
+	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
+	[defaultValues setObject:@"http://myanimelist.net/api" forKey:@"mal_api_address"];
+	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
+}
+
 - (void)awakeFromNib
 {
 	GeneralPrefsViewController *general = [[GeneralPrefsViewController alloc] initWithNibName:@"PreferencesGeneral" bundle:nil];

@@ -268,6 +268,7 @@
 							<array>
 								<string>29B97314FDCFA39411CA2CEA</string>
 								<string>080E96DDFE201D6D7F000001</string>
+								<string>7BBBAB4C1025720000E33747</string>
 								<string>7B939F4810199C05007B3B7F</string>
 								<string>29B97317FDCFA39411CA2CEA</string>
 								<string>1C37FBAC04509CD000000102</string>
@@ -276,9 +277,8 @@
 							<key>PBXSmartGroupTreeModuleOutlineStateSelectionKey</key>
 							<array>
 								<array>
-									<integer>11</integer>
-									<integer>3</integer>
-									<integer>2</integer>
+									<integer>22</integer>
+									<integer>18</integer>
 									<integer>0</integer>
 								</array>
 							</array>
@@ -302,7 +302,7 @@
 							<real>353</real>
 						</array>
 						<key>RubberWindowFrame</key>
-						<string>130 247 1468 623 0 0 1680 1028 </string>
+						<string>156 208 1468 623 0 0 1680 1028 </string>
 					</dict>
 					<key>Module</key>
 					<string>PBXSmartGroupTreeModule</string>
@@ -320,7 +320,7 @@
 								<key>PBXProjectModuleGUID</key>
 								<string>1CE0B20306471E060097A5F4</string>
 								<key>PBXProjectModuleLabel</key>
-								<string>MALPrefsViewController.m</string>
+								<string>PreferencesController.m</string>
 								<key>PBXSplitModuleInNavigatorKey</key>
 								<dict>
 									<key>Split0</key>
@@ -328,20 +328,22 @@
 										<key>PBXProjectModuleGUID</key>
 										<string>1CE0B20406471E060097A5F4</string>
 										<key>PBXProjectModuleLabel</key>
-										<string>MALPrefsViewController.m</string>
+										<string>PreferencesController.m</string>
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7BBBAB4B10256D1300E33747</string>
+										<string>7BBBAB8A1025794300E33747</string>
 										<key>history</key>
 										<array>
-											<string>7BC4CC23101AF66E00ECB4A8</string>
 											<string>7BC4CC24101AF66E00ECB4A8</string>
-											<string>7BBBAB2B10256C9900E33747</string>
-											<string>7BBBAB4210256CF100E33747</string>
 											<string>7BBBAB4310256CF100E33747</string>
 											<string>7BBBAB4810256D1300E33747</string>
-											<string>7BBBAB4910256D1300E33747</string>
+											<string>7BBBAB7A102578AD00E33747</string>
+											<string>7BBBAB7B102578AD00E33747</string>
+											<string>7BBBAB7C102578AD00E33747</string>
+											<string>7BBBAB7D102578AD00E33747</string>
+											<string>7BBBAB7E102578AD00E33747</string>
+											<string>7BBBAB7F102578AD00E33747</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -366,6 +368,14 @@
 											<string>7BBBAB4410256CF100E33747</string>
 											<string>7BBBAB4510256CF100E33747</string>
 											<string>7BBBAB4A10256D1300E33747</string>
+											<string>7BBBAB761025730900E33747</string>
+											<string>7BBBAB80102578AD00E33747</string>
+											<string>7BBBAB81102578AD00E33747</string>
+											<string>7BBBAB82102578AD00E33747</string>
+											<string>7BBBAB83102578AD00E33747</string>
+											<string>7BBBAB84102578AD00E33747</string>
+											<string>7BBBAB85102578AD00E33747</string>
+											<string>7BBBAB86102578AD00E33747</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -377,14 +387,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 0}, {1093, 404}}</string>
+								<string>{{0, 0}, {1093, 539}}</string>
 								<key>RubberWindowFrame</key>
-								<string>130 247 1468 623 0 0 1680 1028 </string>
+								<string>156 208 1468 623 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>PBXNavigatorGroup</string>
 							<key>Proportion</key>
-							<string>404pt</string>
+							<string>539pt</string>
 						</dict>
 						<dict>
 							<key>ContentConfiguration</key>
@@ -397,14 +407,14 @@
 							<key>GeometryConfiguration</key>
 							<dict>
 								<key>Frame</key>
-								<string>{{0, 409}, {1093, 173}}</string>
+								<string>{{0, 544}, {1093, 38}}</string>
 								<key>RubberWindowFrame</key>
-								<string>130 247 1468 623 0 0 1680 1028 </string>
+								<string>156 208 1468 623 0 0 1680 1028 </string>
 							</dict>
 							<key>Module</key>
 							<string>XCDetailModule</string>
 							<key>Proportion</key>
-							<string>173pt</string>
+							<string>38pt</string>
 						</dict>
 					</array>
 					<key>Proportion</key>
@@ -561,13 +571,13 @@
 	<array>
 		<string>7BBBAB3D10256C9900E33747</string>
 		<string>7BBBAB3E10256C9900E33747</string>
+		<string>1C78EAAD065D492600B07095</string>
 		<string>7BD08D7F10198F7800A73812</string>
 		<string>1CD10A99069EF8BA00B06720</string>
-		<string>1C78EAAD065D492600B07095</string>
 		<string>/Users/stefano/Desktop/iMAL/iMAL.xcodeproj</string>
 	</array>
 	<key>WindowString</key>
-	<string>130 247 1468 623 0 0 1680 1028 </string>
+	<string>156 208 1468 623 0 0 1680 1028 </string>
 	<key>WindowToolsV3</key>
 	<array>
 		<dict>
@@ -946,7 +956,7 @@
 			<key>WindowToolGUID</key>
 			<string>1C78EAAD065D492600B07095</string>
 			<key>WindowToolIsVisible</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Identifier</key>

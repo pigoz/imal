@@ -16,6 +16,7 @@
 		7B939F6310199D9C007B3B7F /* PreferencesMAL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B939F6210199D9C007B3B7F /* PreferencesMAL.xib */; };
 		7BBBAB17102569E600E33747 /* MALPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB16102569E600E33747 /* MALPrefsViewController.m */; };
 		7BBBAB1910256BCB00E33747 /* PreferencesGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */; };
+		7BBBAB6C102572A500E33747 /* MALHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB6B102572A500E33747 /* MALHandler.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -43,6 +44,8 @@
 		7BBBAB15102569E600E33747 /* MALPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALPrefsViewController.h; sourceTree = "<group>"; };
 		7BBBAB16102569E600E33747 /* MALPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALPrefsViewController.m; sourceTree = "<group>"; };
 		7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesGeneral.xib; sourceTree = "<group>"; };
+		7BBBAB6A102572A500E33747 /* MALHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALHandler.h; sourceTree = "<group>"; };
+		7BBBAB6B102572A500E33747 /* MALHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALHandler.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iMAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -62,6 +65,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7BBBAB4C1025720000E33747 /* Model */,
 				7B939F4810199C05007B3B7F /* Preferences */,
 				77C8280B06725ACE000B614F /* iMAL_AppDelegate.h */,
 				77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */,
@@ -161,6 +165,15 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
+		7BBBAB4C1025720000E33747 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7BBBAB6A102572A500E33747 /* MALHandler.h */,
+				7BBBAB6B102572A500E33747 /* MALHandler.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -225,6 +238,7 @@
 				7B939F6110199CCE007B3B7F /* GeneralPrefsViewController.m in Sources */,
 				7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */,
 				7BBBAB17102569E600E33747 /* MALPrefsViewController.m in Sources */,
+				7BBBAB6C102572A500E33747 /* MALHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
