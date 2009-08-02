@@ -9,9 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 @interface MALHandler : NSObject {
+	NSOperationQueue * queue;
 }
 
++ (MALHandler *)sharedHandler;
 - (NSData *) get:(NSString *) resource;
 - (NSData *) post:(NSString *) resource data:(NSString *) data;
+- (NSData *) search:(NSString *) query type:(NSString *) type;
+
+@property (retain, readonly) NSOperationQueue *queue;
 
 @end

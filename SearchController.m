@@ -7,8 +7,21 @@
 //
 
 #import "SearchController.h"
+#import "MALHandler.h"
+#import "SearchOperation.h"
 
 
 @implementation SearchController
+
+-(IBAction) search:(NSString *) query
+{
+	MALHandler * mal = [MALHandler sharedHandler];
+	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:query withType:@"anime" callback:@selector(returnArray:)]];
+	
+}
+
+-(void) returnArray:(NSArray *) returnArray
+{
+}
 
 @end

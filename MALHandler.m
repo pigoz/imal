@@ -11,6 +11,32 @@
 
 
 @implementation MALHandler
+@synthesize queue;
+
+- (id) init
+{
+	self = [super init];
+	if (self != nil) {
+		self->queue = [NSOperationQueue new];
+		[self->queue setMaxConcurrentOperationCount:4];
+	}
+	return self;
+}
+
++ (MALHandler *)sharedHandler
+{
+	static MALHandler *sharedSingleton;
+	
+	@synchronized(self)
+	{
+		if (!sharedSingleton)
+			sharedSingleton = [[MALHandler alloc] init];
+		
+		return sharedSingleton;
+	}
+	
+}
+
 
 - (NSData *) search:(NSString *) query type:(NSString *) type
 {
