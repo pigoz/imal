@@ -31,7 +31,7 @@
 		NSError* error;
 		NSXMLDocument * doc = [[NSXMLDocument alloc] initWithData:_result options:0 error:&error];
 		NSArray * entryNodes = [doc nodesForXPath:@"anime/entry" error:&error];
-		[self performSelector:__callback withObject:entryNodes]; // callback on the controller
+		[self performSelector:__callback withObject:[entryNodes autorelease]]; // callback on the controller
 		[doc release];
 	}
 }

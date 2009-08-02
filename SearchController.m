@@ -22,6 +22,10 @@
 
 -(void) returnArray:(NSArray *) returnArray
 {
+	@synchronized(self){
+		[__entryNodes release];
+		__entryNodes = [returnArray retain];
+	}
 }
 
 @end

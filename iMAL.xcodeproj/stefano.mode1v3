@@ -231,6 +231,8 @@
 			<key>Layout</key>
 			<array>
 				<dict>
+					<key>BecomeActive</key>
+					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -317,8 +319,6 @@
 					<key>Dock</key>
 					<array>
 						<dict>
-							<key>BecomeActive</key>
-							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -336,7 +336,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7BB52919102618DD000D3B0E</string>
+										<string>7BB5292810261B48000D3B0E</string>
 										<key>history</key>
 										<array>
 											<string>7BC4CC24101AF66E00ECB4A8</string>
@@ -350,10 +350,10 @@
 											<string>7B2AC6781025DDB9004559D0</string>
 											<string>7BB528DA102618DD000D3B0E</string>
 											<string>7BB528DB102618DD000D3B0E</string>
-											<string>7BB528DC102618DD000D3B0E</string>
-											<string>7BB528DD102618DD000D3B0E</string>
-											<string>7BB528DE102618DD000D3B0E</string>
-											<string>7BB528DF102618DD000D3B0E</string>
+											<string>7BB5292010261B32000D3B0E</string>
+											<string>7BB5292410261B48000D3B0E</string>
+											<string>7BB5292510261B48000D3B0E</string>
+											<string>7BB5291F10261B32000D3B0E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -425,6 +425,12 @@
 											<string>7BB52916102618DD000D3B0E</string>
 											<string>7BB52917102618DD000D3B0E</string>
 											<string>7BB52918102618DD000D3B0E</string>
+											<string>7BB5291C10261ACF000D3B0E</string>
+											<string>7BB5291D10261ACF000D3B0E</string>
+											<string>7BB5292110261B32000D3B0E</string>
+											<string>7BB5292210261B32000D3B0E</string>
+											<string>7BB5292610261B48000D3B0E</string>
+											<string>7BB5292710261B48000D3B0E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>

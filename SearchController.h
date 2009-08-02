@@ -10,7 +10,7 @@
 
 
 @interface SearchController : NSObject {
-	NSArray * entryNodes;
+	NSArray * __entryNodes;
 }
 
 -(IBAction) search:(NSString *) query;
