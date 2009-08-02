@@ -8,9 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface MALHandler : NSObject {
-
 }
 
 - (NSData *) get:(NSString *) resource;
