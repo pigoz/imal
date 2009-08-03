@@ -13,8 +13,14 @@
 	NSMutableArray * __entries;
 	IBOutlet NSTextField * searchField;
 	IBOutlet NSTableView * tableView;
-	IBOutlet NSPopUpButton *popupButton;
+	IBOutlet NSPopUpButton * popupButton;
+	IBOutlet NSWindow * searchWindow;
+	IBOutlet NSView * infoView;
+	IBOutlet NSScrollView * scrollView;
 	IBOutlet NSProgressIndicator * spinner;
+	IBOutlet NSArrayController * __entries_controller;
+	
+	BOOL showing_info;
 }
 
 @property (retain) NSMutableArray * __entries;
