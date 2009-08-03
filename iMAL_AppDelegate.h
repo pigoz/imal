@@ -3,7 +3,7 @@
 //  iMAL
 //
 //  Created by Stefano Pigozzi on 7/24/09.
-//  Copyright __MyCompanyName__ 2009 . All rights reserved.
+//  Copyright Stefano Pigozzi 2009 . All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>

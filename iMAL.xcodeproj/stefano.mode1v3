@@ -231,8 +231,6 @@
 			<key>Layout</key>
 			<array>
 				<dict>
-					<key>BecomeActive</key>
-					<true/>
 					<key>ContentConfiguration</key>
 					<dict>
 						<key>PBXBottomSmartGroupGIDs</key>
@@ -319,6 +317,8 @@
 					<key>Dock</key>
 					<array>
 						<dict>
+							<key>BecomeActive</key>
+							<true/>
 							<key>ContentConfiguration</key>
 							<dict>
 								<key>PBXProjectModuleGUID</key>
@@ -336,7 +336,7 @@
 										<key>_historyCapacity</key>
 										<integer>0</integer>
 										<key>bookmark</key>
-										<string>7BB5292910261D06000D3B0E</string>
+										<string>7B96100A1026C83F0053D032</string>
 										<key>history</key>
 										<array>
 											<string>7BC4CC24101AF66E00ECB4A8</string>
@@ -353,7 +353,7 @@
 											<string>7BB5292010261B32000D3B0E</string>
 											<string>7BB5292410261B48000D3B0E</string>
 											<string>7BB5292510261B48000D3B0E</string>
-											<string>7BB5291F10261B32000D3B0E</string>
+											<string>7BB5292910261D06000D3B0E</string>
 										</array>
 										<key>prevStack</key>
 										<array>
@@ -369,68 +369,9 @@
 											<string>7BBBABD910258F5E00E33747</string>
 											<string>7B2AC67B1025DDB9004559D0</string>
 											<string>7BB528E0102618DD000D3B0E</string>
-											<string>7BB528E1102618DD000D3B0E</string>
-											<string>7BB528E2102618DD000D3B0E</string>
-											<string>7BB528E3102618DD000D3B0E</string>
 											<string>7BB528E4102618DD000D3B0E</string>
-											<string>7BB528E5102618DD000D3B0E</string>
-											<string>7BB528E6102618DD000D3B0E</string>
-											<string>7BB528E7102618DD000D3B0E</string>
-											<string>7BB528E8102618DD000D3B0E</string>
-											<string>7BB528E9102618DD000D3B0E</string>
-											<string>7BB528EA102618DD000D3B0E</string>
-											<string>7BB528EB102618DD000D3B0E</string>
-											<string>7BB528EC102618DD000D3B0E</string>
-											<string>7BB528ED102618DD000D3B0E</string>
 											<string>7BB528EE102618DD000D3B0E</string>
-											<string>7BB528EF102618DD000D3B0E</string>
-											<string>7BB528F0102618DD000D3B0E</string>
-											<string>7BB528F1102618DD000D3B0E</string>
-											<string>7BB528F2102618DD000D3B0E</string>
-											<string>7BB528F3102618DD000D3B0E</string>
-											<string>7BB528F4102618DD000D3B0E</string>
-											<string>7BB528F5102618DD000D3B0E</string>
-											<string>7BB528F6102618DD000D3B0E</string>
-											<string>7BB528F7102618DD000D3B0E</string>
-											<string>7BB528F8102618DD000D3B0E</string>
-											<string>7BB528F9102618DD000D3B0E</string>
-											<string>7BB528FA102618DD000D3B0E</string>
-											<string>7BB528FB102618DD000D3B0E</string>
-											<string>7BB528FC102618DD000D3B0E</string>
-											<string>7BB528FD102618DD000D3B0E</string>
-											<string>7BB528FE102618DD000D3B0E</string>
 											<string>7BB528FF102618DD000D3B0E</string>
-											<string>7BB52900102618DD000D3B0E</string>
-											<string>7BB52901102618DD000D3B0E</string>
-											<string>7BB52902102618DD000D3B0E</string>
-											<string>7BB52903102618DD000D3B0E</string>
-											<string>7BB52904102618DD000D3B0E</string>
-											<string>7BB52905102618DD000D3B0E</string>
-											<string>7BB52906102618DD000D3B0E</string>
-											<string>7BB52907102618DD000D3B0E</string>
-											<string>7BB52908102618DD000D3B0E</string>
-											<string>7BB52909102618DD000D3B0E</string>
-											<string>7BB5290A102618DD000D3B0E</string>
-											<string>7BB5290B102618DD000D3B0E</string>
-											<string>7BB5290C102618DD000D3B0E</string>
-											<string>7BB5290D102618DD000D3B0E</string>
-											<string>7BB5290E102618DD000D3B0E</string>
-											<string>7BB5290F102618DD000D3B0E</string>
-											<string>7BB52910102618DD000D3B0E</string>
-											<string>7BB52911102618DD000D3B0E</string>
-											<string>7BB52912102618DD000D3B0E</string>
-											<string>7BB52913102618DD000D3B0E</string>
-											<string>7BB52914102618DD000D3B0E</string>
-											<string>7BB52915102618DD000D3B0E</string>
-											<string>7BB52916102618DD000D3B0E</string>
-											<string>7BB52917102618DD000D3B0E</string>
-											<string>7BB52918102618DD000D3B0E</string>
-											<string>7BB5291C10261ACF000D3B0E</string>
-											<string>7BB5291D10261ACF000D3B0E</string>
-											<string>7BB5292110261B32000D3B0E</string>
-											<string>7BB5292210261B32000D3B0E</string>
-											<string>7BB5292610261B48000D3B0E</string>
-											<string>7BB5292710261B48000D3B0E</string>
 										</array>
 									</dict>
 									<key>SplitCount</key>
@@ -488,9 +429,9 @@
 			</array>
 			<key>TableOfContents</key>
 			<array>
-				<string>7BB5289B10260D5A000D3B0E</string>
+				<string>7B9610011026C6F30053D032</string>
 				<string>1CE0B1FE06471DED0097A5F4</string>
-				<string>7BB5289C10260D5A000D3B0E</string>
+				<string>7B9610021026C6F30053D032</string>
 				<string>1CE0B20306471E060097A5F4</string>
 				<string>1CE0B20506471E060097A5F4</string>
 			</array>
@@ -624,7 +565,6 @@
 	<integer>5</integer>
 	<key>WindowOrderList</key>
 	<array>
-		<string>7BD08D7F10198F7800A73812</string>
 		<string>1CD10A99069EF8BA00B06720</string>
 		<string>/Users/stefano/Desktop/iMAL/iMAL.xcodeproj</string>
 	</array>
@@ -828,13 +768,13 @@
 			<key>TableOfContents</key>
 			<array>
 				<string>1CD10A99069EF8BA00B06720</string>
-				<string>7BB5289D10260D5A000D3B0E</string>
+				<string>7B9610031026C6F30053D032</string>
 				<string>1C162984064C10D400B95A72</string>
-				<string>7BB5289E10260D5A000D3B0E</string>
-				<string>7BB5289F10260D5A000D3B0E</string>
-				<string>7BB528A010260D5A000D3B0E</string>
-				<string>7BB528A110260D5A000D3B0E</string>
-				<string>7BB528A210260D5A000D3B0E</string>
+				<string>7B9610041026C6F30053D032</string>
+				<string>7B9610051026C6F30053D032</string>
+				<string>7B9610061026C6F30053D032</string>
+				<string>7B9610071026C6F30053D032</string>
+				<string>7B9610081026C6F30053D032</string>
 			</array>
 			<key>ToolbarConfiguration</key>
 			<string>xcode.toolbar.config.debugV3</string>
