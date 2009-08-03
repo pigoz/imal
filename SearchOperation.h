@@ -8,15 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class SearchController;
 
 @interface SearchOperation : NSOperation {
 
 	NSString * __query;
 	NSString * __type;
-	SEL __callback;
+	SearchController * __controller;
 	
 }
 
--(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type callback:(SEL)callback;
+@property (retain) NSString * __query;
+@property (retain) NSString * __type;
+@property (retain) SearchController * __controller;
+
+-(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchController *) controller;
 
 @end

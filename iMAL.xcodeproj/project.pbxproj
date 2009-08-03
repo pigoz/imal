@@ -17,6 +17,7 @@
 		7B939F5210199C27007B3B7F /* MBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5110199C27007B3B7F /* MBPreferencesController.m */; };
 		7B939F6110199CCE007B3B7F /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */; };
 		7B939F6310199D9C007B3B7F /* PreferencesMAL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B939F6210199D9C007B3B7F /* PreferencesMAL.xib */; };
+		7B9610ED1026DA440053D032 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9610EC1026DA440053D032 /* NSString+Base64.m */; };
 		7BB528C010260E59000D3B0E /* SearchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB528BF10260E59000D3B0E /* SearchOperation.m */; };
 		7BBBAB17102569E600E33747 /* MALPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB16102569E600E33747 /* MALPrefsViewController.m */; };
 		7BBBAB1910256BCB00E33747 /* PreferencesGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */; };
@@ -64,6 +65,8 @@
 		7B939F5F10199CCE007B3B7F /* GeneralPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeneralPrefsViewController.h; sourceTree = "<group>"; };
 		7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneralPrefsViewController.m; sourceTree = "<group>"; };
 		7B939F6210199D9C007B3B7F /* PreferencesMAL.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesMAL.xib; sourceTree = "<group>"; };
+		7B9610EB1026DA440053D032 /* NSString+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Base64.h"; sourceTree = "<group>"; };
+		7B9610EC1026DA440053D032 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		7BB528BE10260E59000D3B0E /* SearchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOperation.h; sourceTree = "<group>"; };
 		7BB528BF10260E59000D3B0E /* SearchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOperation.m; sourceTree = "<group>"; };
 		7BBBAB15102569E600E33747 /* MALPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALPrefsViewController.h; sourceTree = "<group>"; };
@@ -92,6 +95,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7B9610C81026D9D40053D032 /* Categories */,
 				7BB528BD10260E3C000D3B0E /* Network */,
 				7BBBAB4C1025720000E33747 /* Model */,
 				7B939F4810199C05007B3B7F /* Preferences */,
@@ -206,6 +210,15 @@
 			name = Preferences;
 			sourceTree = "<group>";
 		};
+		7B9610C81026D9D40053D032 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				7B9610EB1026DA440053D032 /* NSString+Base64.h */,
+				7B9610EC1026DA440053D032 /* NSString+Base64.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
 		7BB528BD10260E3C000D3B0E /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +307,7 @@
 				7BBBAB6C102572A500E33747 /* MALHandler.m in Sources */,
 				7B2AC6761025DCCC004559D0 /* SearchController.m in Sources */,
 				7BB528C010260E59000D3B0E /* SearchOperation.m in Sources */,
+				7B9610ED1026DA440053D032 /* NSString+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

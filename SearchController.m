@@ -13,19 +13,22 @@
 
 @implementation SearchController
 
--(IBAction) search:(NSString *) query
+-(IBAction) search:(id)sender
 {
+	[spinner startAnimation:nil];
+	[spinner setHidden:NO];
 	MALHandler * mal = [MALHandler sharedHandler];
-	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:query withType:@"anime" 
-														  callback:@selector(returnArray:)]];
+	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[searchField stringValue] withType:@"anime" controller:self]];
 	
 }
-
--(void) returnArray:(NSArray *) returnArray
+-(void) callback:(NSArray *) entries
 {
 	@synchronized(self){
 		[__entryNodes release];
-		__entryNodes = [returnArray retain];
+		__entryNodes = [entries retain];
+		[spinner stopAnimation:nil];
+		[spinner setHidden:YES];
+		[tableView reloadData];
 	}
 }
 
@@ -34,14 +37,14 @@
     return [__entryNodes count];
 }
 
-- (id)tableView:(NSTableView *)tv objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row
+-(id)tableView:(NSTableView *)tv objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row
 {
-    NSXMLNode *node = [itemNodes objectAtIndex:row];
+    NSXMLNode *node = [__entryNodes objectAtIndex:row];
     NSString *xPath = [tableColumn identifier];
     return [self stringForPath:xPath ofNode:node];
 }
 
-- (NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n
+-(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n
 {
     NSError *error;
     NSArray *nodes = [n nodesForXPath:xp error:&error];
