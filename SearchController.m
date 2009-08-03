@@ -13,51 +13,29 @@
 
 @implementation SearchController
 
+@synthesize __entries;
+
 -(IBAction) search:(id)sender
 {
 	[spinner startAnimation:nil];
 	[spinner setHidden:NO];
 	MALHandler * mal = [MALHandler sharedHandler];
-	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[searchField stringValue] withType:@"anime" controller:self]];
+	NSString * type = @"anime";
+	if([[popupButton objectValue] intValue]==1)
+		type = @"manga";
+	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[searchField stringValue] withType:type controller:self]];
 	
 }
 -(void) callback:(NSArray *) entries
 {
 	@synchronized(self){
-		[__entryNodes release];
-		__entryNodes = [entries retain];
+		[self willChangeValueForKey:@"__entries"];
+		[__entries release];
+		__entries = [entries retain];
+		[self didChangeValueForKey:@"__entries"];
 		[spinner stopAnimation:nil];
 		[spinner setHidden:YES];
-		[tableView reloadData];
 	}
-}
-
--(int)numberOfRowsInTableView:(NSTableView *)tv
-{
-    return [__entryNodes count];
-}
-
--(id)tableView:(NSTableView *)tv objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row
-{
-    NSXMLNode *node = [__entryNodes objectAtIndex:row];
-    NSString *xPath = [tableColumn identifier];
-    return [self stringForPath:xPath ofNode:node];
-}
-
--(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n
-{
-    NSError *error;
-    NSArray *nodes = [n nodesForXPath:xp error:&error];
-    if (!nodes) {
-        NSAlert *alert = [NSAlert alertWithError:error];
-        [alert runModal];
-        return nil;
-    }
-    if ([nodes count] == 0) {
-        return nil;
-    } else {
-        return [[nodes objectAtIndex:0] stringValue];
-    }
 }
 
 @end

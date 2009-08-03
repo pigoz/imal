@@ -23,5 +23,6 @@
 @property (retain) SearchController * __controller;
 
 -(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchController *) controller;
+-(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n;
 
 @end

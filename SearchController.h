@@ -10,18 +10,16 @@
 
 
 @interface SearchController : NSObject {
-	NSArray * __entryNodes;
-	IBOutlet NSTableView * tableView;
+	NSMutableArray * __entries;
 	IBOutlet NSTextField * searchField;
+	IBOutlet NSTableView * tableView;
+	IBOutlet NSPopUpButton *popupButton;
 	IBOutlet NSProgressIndicator * spinner;
 }
 
+@property (retain) NSMutableArray * __entries;
+
 -(IBAction) search:(id)sender;
 -(void) callback:(NSArray *) returnArray;
-
-
--(int)numberOfRowsInTableView:(NSTableView *)tv;
--(id)tableView:(NSTableView *)tv objectValueForTableColumn:(NSTableColumn *)tableColumn row:(int)row;
--(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n;
 
 @end
