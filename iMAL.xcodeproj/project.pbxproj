@@ -12,7 +12,7 @@
 		77C8280E06725ACE000B614F /* iMAL_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */; };
 		7B2AC6611025D5D1004559D0 /* toolbar_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AC6601025D5D1004559D0 /* toolbar_add.png */; };
 		7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */; };
-		7B2AC6761025DCCC004559D0 /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AC6751025DCCC004559D0 /* SearchController.m */; };
+		7B2AC6761025DCCC004559D0 /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AC6751025DCCC004559D0 /* SearchWindowController.m */; };
 		7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5610199C48007B3B7F /* PreferencesController.m */; };
 		7B939F5210199C27007B3B7F /* MBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5110199C27007B3B7F /* MBPreferencesController.m */; };
 		7B939F6110199CCE007B3B7F /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */; };
@@ -25,6 +25,8 @@
 		7BBBAB6C102572A500E33747 /* MALHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB6B102572A500E33747 /* MALHandler.m */; };
 		7BBBABB110258D2B00E33747 /* RegexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBBABB010258D2B00E33747 /* RegexKit.framework */; };
 		7BBBABB310258D8A00E33747 /* RegexKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7BBBABB010258D2B00E33747 /* RegexKit.framework */; };
+		7BD2337D10282BC0009447A6 /* SearchWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD2337C10282BC0009447A6 /* SearchWindow.xib */; };
+		7BD2338710282CE5009447A6 /* SearchController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD2338610282CE5009447A6 /* SearchController.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -57,8 +59,8 @@
 		77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMAL_AppDelegate.m; sourceTree = "<group>"; };
 		7B2AC6601025D5D1004559D0 /* toolbar_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_add.png; sourceTree = "<group>"; };
 		7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_refresh.png; sourceTree = "<group>"; };
-		7B2AC6741025DCCC004559D0 /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchController.h; sourceTree = "<group>"; };
-		7B2AC6751025DCCC004559D0 /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
+		7B2AC6741025DCCC004559D0 /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
+		7B2AC6751025DCCC004559D0 /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		7B939F5010199C27007B3B7F /* MBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPreferencesController.h; sourceTree = "<group>"; };
 		7B939F5110199C27007B3B7F /* MBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBPreferencesController.m; sourceTree = "<group>"; };
 		7B939F5510199C48007B3B7F /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -78,6 +80,9 @@
 		7BBBAB6A102572A500E33747 /* MALHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALHandler.h; sourceTree = "<group>"; };
 		7BBBAB6B102572A500E33747 /* MALHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALHandler.m; sourceTree = "<group>"; };
 		7BBBABB010258D2B00E33747 /* RegexKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RegexKit.framework; path = Local/Frameworks/RegexKit.framework; sourceTree = DEVELOPER_DIR; };
+		7BD2337C10282BC0009447A6 /* SearchWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchWindow.xib; sourceTree = "<group>"; };
+		7BD2338510282CE5009447A6 /* SearchController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchController.h; sourceTree = "<group>"; };
+		7BD2338610282CE5009447A6 /* SearchController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iMAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -98,13 +103,12 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7BD2336E10282B1B009447A6 /* Search */,
 				7B9610C81026D9D40053D032 /* Categories */,
 				7BB528BD10260E3C000D3B0E /* Network */,
 				7B939F4810199C05007B3B7F /* Preferences */,
 				77C8280B06725ACE000B614F /* iMAL_AppDelegate.h */,
 				77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */,
-				7B2AC6741025DCCC004559D0 /* SearchController.h */,
-				7B2AC6751025DCCC004559D0 /* SearchController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -167,6 +171,7 @@
 				2F7446970DB6B7EA00F9684A /* MainMenu.xib */,
 				7B939F6210199D9C007B3B7F /* PreferencesMAL.xib */,
 				7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */,
+				7BD2337C10282BC0009447A6 /* SearchWindow.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -234,6 +239,17 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		7BD2336E10282B1B009447A6 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				7B2AC6741025DCCC004559D0 /* SearchWindowController.h */,
+				7B2AC6751025DCCC004559D0 /* SearchWindowController.m */,
+				7BD2338510282CE5009447A6 /* SearchController.h */,
+				7BD2338610282CE5009447A6 /* SearchController.m */,
+			);
+			name = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -284,6 +300,7 @@
 				7BBBAB1910256BCB00E33747 /* PreferencesGeneral.xib in Resources */,
 				7B2AC6611025D5D1004559D0 /* toolbar_add.png in Resources */,
 				7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */,
+				7BD2337D10282BC0009447A6 /* SearchWindow.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,10 +319,11 @@
 				7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */,
 				7BBBAB17102569E600E33747 /* MALPrefsViewController.m in Sources */,
 				7BBBAB6C102572A500E33747 /* MALHandler.m in Sources */,
-				7B2AC6761025DCCC004559D0 /* SearchController.m in Sources */,
+				7B2AC6761025DCCC004559D0 /* SearchWindowController.m in Sources */,
 				7BB528C010260E59000D3B0E /* SearchOperation.m in Sources */,
 				7B9610ED1026DA440053D032 /* NSString+Base64.m in Sources */,
 				7B9612741027026E0053D032 /* SearchModel.m in Sources */,
+				7BD2338710282CE5009447A6 /* SearchController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

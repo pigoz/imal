@@ -8,21 +8,21 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SearchController;
+@class SearchWindowController;
 
 @interface SearchOperation : NSOperation {
 
 	NSString * __query;
 	NSString * __type;
-	SearchController * __controller;
+	SearchWindowController * __controller;
 	
 }
 
 @property (retain) NSString * __query;
 @property (retain) NSString * __type;
-@property (retain) SearchController * __controller;
+@property (retain) SearchWindowController * __controller;
 
--(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchController *) controller;
+-(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchWindowController *) controller;
 -(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n;
 
 @end

@@ -8,7 +8,7 @@
 
 #import "SearchOperation.h"
 #import "MALHandler.h"
-#import "SearchController.h"
+#import "SearchWindowController.h"
 #import "SearchModel.h"
 
 @implementation SearchOperation
@@ -17,7 +17,7 @@
 @synthesize __type;
 @synthesize __controller;
 
--(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchController *) controller
+-(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchWindowController *) controller
 {
 	self = [super init];
 	if (self != nil) {
