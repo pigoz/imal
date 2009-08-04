@@ -7,6 +7,7 @@
 //
 
 #import "SearchController.h"
+#import "SearchWindowController.h"
 
 
 @implementation SearchController
