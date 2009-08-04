@@ -10,22 +10,22 @@
 
 
 @interface SearchWindowController : NSWindowController {
-	NSMutableArray * __entries;
-	IBOutlet NSTextField * searchField;
-	IBOutlet NSTableView * tableView;
-	IBOutlet NSPopUpButton * popupButton;
-	//IBOutlet NSWindow * searchWindow;
-	IBOutlet NSView * infoView;
-	IBOutlet NSScrollView * scrollView;
-	IBOutlet NSProgressIndicator * spinner;
-	IBOutlet NSArrayController * __entries_controller;
+	IBOutlet NSTextField * animeSearchField;
+	IBOutlet NSTableView * animeTableView;
+	IBOutlet NSProgressIndicator * animeSpinner;
+	IBOutlet NSScrollView * animeScrollView;
+	IBOutlet NSView * animeInfoView;
+	IBOutlet NSView * animeTab;
 	
+	IBOutlet NSArrayController * __entries_controller;
+	NSMutableArray * __entries;
+
 	BOOL showing_info;
 }
 
 @property (retain) NSMutableArray * __entries;
 
--(IBAction) search:(id)sender;
+-(IBAction) searchAnime:(id)sender;
 -(void) callback:(NSArray *) returnArray;
 
 -(id)init;
