@@ -35,6 +35,9 @@
 							  options:(NSKeyValueObservingOptionNew) 
 							  context:NULL];
 	showing_info = NO;
+	[[NSNotificationCenter defaultCenter] addObserver:self
+											 selector:@selector(willTerminate:)
+												 name:NSApplicationWillTerminateNotification object:nil];
 }
 
 -(IBAction) searchAnime:(id) sender
@@ -124,6 +127,12 @@
 			[self hideInfo];
 		}	
 	}
+}
+
+- (void)willTerminate:(NSNotification *)notification
+{
+	if(showing_info)
+		[self hideInfo];
 }
 
 @end
