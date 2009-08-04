@@ -22,9 +22,6 @@
 	[__entries_controller addObserver:self forKeyPath:@"selectedObjects" 
 							  options:(NSKeyValueObservingOptionNew) 
 							  context:NULL];
-	[self addObserver:self forKeyPath:@"__entries" 
-							  options:(NSKeyValueObservingOptionNew) 
-							  context:NULL];
 	showing_info = NO;
 }
 
@@ -72,36 +69,49 @@
 	NSRect bounds = [infoView bounds];
 	NSRect frame = [[searchWindow contentView] frame];
 	NSRect w_frame = [searchWindow frame];
-	NSRect s_frame = [scrollView frame];
 	
 	w_frame.size.height += bounds.size.height;
 	w_frame.origin.y -= bounds.size.height;
-	s_frame.origin.y += bounds.size.height;
-
-	[searchWindow setFrame:w_frame display:YES];
+	
+	// Locking the scrollview to the top 
+	NSUInteger mask = [scrollView autoresizingMask]; // this was set in IB
+	[scrollView setAutoresizingMask:NSViewMinYMargin];
+	
+	[NSAnimationContext beginGrouping];
+	[searchWindow setFrame:w_frame display:YES animate:YES];
 	[infoView setFrame:NSMakeRect(0.0, 0.0, frame.size.width, bounds.size.height)];
-	[scrollView setFrame:s_frame];
 	
 	[[searchWindow contentView] addSubview:infoView];
+	[NSAnimationContext endGrouping];
+	
+	// Making the scrollview autoresize again in all directions.
+	[scrollView setAutoresizingMask:mask];
+	
 	showing_info = YES;
 }
 
 -(void)hideInfo
 {
 	NSRect bounds = [infoView bounds];
-	NSRect frame = [[searchWindow contentView] frame];
 	NSRect w_frame = [searchWindow frame];
-	NSRect s_frame = [scrollView frame];
 	
 	w_frame.size.height -= bounds.size.height;
 	w_frame.origin.y += bounds.size.height;
-	s_frame.origin.y -= bounds.size.height;
+
 	
-	[infoView setFrame:NSMakeRect(0.0, 0.0, frame.size.width, bounds.size.height)];
-	[searchWindow setFrame:w_frame display:YES];
-	[scrollView setFrame:s_frame];
+	// Locking the scrollview to the top 
+	NSUInteger mask = [scrollView autoresizingMask]; // this was set in IB
+	[scrollView setAutoresizingMask:NSViewMinYMargin];
+	
+	[NSAnimationContext beginGrouping];
 	
 	[infoView removeFromSuperview];
+	[searchWindow setFrame:w_frame display:YES animate:YES];
+	[NSAnimationContext endGrouping];
+	
+	// Making the scrollview autoresize again in all directions.
+	[scrollView setAutoresizingMask:mask];
+	
 	showing_info = NO;
 }
 
@@ -116,14 +126,7 @@
 		}
 		if(sm==nil && showing_info == YES){
 			[self hideInfo];
-		}
-		NSLog(@"%@", sm);
-		
-		//SearchModel * sm = (SearchModel *)[[__entries_controller selectedObjects] objectAtIndex:0];		
-	}
-	if([keyPath isEqual:@"__entries"]){
-		[spinner stopAnimation:nil];
-		[spinner setHidden:YES];
+		}	
 	}
 }
 

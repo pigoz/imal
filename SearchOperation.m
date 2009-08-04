@@ -22,7 +22,6 @@
 	self = [super init];
 	if (self != nil) {
 		self.__query = query;
-		NSLog(self.__query);
 		self.__type = type;
 		self.__controller = controller;
 	}
