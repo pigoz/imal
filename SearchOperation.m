@@ -10,6 +10,7 @@
 #import "MALHandler.h"
 #import "SearchWindowController.h"
 #import "SearchModel.h"
+#import "NSXMLNode+stringForXPath.h"
 
 @implementation SearchOperation
 
@@ -39,33 +40,23 @@
 		NSMutableArray * searchModel = [[NSMutableArray alloc] init];
 		for(NSXMLNode * n in entryNodes){
 			SearchModel *s = [SearchModel new];
-			s.__title = [self stringForPath:@"title" ofNode:n];
-			s.__type = [self stringForPath:@"type" ofNode:n];
-			s.__score = [[self stringForPath:@"score" ofNode:n] intValue];
-			if([__type caseInsensitiveCompare:@"anime"]==0)
-				s.__episodes = [[self stringForPath:@"episodes" ofNode:n] intValue];
+			s.__title = [n stringForXPath:@"title"];
+			s.__type = [n stringForXPath:@"type"];
+			s.__score = [[n stringForXPath:@"score"] floatValue];
+			if([self.__type caseInsensitiveCompare:@"anime"]==0)
+				s.__episodes = [[n stringForXPath:@"episodes"] intValue];
 			else
-				s.__episodes = [[self stringForPath:@"chapters" ofNode:n] intValue];
+				s.__episodes = [[n stringForXPath:@"chapters"] intValue];
+			s.__image_url = [n stringForXPath:@"image"];
+			s.__synonyms = [n stringForXPath:@"synonyms"];
+			s.__status = [n stringForXPath:@"status"];
+			s.__start_date = [n stringForXPath:@"start_date"];
+			s.__end_date = [n stringForXPath:@"end_date"];
+			s.__synopsis = [n stringForXPath:@"synopsis"];
 			[searchModel addObject:[s autorelease]];
 		}
 		[__controller callback:[searchModel autorelease]]; // callback on the controller
 	}
-}
-
--(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n
-{
-    NSError *error;
-    NSArray *nodes = [n nodesForXPath:xp error:&error];
-    if (!nodes) {
-        NSAlert *alert = [NSAlert alertWithError:error];
-        [alert runModal];
-        return nil;
-    }
-    if ([nodes count] == 0) {
-        return nil;
-    } else {
-        return [[nodes objectAtIndex:0] stringValue];
-    }
 }
 
 @end

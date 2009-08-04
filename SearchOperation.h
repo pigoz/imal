@@ -23,6 +23,5 @@
 @property (retain) SearchWindowController * __controller;
 
 -(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchWindowController *) controller;
--(NSString *)stringForPath:(NSString *)xp ofNode:(NSXMLNode *)n;
 
 @end
