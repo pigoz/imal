@@ -65,11 +65,12 @@
 -(void)showInfo
 {
 	NSRect bounds = [animeInfoView bounds];
-	NSRect frame = [[self.window contentView] frame];
+	NSRect i_bounds = [addAnime bounds];
+	NSRect t_bounds = [animeTab bounds];
 	NSRect w_frame = [self.window frame];
 	
-	w_frame.size.height += bounds.size.height;
-	w_frame.origin.y -= bounds.size.height;
+	w_frame.size.height += bounds.size.height + i_bounds.size.height;
+	w_frame.origin.y -= bounds.size.height + i_bounds.size.height;
 	
 	// Locking the scrollview to the top 
 	NSUInteger mask = [animeScrollView autoresizingMask]; // this was set in IB
@@ -77,10 +78,12 @@
 	
 	[NSAnimationContext beginGrouping];
 	[self.window setFrame:w_frame display:YES animate:YES];
-	[animeInfoView setFrame:NSMakeRect(0.0, 0.0, frame.size.width, bounds.size.height)];
+	[animeInfoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
+	[addAnime setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
 	//[[self.window contentView] addSubview:infoView];
 	[animeTab addSubview:animeInfoView];
+	[animeTab addSubview:addAnime];
 	[NSAnimationContext endGrouping];
 	
 	// Making the scrollview autoresize again in all directions.
@@ -92,10 +95,11 @@
 -(void)hideInfo
 {
 	NSRect bounds = [animeInfoView bounds];
+	NSRect i_bounds = [addAnime bounds];
 	NSRect w_frame = [self.window frame];
 	
-	w_frame.size.height -= bounds.size.height;
-	w_frame.origin.y += bounds.size.height;
+	w_frame.size.height -= bounds.size.height + i_bounds.size.height;
+	w_frame.origin.y += bounds.size.height + i_bounds.size.height;
 
 	
 	// Locking the scrollview to the top 
@@ -104,6 +108,7 @@
 	
 	[NSAnimationContext beginGrouping];
 	
+	[addAnime removeFromSuperview];
 	[animeInfoView removeFromSuperview];
 	[self.window setFrame:w_frame display:YES animate:YES];
 	[NSAnimationContext endGrouping];

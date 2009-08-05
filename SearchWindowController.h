@@ -17,6 +17,8 @@
 	IBOutlet NSView * animeInfoView;
 	IBOutlet NSView * animeTab;
 	
+	IBOutlet NSView * addAnime;
+	
 	IBOutlet NSArrayController * __entries_controller;
 	NSMutableArray * __entries;
 
