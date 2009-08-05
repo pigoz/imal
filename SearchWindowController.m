@@ -52,6 +52,15 @@
 	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type callback: [callback autorelease]]];
 }
 
+-(int) PopUpToMALStatus:(int)status
+{
+	switch (status)
+	{
+		case 4:	return MALPlantoWatch;
+		default: return status-1;
+	}
+}
+
 -(IBAction) addAnime:(id) sender
 {
 	[addAnimeSpinner startAnimation:nil];
@@ -60,11 +69,10 @@
 
 	SearchModel * sm = (SearchModel *)[[__entries_controller selectedObjects] objectAtIndex:0];
 	NSMutableDictionary * values = [[NSMutableDictionary alloc] init];
-	//[values setObject:[NSString stringWithFormat:@"%d", sm.__episodes] forKey:@"episode"];
-	[values setObject:[NSString stringWithFormat:@"%d", MALPlantoWatch] forKey:@"status"];
+	[values setObject:[NSString stringWithFormat:@"%@", [episodesField stringValue]] forKey:@"episode"];
+	[values setObject:[NSString stringWithFormat:@"%d", [self PopUpToMALStatus:[[animeStatus selectedCell] tag]]] forKey:@"status"];
 	
 	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addAnimeCallback:)];
-	
 	[mal.queue addOperation:[[AddOperation alloc] initWithID:sm.__id withType:@"anime" values:values callback:callback]];
 }
 

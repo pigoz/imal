@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="57"/>
 			<integer value="29"/>
+			<integer value="57"/>
 			<integer value="161"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -388,9 +388,9 @@
 					</object>
 					<object class="NSProgressIndicator" id="919243168">
 						<reference key="NSNextResponder" ref="216993345"/>
-						<int key="NSvFlags">1313</int>
+						<int key="NSvFlags">-2147482335</int>
 						<object class="NSPSMatrix" key="NSDrawMatrix"/>
-						<string key="NSFrame">{{479, 21}, {16, 16}}</string>
+						<string key="NSFrame">{{481, 21}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="216993345"/>
 						<int key="NSpiFlags">20746</int>
 						<double key="NSMinValue">1.600000e+01</double>
@@ -1083,6 +1083,30 @@
 					</object>
 					<int key="connectionID">211</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">animeStatus</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="965657045"/>
+					</object>
+					<int key="connectionID">212</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: selection.__episodes</string>
+						<reference key="source" ref="141394750"/>
+						<reference key="destination" ref="148906568"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="141394750"/>
+							<reference key="NSDestination" ref="148906568"/>
+							<string key="NSLabel">value: selection.__episodes</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">selection.__episodes</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">214</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -1655,7 +1679,7 @@
 							<string key="accessibilityValue">Additional Search View</string>
 						</object>
 					</object>
-					<string>{{465, 347}, {507, 59}}</string>
+					<string>{{504, 334}, {507, 59}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1690,9 +1714,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{261, 99}, {600, 500}}</string>
+					<string>{{146, 204}, {600, 500}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{261, 99}, {600, 500}}</string>
+					<string>{{146, 204}, {600, 500}}</string>
 					<boolean value="YES"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -1740,7 +1764,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">211</int>
+			<int key="maxID">214</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1772,6 +1796,7 @@
 							<string>animeScrollView</string>
 							<string>animeSearchField</string>
 							<string>animeSpinner</string>
+							<string>animeStatus</string>
 							<string>animeTab</string>
 							<string>animeTableView</string>
 							<string>episodesField</string>
@@ -1785,9 +1810,10 @@
 							<string>NSScrollView</string>
 							<string>NSTextField</string>
 							<string>NSProgressIndicator</string>
+							<string>NSPopUpButton</string>
 							<string>NSView</string>
 							<string>NSTableView</string>
-							<string>NSView</string>
+							<string>NSTextField</string>
 						</object>
 					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

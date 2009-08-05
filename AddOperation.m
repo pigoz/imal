@@ -40,14 +40,14 @@
 		[entry addChild:[NSXMLNode elementWithName:_k stringValue:[self.__values objectForKey:_k]]];
 	}
 	NSData *xmldata = [xml XMLDataWithOptions:NSXMLDocumentTidyXML];
-	NSLog([[[NSString alloc] initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease]);
 	
 	// Send post request
 	MALHandler * mal = [MALHandler sharedHandler];
 	NSString * resource = [NSString stringWithFormat:@"/%@list/add/%d.xml", self.__type, self.__id];
-	NSLog(resource);
-	NSData * r = [mal post:resource data:xmldata];
-	NSLog([[[NSString alloc] initWithData:r encoding:NSUTF8StringEncoding] autorelease]);
+	NSString * xmlstr = [[[NSString alloc] initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease];
+	xmldata = [[NSString stringWithFormat:@"data=%@", xmlstr] dataUsingEncoding:NSUTF8StringEncoding];
+	
+	[mal post:resource data:xmldata];
 	[self.__callback perform];
 	[xml release];
 }

@@ -18,8 +18,9 @@
 	IBOutlet NSView * animeTab;
 	
 	IBOutlet NSView * addAnime;
-	IBOutlet NSView * episodesField;
+	IBOutlet NSTextField * episodesField;
 	IBOutlet NSProgressIndicator * addAnimeSpinner;
+	IBOutlet NSPopUpButton * animeStatus;
 	
 	IBOutlet NSArrayController * __entries_controller;
 	NSMutableArray * __entries;
