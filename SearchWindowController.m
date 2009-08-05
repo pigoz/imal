@@ -10,6 +10,7 @@
 #import "MALHandler.h"
 #import "SearchOperation.h"
 #import "SearchModel.h"
+#import "PGZCallback.h"
 
 
 @implementation SearchWindowController
@@ -46,7 +47,17 @@
 	[animeSpinner setHidden:NO];
 	MALHandler * mal = [MALHandler sharedHandler];
 	NSString * type = @"anime";
-	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type controller:self]];
+	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(callback:)];
+	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type callback: [callback autorelease]]];
+}
+
+-(IBAction) addAnime:(id) sender
+{
+	[addAnimeSpinner startAnimation:nil];
+	[addAnimeSpinner setHidden:NO];
+	MALHandler * mal = [MALHandler sharedHandler];
+	NSString * type = @"anime";
+	//[mal.queue addOperation:[[AOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type controller:self]];
 }
 
 -(void) callback:(NSArray *) entries
@@ -88,6 +99,8 @@
 	
 	// Making the scrollview autoresize again in all directions.
 	[animeScrollView setAutoresizingMask:mask];
+	[animeScrollView setNextKeyView:episodesField];
+	[episodesField setNextKeyView:animeSearchField];
 	
 	showing_info = YES;
 }
@@ -115,6 +128,7 @@
 	
 	// Making the scrollview autoresize again in all directions.
 	[animeScrollView setAutoresizingMask:mask];
+	[animeScrollView setNextKeyView:nil];
 	
 	showing_info = NO;
 }

@@ -10,6 +10,7 @@
 
 
 @interface SearchModel : NSObject {
+	int __id;
 	NSString * __title;
 	NSString * __synonyms;
 	NSString * __type;
@@ -26,6 +27,7 @@
 	NSImage * __scaled_image;
 }
 
+@property (assign) int __id;
 @property (retain) NSString * __title;
 @property (retain) NSString * __synonyms;
 @property (retain) NSString * __type;
@@ -39,6 +41,8 @@
 
 -(NSImage *)__image;
 
+-(SearchModel *) initAnimeFromXMLNode:(NSXMLNode *)n;
+-(SearchModel *) initMangaFromXMLNode:(NSXMLNode *)n;
 -(NSAttributedString *)__bold_title;
 -(NSAttributedString *)__formatted_synopsis;
 

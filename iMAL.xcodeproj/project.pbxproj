@@ -16,6 +16,8 @@
 		7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5610199C48007B3B7F /* PreferencesController.m */; };
 		7B64251F1028795A00E87480 /* NSImage+NiceScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */; };
 		7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */; };
+		7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67F3F1102996520031EAC2 /* PGZCallback.m */; };
+		7B74100E102992B100FB51B7 /* AddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74100D102992B100FB51B7 /* AddOperation.m */; };
 		7B939F5210199C27007B3B7F /* MBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5110199C27007B3B7F /* MBPreferencesController.m */; };
 		7B939F6110199CCE007B3B7F /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */; };
 		7B939F6310199D9C007B3B7F /* PreferencesMAL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B939F6210199D9C007B3B7F /* PreferencesMAL.xib */; };
@@ -67,6 +69,10 @@
 		7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+NiceScaling.m"; sourceTree = "<group>"; };
 		7B64254010287C3500E87480 /* NSXMLNode+stringForXPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+stringForXPath.h"; sourceTree = "<group>"; };
 		7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+stringForXPath.m"; sourceTree = "<group>"; };
+		7B67F3F0102996520031EAC2 /* PGZCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGZCallback.h; sourceTree = "<group>"; };
+		7B67F3F1102996520031EAC2 /* PGZCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGZCallback.m; sourceTree = "<group>"; };
+		7B74100C102992B100FB51B7 /* AddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOperation.h; sourceTree = "<group>"; };
+		7B74100D102992B100FB51B7 /* AddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOperation.m; sourceTree = "<group>"; };
 		7B939F5010199C27007B3B7F /* MBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPreferencesController.h; sourceTree = "<group>"; };
 		7B939F5110199C27007B3B7F /* MBPreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBPreferencesController.m; sourceTree = "<group>"; };
 		7B939F5510199C48007B3B7F /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
@@ -245,6 +251,10 @@
 				7BBBAB6B102572A500E33747 /* MALHandler.m */,
 				7BB528BE10260E59000D3B0E /* SearchOperation.h */,
 				7BB528BF10260E59000D3B0E /* SearchOperation.m */,
+				7B74100C102992B100FB51B7 /* AddOperation.h */,
+				7B74100D102992B100FB51B7 /* AddOperation.m */,
+				7B67F3F0102996520031EAC2 /* PGZCallback.h */,
+				7B67F3F1102996520031EAC2 /* PGZCallback.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -336,6 +346,8 @@
 				7BD2338710282CE5009447A6 /* SearchController.m in Sources */,
 				7B64251F1028795A00E87480 /* NSImage+NiceScaling.m in Sources */,
 				7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */,
+				7B74100E102992B100FB51B7 /* AddOperation.m in Sources */,
+				7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

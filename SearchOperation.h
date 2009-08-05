@@ -8,20 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 
-@class SearchWindowController;
+@class PGZCallback;
 
 @interface SearchOperation : NSOperation {
 
 	NSString * __query;
 	NSString * __type;
-	SearchWindowController * __controller;
+	PGZCallback * __callback;
 	
 }
 
 @property (retain) NSString * __query;
 @property (retain) NSString * __type;
-@property (retain) SearchWindowController * __controller;
+@property (retain) PGZCallback * __callback;
 
--(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type controller:(SearchWindowController *) controller;
+-(SearchOperation *) initWithQuery:(NSString *) query withType:(NSString *) type callback:(PGZCallback *) callback;
 
 @end

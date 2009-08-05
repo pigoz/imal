@@ -18,6 +18,8 @@
 	IBOutlet NSView * animeTab;
 	
 	IBOutlet NSView * addAnime;
+	IBOutlet NSView * episodesField;
+	IBOutlet NSProgressIndicator * addAnimeSpinner;
 	
 	IBOutlet NSArrayController * __entries_controller;
 	NSMutableArray * __entries;
@@ -28,6 +30,8 @@
 @property (retain) NSMutableArray * __entries;
 
 -(IBAction) searchAnime:(id)sender;
+-(IBAction) addAnime:(id)sender;
+
 -(void) callback:(NSArray *) returnArray;
 
 -(id)init;

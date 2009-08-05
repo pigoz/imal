@@ -8,6 +8,18 @@
 
 #import <Cocoa/Cocoa.h>
 
+/// STATUS CONSTANTS
+typedef enum statusValues {
+	MALWatching = 1,
+	MALCompleted = 2,
+	MALOnHold = 3,
+	MALDropped = 4,
+	MALPlantoWatch = 6,
+} statusValues;
+
+static const int MALReading = MALWatching;
+static const int MALPlantoRead = MALPlantoWatch;
+
 @interface MALHandler : NSObject {
 	NSOperationQueue * queue;
 }

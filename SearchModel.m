@@ -8,9 +8,11 @@
 
 #import "SearchModel.h"
 #import "NSImage+NiceScaling.h"
+#import "NSXMLNode+stringForXPath.h"
 
 @implementation SearchModel
 
+@synthesize __id;
 @synthesize __title;
 @synthesize __synonyms;
 @synthesize __type;
@@ -21,6 +23,44 @@
 @synthesize __start_date;
 @synthesize __end_date;
 @synthesize __synopsis;
+
+-(SearchModel *) initAnimeFromXMLNode:(NSXMLNode *)n
+{
+	self = [super init];
+	if (self != nil) {
+		self.__id = [[n stringForXPath:@"id"] intValue];
+		self.__title = [n stringForXPath:@"title"];
+		self.__type = [n stringForXPath:@"type"];
+		self.__score = [[n stringForXPath:@"score"] floatValue];
+		self.__episodes = [[n stringForXPath:@"episodes"] intValue];
+		self.__image_url = [n stringForXPath:@"image"];
+		self.__synonyms = [n stringForXPath:@"synonyms"];
+		self.__status = [n stringForXPath:@"status"];
+		self.__start_date = [n stringForXPath:@"start_date"];
+		self.__end_date = [n stringForXPath:@"end_date"];
+		self.__synopsis = [n stringForXPath:@"synopsis"];
+	}
+	return self;
+}
+
+-(SearchModel *) initMangaFromXMLNode:(NSXMLNode *)n
+{
+	self = [super init];
+	if (self != nil) {
+		self.__id = [[n stringForXPath:@"id"] intValue];
+		self.__title = [n stringForXPath:@"title"];
+		self.__type = [n stringForXPath:@"type"];
+		self.__score = [[n stringForXPath:@"score"] floatValue];
+		self.__episodes = [[n stringForXPath:@"chapters"] intValue];
+		self.__image_url = [n stringForXPath:@"image"];
+		self.__synonyms = [n stringForXPath:@"synonyms"];
+		self.__status = [n stringForXPath:@"status"];
+		self.__start_date = [n stringForXPath:@"start_date"];
+		self.__end_date = [n stringForXPath:@"end_date"];
+		self.__synopsis = [n stringForXPath:@"synopsis"];
+	}
+	return self;
+}
 
 -(NSAttributedString *)__bold_title
 {
