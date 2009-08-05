@@ -51,7 +51,8 @@
 		self.__title = [n stringForXPath:@"title"];
 		self.__type = [n stringForXPath:@"type"];
 		self.__score = [[n stringForXPath:@"score"] floatValue];
-		self.__episodes = [[n stringForXPath:@"chapters"] intValue];
+		self.__chapters = [[n stringForXPath:@"chapters"] intValue];
+		self.__volumes = [[n stringForXPath:@"volumes"] intValue];
 		self.__image_url = [n stringForXPath:@"image"];
 		self.__synonyms = [n stringForXPath:@"synonyms"];
 		self.__status = [n stringForXPath:@"status"];

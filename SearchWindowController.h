@@ -10,30 +10,61 @@
 
 
 @interface SearchWindowController : NSWindowController {
+	
+	// TABS
+	IBOutlet NSTabView * tabView;
+	IBOutlet NSView * animeTab;
+	IBOutlet NSView * mangaTab;
+	
+	// Anime views always visible
 	IBOutlet NSTextField * animeSearchField;
 	IBOutlet NSTableView * animeTableView;
 	IBOutlet NSProgressIndicator * animeSpinner;
 	IBOutlet NSScrollView * animeScrollView;
-	IBOutlet NSView * animeInfoView;
-	IBOutlet NSView * animeTab;
 	
+	// Manga views always visible
+	IBOutlet NSTextField * mangaSearchField;
+	IBOutlet NSTableView * mangaTableView;
+	IBOutlet NSProgressIndicator * mangaSpinner;
+	IBOutlet NSScrollView * mangaScrollView;
+
+	// Anime Add Controls
 	IBOutlet NSView * addAnime;
 	IBOutlet NSTextField * episodesField;
 	IBOutlet NSProgressIndicator * addAnimeSpinner;
-	IBOutlet NSPopUpButton * animeStatus;
-	
-	IBOutlet NSArrayController * __entries_controller;
-	NSMutableArray * __entries;
+	IBOutlet NSPopUpButton * animeStatus;	
 
-	BOOL showing_info;
+	// Manga Add Controls
+	IBOutlet NSView * addManga;
+	IBOutlet NSTextField * chaptersField;
+	IBOutlet NSTextField * volumesField;
+	IBOutlet NSProgressIndicator * addMangaSpinner;
+	IBOutlet NSPopUpButton * mangaStatus;
+	
+	IBOutlet NSView * infoView;
+	
+	// Managed Models
+	IBOutlet NSArrayController * __anime_entries_controller;
+	NSMutableArray * __anime_entries;
+	IBOutlet NSArrayController * __manga_entries_controller;
+	NSMutableArray * __manga_entries;
+
+	// Showing info states
+	BOOL __showing_anime_info;
+	BOOL __showing_manga_info;
+	
+	BOOL __was_showing_anime_info;
+	BOOL __was_showing_manga_info;
+	
 }
 
-@property (retain) NSMutableArray * __entries;
+@property (retain) NSMutableArray * __anime_entries;
+@property (retain) NSMutableArray * __manga_entries;
 
 -(IBAction) searchAnime:(id)sender;
 -(IBAction) addAnime:(id)sender;
-
--(void) callback:(NSArray *) returnArray;
+-(IBAction) searchManga:(id)sender;
+-(IBAction) addManga:(id)sender;
 
 -(id)init;
 -(void)windowDidLoad;

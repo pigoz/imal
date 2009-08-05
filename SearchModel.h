@@ -17,6 +17,8 @@
 	NSString * __image_url;
 	float __score;
 	int __episodes;
+	int __chapters;
+	int __volumes;
 	
 	NSString * __status;
 	NSString * __start_date;
@@ -34,6 +36,8 @@
 @property (retain) NSString * __image_url;
 @property (assign) float __score;
 @property (assign) int __episodes;
+@property (assign) int __chapters;
+@property (assign) int __volumes;
 @property (retain) NSString * __status;
 @property (retain) NSString * __start_date;
 @property (retain) NSString * __end_date;
