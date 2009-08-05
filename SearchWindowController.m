@@ -8,6 +8,7 @@
 
 #import "SearchWindowController.h"
 #import "MALHandler.h"
+#import "AddOperation.h"
 #import "SearchOperation.h"
 #import "SearchModel.h"
 #import "PGZCallback.h"
@@ -56,8 +57,15 @@
 	[addAnimeSpinner startAnimation:nil];
 	[addAnimeSpinner setHidden:NO];
 	MALHandler * mal = [MALHandler sharedHandler];
-	NSString * type = @"anime";
-	//[mal.queue addOperation:[[AOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type controller:self]];
+
+	SearchModel * sm = (SearchModel *)[[__entries_controller selectedObjects] objectAtIndex:0];
+	NSMutableDictionary * values = [[NSMutableDictionary alloc] init];
+	//[values setObject:[NSString stringWithFormat:@"%d", sm.__episodes] forKey:@"episode"];
+	[values setObject:[NSString stringWithFormat:@"%d", MALPlantoWatch] forKey:@"status"];
+	
+	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addAnimeCallback:)];
+	
+	[mal.queue addOperation:[[AddOperation alloc] initWithID:sm.__id withType:@"anime" values:values callback:callback]];
 }
 
 -(void) callback:(NSArray *) entries
@@ -69,6 +77,15 @@
 		[self didChangeValueForKey:@"__entries"];
 		[animeSpinner stopAnimation:nil];
 		[animeSpinner setHidden:YES];
+	}
+	
+}
+
+-(void) addAnimeCallback:(NSArray *) entries
+{
+	@synchronized(self){
+		[addAnimeSpinner stopAnimation:nil];
+		[addAnimeSpinner setHidden:YES];
 	}
 	
 }

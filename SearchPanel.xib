@@ -8,9 +8,9 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="57"/>
 			<integer value="29"/>
 			<integer value="161"/>
-			<integer value="57"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -388,7 +388,7 @@
 					</object>
 					<object class="NSProgressIndicator" id="919243168">
 						<reference key="NSNextResponder" ref="216993345"/>
-						<int key="NSvFlags">1292</int>
+						<int key="NSvFlags">1313</int>
 						<object class="NSPSMatrix" key="NSDrawMatrix"/>
 						<string key="NSFrame">{{479, 21}, {16, 16}}</string>
 						<reference key="NSSuperview" ref="216993345"/>
@@ -629,6 +629,7 @@
 														</object>
 														<string key="NSFrame">{{1, 17}, {523, 382}}</string>
 														<reference key="NSSuperview" ref="198723382"/>
+														<reference key="NSNextKeyView" ref="596159110"/>
 														<reference key="NSDocView" ref="596159110"/>
 														<reference key="NSBGColor" ref="925370696"/>
 														<int key="NScvFlags">4</int>
@@ -662,6 +663,7 @@
 														</object>
 														<string key="NSFrame">{{1, 0}, {523, 17}}</string>
 														<reference key="NSSuperview" ref="198723382"/>
+														<reference key="NSNextKeyView" ref="438849938"/>
 														<reference key="NSDocView" ref="438849938"/>
 														<reference key="NSBGColor" ref="925370696"/>
 														<int key="NScvFlags">4</int>
@@ -670,6 +672,7 @@
 												</object>
 												<string key="NSFrame">{{17, 17}, {540, 400}}</string>
 												<reference key="NSSuperview" ref="30047212"/>
+												<reference key="NSNextKeyView" ref="988445016"/>
 												<int key="NSsFlags">18</int>
 												<reference key="NSVScroller" ref="375330242"/>
 												<reference key="NSHScroller" ref="912282680"/>
@@ -1063,6 +1066,22 @@
 						</object>
 					</object>
 					<int key="connectionID">209</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">addAnime:</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="954779204"/>
+					</object>
+					<int key="connectionID">210</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">addAnimeSpinner</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="919243168"/>
+					</object>
+					<int key="connectionID">211</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -1721,7 +1740,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">209</int>
+			<int key="maxID">211</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1730,8 +1749,17 @@
 					<string key="className">SearchWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">searchAnime:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>addAnime:</string>
+							<string>searchAnime:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1739,6 +1767,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>__entries_controller</string>
 							<string>addAnime</string>
+							<string>addAnimeSpinner</string>
 							<string>animeInfoView</string>
 							<string>animeScrollView</string>
 							<string>animeSearchField</string>
@@ -1751,6 +1780,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSArrayController</string>
 							<string>NSView</string>
+							<string>NSProgressIndicator</string>
 							<string>NSView</string>
 							<string>NSScrollView</string>
 							<string>NSTextField</string>

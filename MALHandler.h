@@ -26,7 +26,7 @@ static const int MALPlantoRead = MALPlantoWatch;
 
 + (MALHandler *)sharedHandler;
 - (NSData *) get:(NSString *) resource;
-- (NSData *) post:(NSString *) resource data:(NSString *) data;
+- (NSData *) post:(NSString *) resource data:(NSData *) data;
 - (NSData *) search:(NSString *) query type:(NSString *) type;
 
 @property (retain, readonly) NSOperationQueue *queue;

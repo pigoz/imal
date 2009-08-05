@@ -7,18 +7,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
-@class SearchWindowController;
+@class PGZCallback;
 
 @interface AddOperation : NSOperation {
 	int __id;
 	NSMutableDictionary * __values;
 	NSString * __type;
-	SearchWindowController * __controller;
+	PGZCallback * __callback;
 }
 
 @property (assign) int __id;
 @property (retain) NSMutableDictionary * __values;
 @property (retain) NSString * __type;
-@property (retain) SearchWindowController * __controller;
+@property (retain) PGZCallback * __callback;
+
+-(AddOperation *) initWithID:(int) entryID withType:(NSString *) type values:(NSMutableDictionary*) values callback:(PGZCallback *) callback;
 
 @end

@@ -71,7 +71,7 @@
 //	[error release];
 	return _r;
 }
-- (NSData *) post:(NSString *) resource data:(NSString *) data{
+- (NSData *) post:(NSString *) resource data:(NSData *) data{
 	NSURLResponse* resp;
 	NSError* error;
 	
@@ -85,11 +85,11 @@
 	NSString * url = [[preferences stringForKey:@"mal_api_address"] stringByAppendingString:resource];
 	NSMutableURLRequest *req =	[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
 	[req setHTTPMethod:@"POST"];
-	[req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[req setValue:@"application/xml" forHTTPHeaderField:@"Content-Type"];
 	[req setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
 	[req setValue:[NSString stringWithFormat:@"Basic %@", [format base64Encoding]]
 				forHTTPHeaderField:@"Authorization"];
-	[req setHTTPBody:[data dataUsingEncoding:NSASCIIStringEncoding]];
+	[req setHTTPBody:data]; //data to post
 	
 	// Sending Synch Request: this method will only be used in secondary thread to not block the UI (using NSOperation)
 	NSData * _r = [NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:&error];
