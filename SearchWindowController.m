@@ -32,11 +32,7 @@
 }
 
 -(void)awakeFromNib
-{
-	[tabView addObserver:self forKeyPath:@"selectedTabViewItem" 
-				 options:(NSKeyValueObservingOptionNew) 
-				 context:NULL];
-	
+{	
 	// observe the selection
 	[__anime_entries_controller addObserver:self forKeyPath:@"selectedObjects" 
 									options:(NSKeyValueObservingOptionNew) 
@@ -54,6 +50,8 @@
 	__showing_manga_info = NO;
 	__was_showing_anime_info = NO;
 	__was_showing_manga_info = NO;
+	__anime_frame = [self.window frame];
+	__manga_frame = [self.window frame];
 }
 
 /// Helper Method: converts popup tag [0,5] to MAL status [1,4]U[6]
@@ -147,7 +145,7 @@
 	NSMutableDictionary * values = [[NSMutableDictionary alloc] init];
 	[values setObject:[NSString stringWithFormat:@"%@", [chaptersField stringValue]] forKey:@"chapter"];
 	[values setObject:[NSString stringWithFormat:@"%@", [volumesField stringValue]] forKey:@"volume"];
-	[values setObject:[NSString stringWithFormat:@"%d", [self PopUpToMALStatus:[[animeStatus selectedCell] tag]]] forKey:@"status"];
+	[values setObject:[NSString stringWithFormat:@"%d", [[mangaStatus selectedCell] tag]] forKey:@"status"];
 	
 	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addMangaCallback:)];
 	[mal.queue addOperation:[[AddOperation alloc] initWithID:sm.__id withType:@"manga" values:values callback:callback]];
@@ -164,7 +162,7 @@
 
 -(void)showAnimeInfo
 {
-	NSRect bounds = [infoView bounds];
+	NSRect bounds = [animeInfoView bounds];
 	NSRect i_bounds = [addAnime bounds];
 	NSRect t_bounds = [animeTab bounds];
 	NSRect w_frame = [self.window frame];
@@ -178,11 +176,11 @@
 	
 	[NSAnimationContext beginGrouping];
 	[self.window setFrame:w_frame display:YES animate:YES];
-	[infoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
+	[animeInfoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
 	[addAnime setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
-	//[[self.window contentView] addSubview:infoView];
-	[animeTab addSubview:infoView];
+	//[[self.window contentView] addSubview:animeInfoView];
+	[animeTab addSubview:animeInfoView];
 	[animeTab addSubview:addAnime];
 	[NSAnimationContext endGrouping];
 	
@@ -196,7 +194,7 @@
 
 -(void)showMangaInfo
 {
-	NSRect bounds = [infoView bounds];
+	NSRect bounds = [mangaInfoView bounds];
 	NSRect i_bounds = [addManga bounds];
 	NSRect t_bounds = [mangaTab bounds];
 	NSRect w_frame = [self.window frame];
@@ -210,11 +208,11 @@
 	
 	[NSAnimationContext beginGrouping];
 	[self.window setFrame:w_frame display:YES animate:YES];
-	[infoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
+	[mangaInfoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
 	[addManga setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
-	//[[self.window contentView] addSubview:infoView];
-	[mangaTab addSubview:infoView];
+	//[[self.window contentView] addSubview:animeInfoView];
+	[mangaTab addSubview:mangaInfoView];
 	[mangaTab addSubview:addManga];
 	[NSAnimationContext endGrouping];
 	
@@ -222,14 +220,14 @@
 	[mangaScrollView setAutoresizingMask:mask];
 	[mangaScrollView setNextKeyView:chaptersField];
 	[chaptersField setNextKeyView:volumesField];
-	[volumesField setNextKeyView:animeSearchField];
+	[volumesField setNextKeyView:mangaSearchField];
 	
 	__showing_manga_info = YES;
 }
 
 -(void)hideAnimeInfo
 {
-	NSRect bounds = [infoView bounds];
+	NSRect bounds = [animeInfoView bounds];
 	NSRect i_bounds = [addAnime bounds];
 	NSRect w_frame = [self.window frame];
 	
@@ -244,7 +242,7 @@
 	[NSAnimationContext beginGrouping];
 	
 	[addAnime removeFromSuperview];
-	[infoView removeFromSuperview];
+	[animeInfoView removeFromSuperview];
 	[self.window setFrame:w_frame display:YES animate:YES];
 	[NSAnimationContext endGrouping];
 	
@@ -257,7 +255,7 @@
 
 -(void)hideMangaInfo
 {
-	NSRect bounds = [infoView bounds];
+	NSRect bounds = [mangaInfoView bounds];
 	NSRect i_bounds = [addManga bounds];
 	NSRect w_frame = [self.window frame];
 	
@@ -272,7 +270,7 @@
 	[NSAnimationContext beginGrouping];
 	
 	[addManga removeFromSuperview];
-	[infoView removeFromSuperview];
+	[mangaInfoView removeFromSuperview];
 	[self.window setFrame:w_frame display:YES animate:YES];
 	[NSAnimationContext endGrouping];
 	
@@ -315,30 +313,45 @@
 			return;
 		}
 	}
-	
-	if([object isEqual:tabView] && [keyPath isEqual:@"selectedTabViewItem" ])
-	{
-		if([[[tabView selectedTabViewItem] view]isEqual:animeTab]){
-			__was_showing_manga_info = __showing_manga_info;
-			if(__showing_manga_info && !__was_showing_anime_info)
-				[self hideMangaInfo];
-			if(__was_showing_anime_info && !__showing_manga_info)
-				[self showAnimeInfo];
-		}
-		if([[[tabView selectedTabViewItem] view]isEqual:mangaTab]){
-			__was_showing_anime_info = __showing_anime_info;
-			if(__showing_anime_info && !__was_showing_manga_info)
-				[self hideAnimeInfo];
-			if(__was_showing_manga_info && !__showing_anime_info)
-				[self showMangaInfo];
-		}
+}
+
+- (void)tabView:(NSTabView *)tabView willSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+	if([[tabViewItem view]isEqual:animeTab]){
+		__manga_frame = [self.window frame]; //I'm still on manga tab
+	}
+	if([[tabViewItem view]isEqual:mangaTab]){
+		__anime_frame = [self.window frame]; //I'm still on anime tab
+	}
+}
+
+- (void)tabView:(NSTabView *)tabView didSelectTabViewItem:(NSTabViewItem *)tabViewItem
+{
+	if([[tabViewItem view]isEqual:animeTab]){
+		NSRect new = [self.window frame];
+		NSRect old = __anime_frame;
+		NSRect frame = __anime_frame;
+		frame.origin.y = new.origin.y - (old.size.height - new.size.height);
+		frame.origin.x = new.origin.x - (old.size.width - new.size.width)/2;
+		[self.window setFrame:frame display:YES animate:YES];
+	}
+	if([[tabViewItem view]isEqual:mangaTab]){
+		NSRect new = [self.window frame];
+		NSRect old = __manga_frame;
+		NSRect frame = __manga_frame;
+		frame.origin.y = new.origin.y - (old.size.height - new.size.height);
+		frame.origin.x = new.origin.x - (old.size.width - new.size.width)/2;
+		[self.window setFrame:frame display:YES animate:YES];
 	}
 }
 
 - (void)willTerminate:(NSNotification *)notification
 {
-	if(__showing_anime_info)
+	if(__showing_anime_info && [[[tabView selectedTabViewItem] view]isEqual:animeTab])
 		[self hideAnimeInfo];
+	if(__showing_manga_info && [[[tabView selectedTabViewItem] view]isEqual:mangaTab])
+		[self hideMangaInfo];
+	
 }
 
 @end

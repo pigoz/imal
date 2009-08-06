@@ -17,6 +17,8 @@
 @synthesize __synonyms;
 @synthesize __type;
 @synthesize __episodes;
+@synthesize __chapters;
+@synthesize __volumes;
 @synthesize __score;
 @synthesize __image_url;
 @synthesize __status;

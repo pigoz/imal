@@ -46,7 +46,6 @@
 	NSString * resource = [NSString stringWithFormat:@"/%@list/add/%d.xml", self.__type, self.__id];
 	NSString * xmlstr = [[[NSString alloc] initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease];
 	xmldata = [[NSString stringWithFormat:@"data=%@", xmlstr] dataUsingEncoding:NSUTF8StringEncoding];
-	
 	[mal post:resource data:xmldata];
 	[self.__callback perform];
 	[xml release];

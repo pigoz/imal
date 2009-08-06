@@ -41,7 +41,9 @@
 	IBOutlet NSProgressIndicator * addMangaSpinner;
 	IBOutlet NSPopUpButton * mangaStatus;
 	
-	IBOutlet NSView * infoView;
+	// Info Views (bound to the NSArrayControllers)
+	IBOutlet NSView * animeInfoView;
+	IBOutlet NSView * mangaInfoView;
 	
 	// Managed Models
 	IBOutlet NSArrayController * __anime_entries_controller;
@@ -52,6 +54,9 @@
 	// Showing info states
 	BOOL __showing_anime_info;
 	BOOL __showing_manga_info;
+	
+	NSRect __anime_frame;
+	NSRect __manga_frame;
 	
 	BOOL __was_showing_anime_info;
 	BOOL __was_showing_manga_info;
