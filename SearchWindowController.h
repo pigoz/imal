@@ -71,7 +71,6 @@
 -(IBAction) searchManga:(id)sender;
 -(IBAction) addManga:(id)sender;
 
--(id)init;
 -(void)windowDidLoad;
 
 @end

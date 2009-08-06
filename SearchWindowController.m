@@ -19,13 +19,6 @@
 @synthesize __anime_entries;
 @synthesize __manga_entries;
 
-
--(id)init
-{
-	if(![super initWithWindowNibName:@"SearchPanel"])
-		return nil;
-	return self;
-}
 -(void)windowDidLoad
 {
 	NSLog(@"Loaded search window");

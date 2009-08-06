@@ -8,11 +8,11 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="302"/>
-			<integer value="228"/>
-			<integer value="29"/>
 			<integer value="254"/>
+			<integer value="29"/>
+			<integer value="228"/>
 			<integer value="182"/>
+			<integer value="302"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -46,13 +46,13 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSTextField" id="623094684">
 						<reference key="NSNextResponder" ref="881904119"/>
-						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{123, 138}, {304, 17}}</string>
+						<int key="NSvFlags">270</int>
+						<string key="NSFrame">{{123, 138}, {321, 17}}</string>
 						<reference key="NSSuperview" ref="881904119"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="434813843">
 							<int key="NSCellFlags">68288064</int>
-							<int key="NSCellFlags2">1346372608</int>
+							<int key="NSCellFlags2">1346372864</int>
 							<string key="NSContents">Label</string>
 							<object class="NSFont" key="NSSupport" id="195223375">
 								<string key="NSName">LucidaGrande</string>
@@ -198,13 +198,13 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="NSTextField" id="705762629">
 						<reference key="NSNextResponder" ref="320995337"/>
-						<int key="NSvFlags">268</int>
-						<string key="NSFrame">{{123, 138}, {304, 17}}</string>
+						<int key="NSvFlags">270</int>
+						<string key="NSFrame">{{123, 138}, {323, 17}}</string>
 						<reference key="NSSuperview" ref="320995337"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="945563987">
 							<int key="NSCellFlags">68288064</int>
-							<int key="NSCellFlags2">1346372608</int>
+							<int key="NSCellFlags2">1346372864</int>
 							<string key="NSContents">Label</string>
 							<reference key="NSSupport" ref="195223375"/>
 							<reference key="NSControlView" ref="705762629"/>
@@ -3441,7 +3441,7 @@
 							<string key="accessibilityValue">Additional Search View</string>
 						</object>
 					</object>
-					<string>{{84, 219}, {503, 155}}</string>
+					<string>{{469, 219}, {503, 155}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<object class="NSMutableDictionary">
@@ -3452,7 +3452,7 @@
 							<string key="accessibilityValue">Additional Search View</string>
 						</object>
 					</object>
-					<string>{{83, 41}, {503, 155}}</string>
+					<string>{{469, 41}, {503, 155}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
