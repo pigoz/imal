@@ -28,6 +28,7 @@ static const int MALPlantoRead = MALPlantoWatch;
 - (NSData *) get:(NSString *) resource;
 - (NSData *) post:(NSString *) resource data:(NSData *) data;
 - (NSData *) search:(NSString *) query type:(NSString *) type;
+- (NSData *) getList:(NSString *)type;
 
 @property (retain, readonly) NSOperationQueue *queue;
 

@@ -8,9 +8,11 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class iMAL_AppDelegate;
 @class SearchWindowController;
 
 @interface ListWindowController : NSWindowController {
+	IBOutlet iMAL_AppDelegate * __app;	
 	SearchWindowController * searchWindowController;
 	
 	IBOutlet NSView * targetView; // view targeted for switch
@@ -19,8 +21,11 @@
 
 // TOOLBAR Actions
 -(IBAction)showSearchPanel:(id)sender;
+-(IBAction)refeshList:(id)sender;
 -(IBAction)viewChoicePopupAction:(id)sender;
 
 -(NSViewController*)viewController;
+
+-(NSManagedObjectContext *)managedObjectContext;
 
 @end

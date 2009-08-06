@@ -1,5 +1,5 @@
 //
-//  MangaListViewController.h
+//  RefreshOperation.h
 //  iMAL
 //
 //  Created by Stefano Pigozzi on 8/6/09.
@@ -9,12 +9,14 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface MangaListViewController : NSViewController {
+@interface RefreshOperation : NSOperation {
+	NSString * __type;
 	NSManagedObjectContext * __db;
 }
 
+@property (retain) NSString * __type;
 @property (retain) NSManagedObjectContext * __db;
 
--(id)initWithContext:(NSManagedObjectContext *) db;
+-(RefreshOperation *) initWithType:(NSString *) type context:(NSManagedObjectContext *) db;
 
 @end

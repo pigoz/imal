@@ -12,6 +12,11 @@
 #import "AnimeListViewController.h"
 #import "MangaListViewController.h"
 
+#import "iMAL_AppDelegate.h"
+#import "MALHandler.h"
+#import "RefreshOperation.h"
+
+
 @implementation ListWindowController
 
 -(IBAction)showSearchPanel:(id)sender
@@ -41,7 +46,7 @@
 		case 0:	// swap in the "AnimeListViewController"
 		{
 			AnimeListViewController* animeListViewController =
-			[[AnimeListViewController alloc] initWithNibName:@"AnimeList" bundle:nil];
+			[[AnimeListViewController alloc] initWithContext:[__app managedObjectContext]];
 			if (animeListViewController != nil)
 			{
 				
@@ -54,7 +59,7 @@
 		case 1:	// swap in the "CustomTableViewController - NSTableView"
 		{
 			MangaListViewController* mangaListViewController =
-			[[MangaListViewController alloc] initWithNibName:@"MangaList" bundle:nil];
+			[[MangaListViewController alloc] initWithContext:[__app managedObjectContext]];
 			if (mangaListViewController != nil)
 			{
 				
@@ -83,6 +88,12 @@
 	[self changeViewController: [[sender selectedCell] tag]];
 }
 
+-(IBAction)refeshList:(id)sender
+{
+	MALHandler * mal = [MALHandler sharedHandler];
+	[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext]]];
+}
+
 - (void)awakeFromNib
 {
 	[self changeViewController: 0];
@@ -90,6 +101,10 @@
 - (NSViewController*)viewController
 {
 	return currentViewController;
+}
+-(NSManagedObjectContext *)managedObjectContext
+{
+	return [__app managedObjectContext];
 }
 
 @end

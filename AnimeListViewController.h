@@ -10,7 +10,13 @@
 
 
 @interface AnimeListViewController : NSViewController {
-
+	NSManagedObjectContext * __db;
 }
+
+@property (retain) NSManagedObjectContext * __db;
+
+-(id)initWithContext:(NSManagedObjectContext *) db;
+
+-(IBAction)asd;
 
 @end

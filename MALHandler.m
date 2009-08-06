@@ -44,6 +44,29 @@
 	return [self get:[NSString stringWithFormat:@"/%@/search.xml?q=%@", type, _q]];
 }
 
+- (NSData *) getList:(NSString *)type
+{
+	NSURLResponse* resp;
+	NSError* error;
+	
+	NSUserDefaults* preferences = [NSUserDefaults standardUserDefaults];
+	
+	// Making request
+	NSString * url = [NSString stringWithFormat:@"http://myanimelist.net/malappinfo.php?u=%@&status=all&type=%@", 
+					  [preferences stringForKey:@"mal_username"], type];
+	NSMutableURLRequest *req =	[[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
+	[req setHTTPMethod:@"GET"];
+	[req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[req setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+	
+	// Sending Synch Request: this method will only be used in secondary thread to not block the UI (using NSOperation)
+	NSData* _r = [NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:&error];
+	//	[req release];
+	//	[resp release];
+	//	[error release];
+	return _r;
+}
+
 - (NSData *) get:(NSString *) resource 
 {
 	NSURLResponse* resp;

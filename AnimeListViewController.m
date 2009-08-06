@@ -11,4 +11,19 @@
 
 @implementation AnimeListViewController
 
+@synthesize __db;
+
+-(id)initWithContext:(NSManagedObjectContext *) db
+{
+	if(![super initWithNibName:@"AnimeList" bundle:nil])
+		return nil;
+	self.__db = db;
+	return self;
+}
+
+-(IBAction)asd
+{
+	NSLog(@"%@", self.__db);
+}
+
 @end
