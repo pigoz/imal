@@ -31,6 +31,7 @@
 		7B98FB9F102AFDB000173E92 /* ListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FB9E102AFDB000173E92 /* ListWindowController.m */; };
 		7B98FBB8102B038A00173E92 /* MangaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FBB7102B038A00173E92 /* MangaListViewController.m */; };
 		7B98FBBC102B03BD00173E92 /* MangaList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FBBB102B03BD00173E92 /* MangaList.xib */; };
+		7BACB5CB102B64C8009E41C9 /* ImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */; };
 		7BB528C010260E59000D3B0E /* SearchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB528BF10260E59000D3B0E /* SearchOperation.m */; };
 		7BBBAB17102569E600E33747 /* MALPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB16102569E600E33747 /* MALPrefsViewController.m */; };
 		7BBBAB1910256BCB00E33747 /* PreferencesGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */; };
@@ -105,6 +106,8 @@
 		7B98FBB6102B038A00173E92 /* MangaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaListViewController.h; sourceTree = "<group>"; };
 		7B98FBB7102B038A00173E92 /* MangaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaListViewController.m; sourceTree = "<group>"; };
 		7B98FBBB102B03BD00173E92 /* MangaList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaList.xib; sourceTree = "<group>"; };
+		7BACB5C9102B64C8009E41C9 /* ImageDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloadOperation.h; sourceTree = "<group>"; };
+		7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloadOperation.m; sourceTree = "<group>"; };
 		7BB528BE10260E59000D3B0E /* SearchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOperation.h; sourceTree = "<group>"; };
 		7BB528BF10260E59000D3B0E /* SearchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchOperation.m; sourceTree = "<group>"; };
 		7BBBAB15102569E600E33747 /* MALPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALPrefsViewController.h; sourceTree = "<group>"; };
@@ -296,6 +299,8 @@
 				7B67F3F1102996520031EAC2 /* PGZCallback.m */,
 				7B0B9DB9102B0DC5004A3AF5 /* RefreshOperation.h */,
 				7B0B9DBA102B0DC5004A3AF5 /* RefreshOperation.m */,
+				7BACB5C9102B64C8009E41C9 /* ImageDownloadOperation.h */,
+				7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -394,6 +399,7 @@
 				7B0B9DB8102B0C2D004A3AF5 /* NSManagedObjectContext+PGZUtils.m in Sources */,
 				7B0B9DBB102B0DC5004A3AF5 /* RefreshOperation.m in Sources */,
 				7B0B9DC2102B0F71004A3AF5 /* Entry.m in Sources */,
+				7BACB5CB102B64C8009E41C9 /* ImageDownloadOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,6 +10,10 @@
 #import "NSImage+NiceScaling.h"
 #import "NSXMLNode+stringForXPath.h"
 
+#import "MALHandler.h"
+#import "PGZCallback.h"
+#import "ImageDownloadOperation.h"
+
 @implementation SearchModel
 
 @synthesize __id;
@@ -86,10 +90,23 @@
 
 -(NSImage *)__image
 {
-	NSImage * unscaledImage =  [[NSImage alloc] initWithContentsOfURL:[NSURL URLWithString:__image_url]];
-	__scaled_image = [unscaledImage scaledImageToCoverSize:NSMakeSize(100.0, 155.0)];
-	[unscaledImage release];
+	if(!__scaled_image){
+		MALHandler *mal = [MALHandler sharedHandler];
+		PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)];
+		[mal.queue addOperation:[[ImageDownloadOperation alloc] initWithURL:self.__image_url type:self.__type 
+																	entryid:self.__id 
+																   callback:callback]];
+		return nil;
+	}
 	return __scaled_image;
+}
+
+- (void) scaledImageCallback:(NSImage *) downloadedImage
+{
+	[self willChangeValueForKey:@"__image"];
+	__scaled_image = [downloadedImage scaledImageToCoverSize:NSMakeSize(100.0, 155.0)];
+	[__scaled_image retain];
+	[self didChangeValueForKey:@"__image"];
 }
 
 @end

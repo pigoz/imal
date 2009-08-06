@@ -41,7 +41,7 @@
 			NSInteger __id = [[n stringForXPath:[NSString stringWithFormat:@"series_%@db_id", __type]] intValue];
 			NSManagedObject * m = [__db fetchOrCreateForEntityName:__type withID:__id];
 			[m setValue:[n stringForXPath:@"series_title"] forKey:@"title"];
-			
+			[m setValue:[n stringForXPath:@"series_image" ] forKey:@"image_url"];
 		}
 	}
 	

@@ -303,7 +303,7 @@
 					<object class="NSTextField" id="96258922">
 						<reference key="NSNextResponder" ref="736736963"/>
 						<int key="NSvFlags">266</int>
-						<string key="NSFrame">{{17, 41}, {371, 17}}</string>
+						<string key="NSFrame">{{73, 66}, {315, 17}}</string>
 						<reference key="NSSuperview" ref="736736963"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSTextFieldCell" key="NSCell" id="419466587">
@@ -324,8 +324,36 @@
 							</object>
 						</object>
 					</object>
+					<object class="NSImageView" id="59354597">
+						<reference key="NSNextResponder" ref="736736963"/>
+						<int key="NSvFlags">268</int>
+						<object class="NSMutableSet" key="NSDragTypes">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<object class="NSMutableArray" key="set.sortedObjects">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<string>Apple PDF pasteboard type</string>
+								<string>Apple PICT pasteboard type</string>
+								<string>Apple PNG pasteboard type</string>
+								<string>NSFilenamesPboardType</string>
+								<string>NeXT Encapsulated PostScript v1.2 pasteboard type</string>
+								<string>NeXT TIFF v4.0 pasteboard type</string>
+							</object>
+						</object>
+						<string key="NSFrame">{{-3, -3}, {69, 96}}</string>
+						<reference key="NSSuperview" ref="736736963"/>
+						<bool key="NSEnabled">YES</bool>
+						<object class="NSImageCell" key="NSCell" id="661639625">
+							<int key="NSCellFlags">130560</int>
+							<int key="NSCellFlags2">33554432</int>
+							<int key="NSAlign">0</int>
+							<int key="NSScale">0</int>
+							<int key="NSStyle">0</int>
+							<bool key="NSAnimates">NO</bool>
+						</object>
+						<bool key="NSEditable">YES</bool>
+					</object>
 				</object>
-				<string key="NSFrameSize">{405, 78}</string>
+				<string key="NSFrameSize">{405, 90}</string>
 				<reference key="NSSuperview"/>
 			</object>
 		</object>
@@ -403,6 +431,22 @@
 						</object>
 					</object>
 					<int key="connectionID">39</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">value: representedObject.scaledImage</string>
+						<reference key="source" ref="59354597"/>
+						<reference key="destination" ref="823302652"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="59354597"/>
+							<reference key="NSDestination" ref="823302652"/>
+							<string key="NSLabel">value: representedObject.scaledImage</string>
+							<string key="NSBinding">value</string>
+							<string key="NSKeyPath">representedObject.scaledImage</string>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">43</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -583,6 +627,7 @@
 						<reference key="object" ref="736736963"/>
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="59354597"/>
 							<reference ref="96258922"/>
 						</object>
 						<reference key="parent" ref="1002"/>
@@ -601,6 +646,20 @@
 						<int key="objectID">28</int>
 						<reference key="object" ref="419466587"/>
 						<reference key="parent" ref="96258922"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">40</int>
+						<reference key="object" ref="59354597"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="661639625"/>
+						</object>
+						<reference key="parent" ref="736736963"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">41</int>
+						<reference key="object" ref="661639625"/>
+						<reference key="parent" ref="59354597"/>
 					</object>
 				</object>
 			</object>
@@ -632,6 +691,8 @@
 					<string>28.IBPluginDependency</string>
 					<string>3.IBPluginDependency</string>
 					<string>4.IBPluginDependency</string>
+					<string>40.IBPluginDependency</string>
+					<string>41.IBPluginDependency</string>
 					<string>5.IBPluginDependency</string>
 					<string>6.IBPluginDependency</string>
 					<string>7.IBPluginDependency</string>
@@ -659,7 +720,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="24645089"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{469, 917}, {405, 78}}</string>
+					<string>{{469, 905}, {405, 90}}</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -691,7 +754,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">39</int>
+			<int key="maxID">43</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
