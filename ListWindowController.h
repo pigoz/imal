@@ -18,6 +18,9 @@
 	IBOutlet NSView * targetView; // view targeted for switch
 	IBOutlet NSPopUpButton * showingList;
 	NSViewController * currentViewController;
+	
+	IBOutlet NSWindow * progressSheet;
+	IBOutlet NSProgressIndicator * progressIndicator;
 }
 
 // TOOLBAR Actions
@@ -25,6 +28,7 @@
 -(IBAction)refeshList:(id)sender;
 -(IBAction)viewChoicePopupAction:(id)sender;
 -(IBAction)search:(id)sender;
+-(IBAction)cancelProgressAction:(id)sender;
 
 -(NSViewController*)viewController;
 

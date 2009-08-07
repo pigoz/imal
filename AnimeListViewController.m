@@ -23,7 +23,6 @@
 
 -(void) awakeFromNib
 {
-	self.zoomValue = 0.5;
 	CGFloat f = 15.0/255.0;
 	CGFloat s = 180.0/255.0;
 	[mImageBrowser setValue:[NSColor colorWithCalibratedRed:f green:f blue:f alpha:1.0] forKey:IKImageBrowserBackgroundColorKey];
@@ -56,6 +55,7 @@
 															   NSKeyValueObservingOptionOld) context:NULL];
 	
 	self.watchingFlag = YES;
+	self.zoomValue = 0.62;
 	//[self constructPredicate];
 	
 }

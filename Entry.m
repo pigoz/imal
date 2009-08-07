@@ -33,7 +33,17 @@
 
 - (NSString *)imageSubtitle
 {
-	return [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 1 withReferenceString:@"'"];
+	if([[self valueForKey:@"my_status"] intValue] == 1)
+		return [NSString stringWithFormat:@"Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+	if([[self valueForKey:@"my_status"] intValue] == 2)
+		return @"Completed";
+	if([[self valueForKey:@"my_status"] intValue] == 3)
+		return [NSString stringWithFormat:@"On hold: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+	if([[self valueForKey:@"my_status"] intValue] == 4)
+		return [NSString stringWithFormat:@"Dropped: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+	if([[self valueForKey:@"my_status"] intValue] == 6)
+		return @"Plan to Watch";
+	return nil;
 }
 
 - (NSString *)imageUID {

@@ -10,7 +10,7 @@
 
 
 @interface PGZFilterView : NSView {
-
+	NSGradient * __gradient;
 }
 
 @end

@@ -8,7 +8,7 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="4"/>
+			<integer value="62"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -54,7 +54,7 @@
 									<object class="NSButton" id="59492960">
 										<reference key="NSNextResponder" ref="852503090"/>
 										<int key="NSvFlags">269</int>
-										<string key="NSFrame">{{28, 3}, {81, 17}}</string>
+										<string key="NSFrame">{{28, 4}, {81, 17}}</string>
 										<reference key="NSSuperview" ref="852503090"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSButtonCell" key="NSCell" id="19145891">
@@ -78,7 +78,7 @@
 									<object class="NSButton" id="1014819353">
 										<reference key="NSNextResponder" ref="852503090"/>
 										<int key="NSvFlags">269</int>
-										<string key="NSFrame">{{117, 3}, {81, 17}}</string>
+										<string key="NSFrame">{{117, 4}, {81, 17}}</string>
 										<reference key="NSSuperview" ref="852503090"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSButtonCell" key="NSCell" id="171317179">
@@ -98,7 +98,7 @@
 									<object class="NSButton" id="703767082">
 										<reference key="NSNextResponder" ref="852503090"/>
 										<int key="NSvFlags">269</int>
-										<string key="NSFrame">{{206, 3}, {65, 17}}</string>
+										<string key="NSFrame">{{206, 4}, {65, 17}}</string>
 										<reference key="NSSuperview" ref="852503090"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSButtonCell" key="NSCell" id="886075178">
@@ -118,7 +118,7 @@
 									<object class="NSButton" id="138069023">
 										<reference key="NSNextResponder" ref="852503090"/>
 										<int key="NSvFlags">269</int>
-										<string key="NSFrame">{{279, 3}, {68, 17}}</string>
+										<string key="NSFrame">{{279, 4}, {68, 17}}</string>
 										<reference key="NSSuperview" ref="852503090"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSButtonCell" key="NSCell" id="559595383">
@@ -138,7 +138,7 @@
 									<object class="NSButton" id="983243333">
 										<reference key="NSNextResponder" ref="852503090"/>
 										<int key="NSvFlags">269</int>
-										<string key="NSFrame">{{355, 3}, {98, 17}}</string>
+										<string key="NSFrame">{{355, 4}, {98, 17}}</string>
 										<reference key="NSSuperview" ref="852503090"/>
 										<bool key="NSEnabled">YES</bool>
 										<object class="NSButtonCell" key="NSCell" id="1010755132">
@@ -156,12 +156,12 @@
 										</object>
 									</object>
 								</object>
-								<string key="NSFrameSize">{482, 25}</string>
+								<string key="NSFrameSize">{482, 26}</string>
 								<reference key="NSSuperview" ref="84592046"/>
 								<string key="NSClassName">NSView</string>
 							</object>
 						</object>
-						<string key="NSFrame">{{0, 405}, {482, 25}}</string>
+						<string key="NSFrame">{{0, 405}, {482, 26}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<string key="NSClassName">PGZFilterView</string>
 					</object>
@@ -340,8 +340,8 @@
 										<bool key="shadowsCells">YES</bool>
 										<bool key="animates">YES</bool>
 										<bool key="allowsReordering">NO</bool>
-										<float key="cellWidth">1.510000e+02</float>
-										<float key="cellHeight">1.510000e+02</float>
+										<float key="cellWidth">1.500000e+02</float>
+										<float key="cellHeight">1.500000e+02</float>
 										<reference key="dataSource"/>
 										<reference key="dragDestinationDelegate"/>
 									</object>
@@ -394,7 +394,7 @@
 					<object class="NSSlider" id="398541623">
 						<reference key="NSNextResponder" ref="1005"/>
 						<int key="NSvFlags">289</int>
-						<string key="NSFrame">{{331, 2}, {133, 21}}</string>
+						<string key="NSFrame">{{331, 1}, {133, 21}}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<bool key="NSEnabled">YES</bool>
 						<object class="NSSliderCell" key="NSCell" id="112296019">
@@ -854,7 +854,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilderKit</string>
 					<string>com.apple.InterfaceBuilderKit</string>
-					<string>{{782, 159}, {482, 430}}</string>
+					<string>{{518, 142}, {482, 430}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>{628, 654}</string>
 					<string>{{217, 442}, {480, 272}}</string>

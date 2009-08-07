@@ -17,6 +17,7 @@
 		7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */; };
 		7B2AC6761025DCCC004559D0 /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AC6751025DCCC004559D0 /* SearchWindowController.m */; };
 		7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5610199C48007B3B7F /* PreferencesController.m */; };
+		7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7B3B802F102C9DCF00A5D2F0 /* Repository.icns */; };
 		7B64251F1028795A00E87480 /* NSImage+NiceScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */; };
 		7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */; };
 		7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67F3F1102996520031EAC2 /* PGZCallback.m */; };
@@ -82,6 +83,7 @@
 		7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_refresh.png; sourceTree = "<group>"; };
 		7B2AC6741025DCCC004559D0 /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		7B2AC6751025DCCC004559D0 /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
+		7B3B802F102C9DCF00A5D2F0 /* Repository.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Repository.icns; sourceTree = "<group>"; };
 		7B64251D1028795A00E87480 /* NSImage+NiceScaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+NiceScaling.h"; sourceTree = "<group>"; };
 		7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+NiceScaling.m"; sourceTree = "<group>"; };
 		7B64254010287C3500E87480 /* NSXMLNode+stringForXPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+stringForXPath.h"; sourceTree = "<group>"; };
@@ -247,6 +249,7 @@
 		7B2AC6621025D5D5004559D0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7B3B802F102C9DCF00A5D2F0 /* Repository.icns */,
 				7BCCF989102C382D000423D9 /* toolbar_get_info.png */,
 				7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */,
 				7B2AC6601025D5D1004559D0 /* toolbar_add.png */,
@@ -388,6 +391,7 @@
 				7B98FB91102AF99D00173E92 /* AnimeList.xib in Resources */,
 				7B98FBBC102B03BD00173E92 /* MangaList.xib in Resources */,
 				7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */,
+				7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

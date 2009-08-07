@@ -16,6 +16,8 @@
 #import "MALHandler.h"
 #import "RefreshOperation.h"
 
+#import "PGZCallback.h"
+
 
 @implementation ListWindowController
 
@@ -83,6 +85,34 @@
 	[self didChangeValueForKey:@"viewController"];	// this will trigger the NSTextField's value binding to change
 }
 
+-(void)showSheet
+{
+	[NSApp beginSheet:progressSheet modalForWindow:self.window modalDelegate:nil didEndSelector:nil contextInfo:nil];
+	[progressIndicator setUsesThreadedAnimation:YES];
+	[progressIndicator startAnimation:self];
+}
+
+-(void)updateSheet:(NSDictionary *)options
+{
+	//NSString * title = [options valueForKey:@"title"];
+	//NSString * message = [options valueForKey:@"title"];
+}
+
+-(void)hideSheet
+{
+	[progressIndicator stopAnimation:self];
+	[progressSheet orderOut:nil];
+	[NSApp endSheet:progressSheet];
+}
+
+-(IBAction)cancelProgressAction:(id)sender
+{
+	MALHandler * mal = [MALHandler sharedHandler];
+	[mal.queue cancelAllOperations]; //cancel waiting operations
+	[[__app managedObjectContext] rollback]; //rolls back to last save NOTE: save occurs before import.
+	[self hideSheet];
+}
+
 -(IBAction)viewChoicePopupAction:(id)sender
 {
 	[self changeViewController: [[sender selectedCell] tag]];
@@ -91,8 +121,13 @@
 -(IBAction)refeshList:(id)sender
 {
 	MALHandler * mal = [MALHandler sharedHandler];
-	if([[showingList selectedCell] tag] == 0 )
-		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext]]];
+	PGZCallback * start = [[PGZCallback alloc] initWithInstance:self selector:@selector(showSheet)];
+	PGZCallback * done = [[PGZCallback alloc] initWithInstance:self selector:@selector(hideSheet)];
+	if([[showingList selectedCell] tag] == 0 ){
+		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext] start:start done:done]];
+	} else {
+		// manga
+	}
 }
 
 -(IBAction)search:(id)sender

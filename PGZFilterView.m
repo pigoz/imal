@@ -20,10 +20,14 @@
 }
 
 - (void)drawRect:(NSRect)rect {
-    NSRect bounds = [self bounds];
-	CGFloat c = 232.0/255.0;
-	[[NSColor colorWithCalibratedRed:c green:c blue:c alpha:1.0] set];
-	[NSBezierPath fillRect:bounds];
+	if(!__gradient){
+		//CGFloat c = 232.0/255.0;
+		CGFloat c = 180.0/255.0;
+		NSColor * gray = [NSColor colorWithCalibratedRed:c green:c blue:c alpha:1.0];
+		__gradient = [[NSGradient alloc] initWithStartingColor:gray endingColor:[NSColor whiteColor]];
+	}
+	NSRect bounds = [self bounds];
+	[__gradient drawInRect:bounds angle:90.0];
 }
 
 @end
