@@ -42,6 +42,7 @@
 			NSManagedObject * m = [__db fetchOrCreateForEntityName:__type withID:__id];
 			[m setValue:[n stringForXPath:@"series_title"] forKey:@"title"];
 			[m setValue:[n stringForXPath:@"series_image" ] forKey:@"image_url"];
+			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_status" ] intValue]] forKey:@"my_status"];
 		}
 	}
 	

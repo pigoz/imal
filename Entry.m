@@ -13,17 +13,73 @@
 #import "PGZCallback.h"
 #import "ImageDownloadOperation.h"
 
+#import <Quartz/Quartz.h>
+
 @implementation Entry
+
+- (id) init
+{
+	self = [super init];
+	if (self != nil) {
+		startedOpearion = NO;
+	}
+	return self;
+}
+
+- (NSString *)imageTitle
+{
+	return [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 1 withReferenceString:@"'"];
+}
+
+- (NSString *)imageSubtitle
+{
+	return [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 1 withReferenceString:@"'"];
+}
+
+- (NSString *)imageUID {
+    return (NSString* )[self valueForKey:@"image_url"];
+}
+
+- (NSString *) imageRepresentationType
+{
+	return IKImageBrowserNSImageRepresentationType;
+}
+
+- (id) imageRepresentation
+{
+	if(_img == nil && !startedOpearion){
+		NSString * image_path = [NSString 
+								 stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%@.jpg",NSUserName(),
+								 [[self entity] name],[self valueForKey:@"id"]];
+		NSImage * _imgunscaled = [[NSImage alloc] initWithContentsOfFile: image_path];
+		if(_imgunscaled){
+			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
+			[_imgunscaled release];
+			[_img retain];
+		} else {
+			MALHandler *mal = [MALHandler sharedHandler];
+			NSString * url = (NSString*) [self valueForKey:@"image_url"];
+			PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)];
+			[mal.queue addOperation:[[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
+																		entryid:[[self valueForKey:@"id"] intValue] 
+																	   callback:callback]];
+			_img = nil;
+		}
+	}
+	return _img;
+}
+
 
 - (NSImage *) scaledImage
 {
+	startedOpearion = NO;
 	if(_img == nil){
 		NSString * image_path = [NSString 
 								 stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%@.jpg",NSUserName(),
 								 [[self entity] name],[self valueForKey:@"id"]];
 		NSImage * _imgunscaled = [[NSImage alloc] initWithContentsOfFile: image_path];
 		if(_imgunscaled){
-			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(100.0, 155.0)];
+			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
 			[_imgunscaled release];
 			[_img retain];
 		} else {

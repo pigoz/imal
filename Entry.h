@@ -12,6 +12,7 @@
 @interface Entry : NSManagedObject {
 
 	NSImage * _img; // scaled image
+	BOOL * startedOpearion;
 	
 }
 

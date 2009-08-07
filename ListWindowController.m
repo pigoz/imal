@@ -91,7 +91,13 @@
 -(IBAction)refeshList:(id)sender
 {
 	MALHandler * mal = [MALHandler sharedHandler];
-	[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext]]];
+	if([[showingList selectedCell] tag] == 0 )
+		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext]]];
+}
+
+-(IBAction)search:(id)sender
+{
+	[currentViewController setValue:[sender stringValue] forKey: @"searchString"];
 }
 
 - (void)awakeFromNib

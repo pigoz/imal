@@ -16,6 +16,7 @@
 	SearchWindowController * searchWindowController;
 	
 	IBOutlet NSView * targetView; // view targeted for switch
+	IBOutlet NSPopUpButton * showingList;
 	NSViewController * currentViewController;
 }
 
@@ -23,6 +24,7 @@
 -(IBAction)showSearchPanel:(id)sender;
 -(IBAction)refeshList:(id)sender;
 -(IBAction)viewChoicePopupAction:(id)sender;
+-(IBAction)search:(id)sender;
 
 -(NSViewController*)viewController;
 
