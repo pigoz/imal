@@ -23,7 +23,7 @@
 								 [[self entity] name],[self valueForKey:@"id"]];
 		NSImage * _imgunscaled = [[NSImage alloc] initWithContentsOfFile: image_path];
 		if(_imgunscaled){
-			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(63.0, 90.0)];
+			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(100.0, 155.0)];
 			[_imgunscaled release];
 			[_img retain];
 		} else {
@@ -42,7 +42,7 @@
 - (void) scaledImageCallback:(NSImage *) downloadedImage
 {
 	[self willChangeValueForKey:@"scaledImage"];
-		_img = [downloadedImage scaledImageToCoverSize:NSMakeSize(63.0, 90.0)];
+		_img = [downloadedImage scaledImageToCoverSize:NSMakeSize(100.0, 155.0)];
 		[_img retain];
 	[self didChangeValueForKey:@"scaledImage"];
 }

@@ -38,6 +38,8 @@
 		7BBBAB6C102572A500E33747 /* MALHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB6B102572A500E33747 /* MALHandler.m */; };
 		7BBBABB110258D2B00E33747 /* RegexKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BBBABB010258D2B00E33747 /* RegexKit.framework */; };
 		7BBBABB310258D8A00E33747 /* RegexKit.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7BBBABB010258D2B00E33747 /* RegexKit.framework */; };
+		7BCCF93D102C31B3000423D9 /* PGZFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCCF93C102C31B3000423D9 /* PGZFilterView.m */; };
+		7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BCCF989102C382D000423D9 /* toolbar_get_info.png */; };
 		7BD2337D10282BC0009447A6 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD2337C10282BC0009447A6 /* SearchPanel.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -116,6 +118,9 @@
 		7BBBAB6A102572A500E33747 /* MALHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALHandler.h; sourceTree = "<group>"; };
 		7BBBAB6B102572A500E33747 /* MALHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALHandler.m; sourceTree = "<group>"; };
 		7BBBABB010258D2B00E33747 /* RegexKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RegexKit.framework; path = Local/Frameworks/RegexKit.framework; sourceTree = DEVELOPER_DIR; };
+		7BCCF93B102C31B3000423D9 /* PGZFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGZFilterView.h; sourceTree = "<group>"; };
+		7BCCF93C102C31B3000423D9 /* PGZFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGZFilterView.m; sourceTree = "<group>"; };
+		7BCCF989102C382D000423D9 /* toolbar_get_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_get_info.png; sourceTree = "<group>"; };
 		7BD2337C10282BC0009447A6 /* SearchPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iMAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -137,6 +142,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7BCCF93A102C31A6000423D9 /* Widgets */,
 				7B98FB94102AFB3200173E92 /* List */,
 				7BD2336E10282B1B009447A6 /* Search */,
 				7B9610C81026D9D40053D032 /* Categories */,
@@ -237,6 +243,7 @@
 		7B2AC6621025D5D5004559D0 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				7BCCF989102C382D000423D9 /* toolbar_get_info.png */,
 				7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */,
 				7B2AC6601025D5D1004559D0 /* toolbar_add.png */,
 			);
@@ -305,6 +312,15 @@
 			name = Network;
 			sourceTree = "<group>";
 		};
+		7BCCF93A102C31A6000423D9 /* Widgets */ = {
+			isa = PBXGroup;
+			children = (
+				7BCCF93B102C31B3000423D9 /* PGZFilterView.h */,
+				7BCCF93C102C31B3000423D9 /* PGZFilterView.m */,
+			);
+			name = Widgets;
+			sourceTree = "<group>";
+		};
 		7BD2336E10282B1B009447A6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +383,7 @@
 				7BD2337D10282BC0009447A6 /* SearchPanel.xib in Resources */,
 				7B98FB91102AF99D00173E92 /* AnimeList.xib in Resources */,
 				7B98FBBC102B03BD00173E92 /* MangaList.xib in Resources */,
+				7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +417,7 @@
 				7B0B9DBB102B0DC5004A3AF5 /* RefreshOperation.m in Sources */,
 				7B0B9DC2102B0F71004A3AF5 /* Entry.m in Sources */,
 				7BACB5CB102B64C8009E41C9 /* ImageDownloadOperation.m in Sources */,
+				7BCCF93D102C31B3000423D9 /* PGZFilterView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
