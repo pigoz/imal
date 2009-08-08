@@ -8,6 +8,7 @@
 
 #import "Entry.h"
 #import "NSImage+NiceScaling.h"
+#import "NSXMLNode+stringForXPath.h"
 
 #import "MALHandler.h"
 #import "PGZCallback.h"
@@ -16,6 +17,8 @@
 #import <Quartz/Quartz.h>
 
 @implementation Entry
+
+@synthesize __title;
 
 - (id) init
 {
@@ -28,23 +31,39 @@
 
 - (NSString *)imageTitle
 {
-	NSString * _result = [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 5 withReferenceString:@"'"];
-	_result = [_result stringByMatching:@"&amp;" replace:5 withReferenceString:@"&"];
-	return _result;
+	if(!__title){
+		NSString * _result = [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 5 withReferenceString:@"'"];
+		self.__title = [_result stringByMatching:@"&amp;" replace:5 withReferenceString:@"&"];
+	}
+	return __title;
 }
 
 - (NSString *)imageSubtitle
 {
-	if([[self valueForKey:@"my_status"] intValue] == 1)
-		return [NSString stringWithFormat:@"Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
-	if([[self valueForKey:@"my_status"] intValue] == 2)
-		return @"Completed";
-	if([[self valueForKey:@"my_status"] intValue] == 3)
-		return [NSString stringWithFormat:@"On hold: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
-	if([[self valueForKey:@"my_status"] intValue] == 4)
-		return [NSString stringWithFormat:@"Dropped: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
-	if([[self valueForKey:@"my_status"] intValue] == 6)
-		return @"Plan to Watch";
+	if([[[self entity] name] isEqual:@"anime"]){
+		if([[self valueForKey:@"my_status"] intValue] == 1)
+			return [NSString stringWithFormat:@"Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+		if([[self valueForKey:@"my_status"] intValue] == 2)
+			return @"Completed";
+		if([[self valueForKey:@"my_status"] intValue] == 3)
+			return [NSString stringWithFormat:@"On hold: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+		if([[self valueForKey:@"my_status"] intValue] == 4)
+			return [NSString stringWithFormat:@"Dropped: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+		if([[self valueForKey:@"my_status"] intValue] == 6)
+			return @"Plan to Watch";
+	}
+	if([[[self entity] name] isEqual:@"manga"]){
+		if([[self valueForKey:@"my_status"] intValue] == 1)
+			return [NSString stringWithFormat:@"Reading: %@/%@ chapters", [self valueForKey:@"my_chapters"],[self valueForKey:@"chapters"]];
+		if([[self valueForKey:@"my_status"] intValue] == 2)
+			return @"Completed";
+		if([[self valueForKey:@"my_status"] intValue] == 3)
+			return [NSString stringWithFormat:@"On hold: %@/%@ chapters", [self valueForKey:@"my_chapters"],[self valueForKey:@"chapters"]];
+		if([[self valueForKey:@"my_status"] intValue] == 4)
+			return [NSString stringWithFormat:@"Dropped: %@/%@ episodes", [self valueForKey:@"my_chapters"],[self valueForKey:@"chapters"]];
+		if([[self valueForKey:@"my_status"] intValue] == 6)
+			return @"Plan to Read";
+	}
 	return nil;
 }
 
@@ -110,7 +129,7 @@
 - (void) scaledImageCallback:(NSImage *) downloadedImage
 {
 	[self willChangeValueForKey:@"scaledImage"];
-		_img = [downloadedImage scaledImageToCoverSize:NSMakeSize(100.0, 155.0)];
+		_img = [downloadedImage scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
 		[_img retain];
 	[self didChangeValueForKey:@"scaledImage"];
 }

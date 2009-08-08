@@ -17,7 +17,7 @@
 	self = [super init];
 	if (self != nil) {
 		self->queue = [NSOperationQueue new];
-		[self->queue setMaxConcurrentOperationCount:4];
+		[self->queue setMaxConcurrentOperationCount:2];
 	}
 	return self;
 }

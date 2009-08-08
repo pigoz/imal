@@ -8,7 +8,6 @@
 
 #import <Cocoa/Cocoa.h>
 
-
 @interface NSManagedObjectContext (PGZUtils)
 
 -(NSManagedObject *)fetchOrCreateForEntityName:(NSString *)entityName withID:(int)value;

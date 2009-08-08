@@ -1,17 +1,18 @@
 //
-//  AnimeListViewController.m
+//  ListViewController.m
 //  iMAL
 //
-//  Created by Stefano Pigozzi on 8/6/09.
+//  Created by Stefano Pigozzi on 8/8/09.
 //  Copyright 2009 Stefano Pigozzi. All rights reserved.
 //
 
-#import "AnimeListViewController.h"
+#import "ListViewController.h"
 
 
-@implementation AnimeListViewController
+@implementation ListViewController
 
 @synthesize __db;
+@synthesize __type;
 @synthesize __sort;
 @synthesize watchingFlag;
 @synthesize completedFlag;
@@ -20,8 +21,19 @@
 @synthesize planFlag;
 @synthesize searchString;
 
+@synthesize wrString;
+@synthesize planString;
+
 -(void) awakeFromNib
 {	
+	if([self.__type isEqual:@"anime"]){
+		self.wrString = @"Watching";
+		self.planString = @"Plan to Watch";
+	}
+	if([self.__type isEqual:@"manga"]){
+		self.wrString = @"Reading";
+		self.planString = @"Plan to Read";
+	}
 	
 	/// IKImageBrowserView background
 	CGFloat b = 38.0/255.0; // background
@@ -74,12 +86,16 @@
 	
 	//self.watchingFlag = YES;
 	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
+	
+	[__array_controller setEntityName:self.__type];
+	[self constructPredicate];
 }
 
--(id)initWithContext:(NSManagedObjectContext *) db
+-(id)initWithType:(NSString*) type context:(NSManagedObjectContext *) db
 {
-	if(![super initWithNibName:@"AnimeList" bundle:nil])
+	if(![super initWithNibName:@"ListView" bundle:nil])
 		return nil;
+	self.__type = type;
 	self.__db = db;
 	self.__sort = [NSArray arrayWithObject:[[NSSortDescriptor alloc] initWithKey:@"title" ascending:YES]];
 	return self;

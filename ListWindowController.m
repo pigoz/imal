@@ -9,8 +9,7 @@
 #import "ListWindowController.h"
 #import "SearchWindowController.h"
 
-#import "AnimeListViewController.h"
-#import "MangaListViewController.h"
+#import "ListViewController.h"
 
 #import "iMAL_AppDelegate.h"
 #import "MALHandler.h"
@@ -47,8 +46,8 @@
 	{
 		case 0:	// swap in the "AnimeListViewController"
 		{
-			AnimeListViewController* animeListViewController =
-			[[AnimeListViewController alloc] initWithContext:[__app managedObjectContext]];
+			ListViewController* animeListViewController =
+			[[ListViewController alloc] initWithType:@"anime" context:[__app managedObjectContext]];
 			if (animeListViewController != nil)
 			{
 				
@@ -60,8 +59,8 @@
 			
 		case 1:	// swap in the "CustomTableViewController - NSTableView"
 		{
-			MangaListViewController* mangaListViewController =
-			[[MangaListViewController alloc] initWithContext:[__app managedObjectContext]];
+			ListViewController* mangaListViewController =
+			[[ListViewController alloc] initWithType:@"manga" context:[__app managedObjectContext]];
 			if (mangaListViewController != nil)
 			{
 				
@@ -120,13 +119,15 @@
 
 -(IBAction)refeshList:(id)sender
 {
+	NSError * error;
+	[[__app managedObjectContext] save:&error];
 	MALHandler * mal = [MALHandler sharedHandler];
 	PGZCallback * start = [[PGZCallback alloc] initWithInstance:self selector:@selector(showSheet)];
 	PGZCallback * done = [[PGZCallback alloc] initWithInstance:self selector:@selector(hideSheet)];
 	if([[showingList selectedCell] tag] == 0 ){
 		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext] start:start done:done]];
 	} else {
-		// manga
+		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"manga" context:[__app managedObjectContext] start:start done:done]];
 	}
 }
 

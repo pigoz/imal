@@ -13,8 +13,11 @@
 
 	NSImage * _img; // scaled image
 	BOOL * startedOpearion;
+	NSString * __title;
 	
 }
+
+@property (retain) NSString * __title;
 
 -(NSImage *) scaledImage;
 -(NSAttributedString *)__bold_title;

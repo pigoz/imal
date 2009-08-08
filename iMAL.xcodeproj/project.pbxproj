@@ -21,6 +21,7 @@
 		7B64251F1028795A00E87480 /* NSImage+NiceScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */; };
 		7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */; };
 		7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67F3F1102996520031EAC2 /* PGZCallback.m */; };
+		7B70955F102D6C9200FED6BA /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B70955E102D6C9200FED6BA /* ListViewController.m */; };
 		7B74100E102992B100FB51B7 /* AddOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B74100D102992B100FB51B7 /* AddOperation.m */; };
 		7B939F5210199C27007B3B7F /* MBPreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5110199C27007B3B7F /* MBPreferencesController.m */; };
 		7B939F6110199CCE007B3B7F /* GeneralPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */; };
@@ -28,11 +29,8 @@
 		7B94E786102C4D68005D6501 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B94E785102C4D68005D6501 /* Quartz.framework */; };
 		7B9610ED1026DA440053D032 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9610EC1026DA440053D032 /* NSString+Base64.m */; };
 		7B9612741027026E0053D032 /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9612731027026E0053D032 /* SearchModel.m */; };
-		7B98FB91102AF99D00173E92 /* AnimeList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FB90102AF99D00173E92 /* AnimeList.xib */; };
-		7B98FB9C102AFD8100173E92 /* AnimeListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FB9B102AFD8100173E92 /* AnimeListViewController.m */; };
+		7B98FB91102AF99D00173E92 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FB90102AF99D00173E92 /* ListView.xib */; };
 		7B98FB9F102AFDB000173E92 /* ListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FB9E102AFDB000173E92 /* ListWindowController.m */; };
-		7B98FBB8102B038A00173E92 /* MangaListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FBB7102B038A00173E92 /* MangaListViewController.m */; };
-		7B98FBBC102B03BD00173E92 /* MangaList.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FBBB102B03BD00173E92 /* MangaList.xib */; };
 		7BACB5CB102B64C8009E41C9 /* ImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */; };
 		7BB528C010260E59000D3B0E /* SearchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BB528BF10260E59000D3B0E /* SearchOperation.m */; };
 		7BBBAB17102569E600E33747 /* MALPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBBAB16102569E600E33747 /* MALPrefsViewController.m */; };
@@ -91,6 +89,8 @@
 		7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+stringForXPath.m"; sourceTree = "<group>"; };
 		7B67F3F0102996520031EAC2 /* PGZCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGZCallback.h; sourceTree = "<group>"; };
 		7B67F3F1102996520031EAC2 /* PGZCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGZCallback.m; sourceTree = "<group>"; };
+		7B70955D102D6C9200FED6BA /* ListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListViewController.h; sourceTree = "<group>"; };
+		7B70955E102D6C9200FED6BA /* ListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListViewController.m; sourceTree = "<group>"; };
 		7B74100C102992B100FB51B7 /* AddOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddOperation.h; sourceTree = "<group>"; };
 		7B74100D102992B100FB51B7 /* AddOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddOperation.m; sourceTree = "<group>"; };
 		7B939F5010199C27007B3B7F /* MBPreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBPreferencesController.h; sourceTree = "<group>"; };
@@ -105,14 +105,9 @@
 		7B9610EC1026DA440053D032 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		7B9612721027026E0053D032 /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
 		7B9612731027026E0053D032 /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
-		7B98FB90102AF99D00173E92 /* AnimeList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnimeList.xib; sourceTree = "<group>"; };
-		7B98FB9A102AFD8100173E92 /* AnimeListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeListViewController.h; sourceTree = "<group>"; };
-		7B98FB9B102AFD8100173E92 /* AnimeListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeListViewController.m; sourceTree = "<group>"; };
+		7B98FB90102AF99D00173E92 /* ListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListView.xib; sourceTree = "<group>"; };
 		7B98FB9D102AFDB000173E92 /* ListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListWindowController.h; sourceTree = "<group>"; };
 		7B98FB9E102AFDB000173E92 /* ListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListWindowController.m; sourceTree = "<group>"; };
-		7B98FBB6102B038A00173E92 /* MangaListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MangaListViewController.h; sourceTree = "<group>"; };
-		7B98FBB7102B038A00173E92 /* MangaListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MangaListViewController.m; sourceTree = "<group>"; };
-		7B98FBBB102B03BD00173E92 /* MangaList.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaList.xib; sourceTree = "<group>"; };
 		7BACB5C9102B64C8009E41C9 /* ImageDownloadOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageDownloadOperation.h; sourceTree = "<group>"; };
 		7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageDownloadOperation.m; sourceTree = "<group>"; };
 		7BB528BE10260E59000D3B0E /* SearchOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchOperation.h; sourceTree = "<group>"; };
@@ -221,8 +216,7 @@
 				7B939F6210199D9C007B3B7F /* PreferencesMAL.xib */,
 				7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */,
 				7BD2337C10282BC0009447A6 /* SearchPanel.xib */,
-				7B98FB90102AF99D00173E92 /* AnimeList.xib */,
-				7B98FBBB102B03BD00173E92 /* MangaList.xib */,
+				7B98FB90102AF99D00173E92 /* ListView.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -293,12 +287,10 @@
 		7B98FB94102AFB3200173E92 /* List */ = {
 			isa = PBXGroup;
 			children = (
-				7B98FB9A102AFD8100173E92 /* AnimeListViewController.h */,
-				7B98FB9B102AFD8100173E92 /* AnimeListViewController.m */,
 				7B98FB9D102AFDB000173E92 /* ListWindowController.h */,
 				7B98FB9E102AFDB000173E92 /* ListWindowController.m */,
-				7B98FBB6102B038A00173E92 /* MangaListViewController.h */,
-				7B98FBB7102B038A00173E92 /* MangaListViewController.m */,
+				7B70955D102D6C9200FED6BA /* ListViewController.h */,
+				7B70955E102D6C9200FED6BA /* ListViewController.m */,
 			);
 			name = List;
 			sourceTree = "<group>";
@@ -391,8 +383,7 @@
 				7B2AC6611025D5D1004559D0 /* toolbar_add.png in Resources */,
 				7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */,
 				7BD2337D10282BC0009447A6 /* SearchPanel.xib in Resources */,
-				7B98FB91102AF99D00173E92 /* AnimeList.xib in Resources */,
-				7B98FBBC102B03BD00173E92 /* MangaList.xib in Resources */,
+				7B98FB91102AF99D00173E92 /* ListView.xib in Resources */,
 				7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */,
 				7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */,
 				7BC945AB102D698A00F8063D /* icon.icns in Resources */,
@@ -422,14 +413,13 @@
 				7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */,
 				7B74100E102992B100FB51B7 /* AddOperation.m in Sources */,
 				7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */,
-				7B98FB9C102AFD8100173E92 /* AnimeListViewController.m in Sources */,
 				7B98FB9F102AFDB000173E92 /* ListWindowController.m in Sources */,
-				7B98FBB8102B038A00173E92 /* MangaListViewController.m in Sources */,
 				7B0B9DB8102B0C2D004A3AF5 /* NSManagedObjectContext+PGZUtils.m in Sources */,
 				7B0B9DBB102B0DC5004A3AF5 /* RefreshOperation.m in Sources */,
 				7B0B9DC2102B0F71004A3AF5 /* Entry.m in Sources */,
 				7BACB5CB102B64C8009E41C9 /* ImageDownloadOperation.m in Sources */,
 				7BCCF93D102C31B3000423D9 /* PGZFilterView.m in Sources */,
+				7B70955F102D6C9200FED6BA /* ListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

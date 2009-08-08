@@ -11,6 +11,7 @@
 #import "NSXMLNode+stringForXPath.h"
 #import "NSManagedObjectContext+PGZUtils.h"
 #import "PGZCallback.h"
+#import "Entry.h"
 
 @implementation RefreshOperation
 
@@ -51,8 +52,15 @@
 			[m setValue:[n stringForXPath:@"series_title"] forKey:@"title"];
 			[m setValue:[n stringForXPath:@"series_image" ] forKey:@"image_url"];
 			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_status"] intValue]] forKey:@"my_status"];
-			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_episodes"] intValue]] forKey:@"episodes"];
-			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_watched_episodes"] intValue]] forKey:@"my_episodes"];
+			if([__type isEqual:@"anime"]){
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_episodes"] intValue]] forKey:@"episodes"];
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_watched_episodes"] intValue]] forKey:@"my_episodes"];
+			} else { // manga
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_chapters"] intValue]] forKey:@"chapters"];
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_read_chapters"] intValue]] forKey:@"my_chapters"];
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_volumes"] intValue]] forKey:@"volumes"];
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_read_volumes"] intValue]] forKey:@"my_volumes"];
+			}
 		}
 	}
 	
