@@ -24,7 +24,8 @@
 {
 	self = [super init];
 	if (self != nil) {
-		startedOpearion = NO;
+		__img = nil;
+		__downloadOperation = nil;
 	}
 	return self;
 }
@@ -78,60 +79,29 @@
 
 - (id) imageRepresentation
 {
-	if(_img == nil && !startedOpearion){
-		NSString * image_path = [NSString 
-								 stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%@.jpg",NSUserName(),
-								 [[self entity] name],[self valueForKey:@"id"]];
-		NSImage * _imgunscaled = [[NSImage alloc] initWithContentsOfFile: image_path];
-		if(_imgunscaled){
-			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
-			[_imgunscaled release];
-			[_img retain];
-		} else {
-			MALHandler *mal = [MALHandler sharedHandler];
-			NSString * url = (NSString*) [self valueForKey:@"image_url"];
-			PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)];
-			[mal.queue addOperation:[[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
-																		entryid:[[self valueForKey:@"id"] intValue] 
-																	   callback:callback]];
-			_img = nil;
-		}
+	if(!__img){ //image not cached in memory
+		NSString * image_path = [NSString
+					stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%@.jpg",NSUserName(),
+										[[self entity] name],[self valueForKey:@"id"]];
+		__img = [[NSImage alloc] initWithContentsOfFile: image_path];
 	}
-	return _img;
-}
-
-
-- (NSImage *) scaledImage
-{
-	startedOpearion = NO;
-	if(_img == nil){
-		NSString * image_path = [NSString 
-								 stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%@.jpg",NSUserName(),
-								 [[self entity] name],[self valueForKey:@"id"]];
-		NSImage * _imgunscaled = [[NSImage alloc] initWithContentsOfFile: image_path];
-		if(_imgunscaled){
-			_img = [_imgunscaled scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
-			[_imgunscaled release];
-			[_img retain];
-		} else {
-			MALHandler *mal = [MALHandler sharedHandler];
-			NSString * url = (NSString*) [self valueForKey:@"image_url"];
-			PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)];
-			[mal.queue addOperation:[[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
-																		entryid:[[self valueForKey:@"id"] intValue] 
-																	   callback:callback]];
-			return nil;
-		}
+	if(!__img && !__downloadOperation){
+		MALHandler *mal = [MALHandler sharedHandler];
+		NSString * url = (NSString*) [self valueForKey:@"image_url"];
+		PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)];
+		__downloadOperation = [[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
+																  entryid:[[self valueForKey:@"id"] intValue] 
+																 callback:callback];
+		[mal.queue addOperation:__downloadOperation];
 	}
-	return _img;
+	return __img;
 }
 
 - (void) scaledImageCallback:(NSImage *) downloadedImage
 {
-	[self willChangeValueForKey:@"scaledImage"];
-		_img = [downloadedImage scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
-		[_img retain];
-	[self didChangeValueForKey:@"scaledImage"];
+	[self willChangeValueForKey:@"imageRepresentation"];
+	__img = [downloadedImage retain];
+	[self didChangeValueForKey:@"imageRepresentation"];
 }
 
 - (NSString *) niceAnimeID

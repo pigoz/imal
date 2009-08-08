@@ -8,6 +8,7 @@
 
 #import "ImageDownloadOperation.h"
 #import "PGZCallback.h"
+#import "NSImage+NiceScaling.h"
 
 @implementation ImageDownloadOperation
 
@@ -33,8 +34,17 @@
 	NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.__url]];
 	NSString * filename = [NSString 
 				stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%d.jpg",NSUserName(),self.__type,self.__id];
-	[fetchedData writeToFile:filename atomically:NO];
-	[__callback performWithObject:[[[NSImage alloc] initWithData:fetchedData] autorelease]];
+	NSImage * image = [[[NSImage alloc] initWithData:fetchedData] autorelease];
+	
+	image = [image scaledImageToCoverSize:NSMakeSize(225.0, 350.0)];
+	
+	NSData *imageData = [image  TIFFRepresentation];
+	NSBitmapImageRep *imageRep = [NSBitmapImageRep imageRepWithData:imageData];
+	NSDictionary *imageProps = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.9] forKey:NSImageCompressionFactor];
+	imageData = [imageRep representationUsingType:NSJPEGFileType properties:imageProps];
+	[imageData writeToFile:filename atomically:NO];
+	
+	[__callback performWithObject:image];
 }
 
 @end

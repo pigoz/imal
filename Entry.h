@@ -8,18 +8,17 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class ImageDownloadOperation;
 
 @interface Entry : NSManagedObject {
 
-	NSImage * _img; // scaled image
-	BOOL * startedOpearion;
+	NSImage * __img; // scaled image
 	NSString * __title;
 	
+	ImageDownloadOperation * __downloadOperation;
 }
 
 @property (retain) NSString * __title;
-
--(NSImage *) scaledImage;
 -(NSAttributedString *)__bold_title;
 
 @end

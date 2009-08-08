@@ -84,10 +84,15 @@
 	[self bind:@"droppedFlag" toObject:defaults withKeyPath:@"values.droppedFlag" options:nil];
 	[self bind:@"planFlag" toObject:defaults withKeyPath:@"values.planFlag" options:nil];
 	
-	//self.watchingFlag = YES;
-	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
-	
+	/// entity managed by nsarraycontroller
 	[__array_controller setEntityName:self.__type];
+	
+	/// observe changing properties
+	[__array_controller addObserver:self forKeyPath:@"arrangedObjects.imageRepresentation" 
+			  options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+
+	// refreshes the ikimagebrowserview
+	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
 	[self constructPredicate];
 }
 
@@ -140,6 +145,10 @@
 	}
 	if([keyPath isEqual:@"searchString"]){
 		[self constructPredicate];
+	}
+	if([keyPath isEqual:@"arrangedObjects.imageRepresentation"]){
+		[mImageBrowser performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
+		//[mImageBrowser reloadData];
 	}
 }
 @end
