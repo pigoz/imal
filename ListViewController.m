@@ -26,10 +26,12 @@
 
 @synthesize __array_controller;
 
+@synthesize mImageBrowser;
+
 -(void) awakeFromNib
 {	
 	// Add ourselves to end of the responder chain for this nib file
-	[self.view setNextResponder:self];
+	//[self.view setNextResponder:self];
 	
 	if([self.__type isEqual:@"anime"]){
 		self.wrString = @"Watching";
@@ -101,6 +103,10 @@
 	// refreshes the IKImageBrowserView
 	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
 	[self constructPredicate];
+	
+	// image browser first responder
+	[[mImageBrowser window] makeFirstResponder:mImageBrowser];
+	[[mImageBrowser window] selectNextKeyView:mImageBrowser];
 }
 
 -(id)initWithType:(NSString*) type context:(NSManagedObjectContext *) db
@@ -155,6 +161,16 @@
 -(IBAction)showInfoPanel:(id)sender
 {
 	[infoPanelController showWindow:sender];
+}
+
+-(IBAction)increaseEp:(id)sender
+{
+	[infoPanelController increaseEpisodeCount:sender];
+}
+
+-(IBAction)decreaseEp:(id)sender
+{
+	[infoPanelController decreaseEpisodeCount:sender];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

@@ -22,7 +22,15 @@
 	
 	IBOutlet NSWindow * progressSheet;
 	IBOutlet NSProgressIndicator * progressIndicator;
+	
+	NSString * increaseString;
+	NSString * decreaseString;
+	
+	IBOutlet NSSearchField * searchField;
 }
+
+@property (retain) NSString * increaseString;
+@property (retain) NSString * decreaseString;
 
 // TOOLBAR Actions
 -(IBAction)showSearchPanel:(id)sender;
@@ -31,6 +39,10 @@
 -(IBAction)viewChoicePopupAction:(id)sender;
 -(IBAction)search:(id)sender;
 -(IBAction)cancelProgressAction:(id)sender;
+
+// MENU Actions
+-(IBAction)increaseEp:(id)sender;
+-(IBAction)decreaseEp:(id)sender;
 
 -(ListViewController *)viewController;
 

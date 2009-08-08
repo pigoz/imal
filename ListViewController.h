@@ -45,6 +45,10 @@
 
 @property (retain) NSArrayController * __array_controller;
 
+@property (retain) IKImageBrowserView * mImageBrowser;
+
+-(IBAction)increaseEp:(id)sender;
+-(IBAction)decreaseEp:(id)sender;
 -(IBAction)showInfoPanel:(id)sender;
 -(id)initWithType:(NSString*) type context:(NSManagedObjectContext *) db;
 -(void)constructPredicate;

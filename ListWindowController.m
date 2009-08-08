@@ -20,6 +20,9 @@
 
 @implementation ListWindowController
 
+@synthesize increaseString;
+@synthesize decreaseString;
+
 -(IBAction)showSearchPanel:(id)sender
 {
 	@synchronized(self){
@@ -58,6 +61,8 @@
 				
 				currentViewController = animeListViewController;	// keep track of the current view controller
 				[currentViewController setTitle:@"Anime"];
+				self.increaseString = @"Increase episode count";
+				self.decreaseString = @"Decrease episode count";
 			}
 			break;
 		}
@@ -71,6 +76,8 @@
 				
 				currentViewController = mangaListViewController;	// keep track of the current view controller
 				[currentViewController setTitle:@"Manga"];
+				self.increaseString = @"Increase chapter count";
+				self.decreaseString = @"Decrease chapter count";
 			}
 			break;
 		}
@@ -139,6 +146,16 @@
 -(IBAction)search:(id)sender
 {
 	[currentViewController setValue:[sender stringValue] forKey: @"searchString"];
+}
+
+-(IBAction)increaseEp:(id)sender
+{
+	[currentViewController increaseEp:sender];
+}
+
+-(IBAction)decreaseEp:(id)sender
+{
+	[currentViewController decreaseEp:sender];
 }
 
 - (void)awakeFromNib
