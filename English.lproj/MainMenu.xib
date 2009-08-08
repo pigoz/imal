@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="339"/>
 			<integer value="21"/>
-			<integer value="169"/>
 			<integer value="566"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
@@ -81,9 +81,11 @@
 								<string key="NSToolbarItemPaletteLabel">Custom View</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSButton" key="NSToolbarItemView" id="693027962">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{0, 14}, {106, 23}}</string>
+									<reference key="NSSuperview"/>
+									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSButtonCell" key="NSCell" id="194829442">
 										<int key="NSCellFlags">-2080244224</int>
@@ -148,9 +150,11 @@
 								<string key="NSToolbarItemPaletteLabel">Showing List</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSPopUpButton" key="NSToolbarItemView" id="215251779">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{0, 14}, {100, 25}}</string>
+									<reference key="NSSuperview"/>
+									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSPopUpButtonCell" key="NSCell" id="1060197370">
 										<int key="NSCellFlags">-2076049856</int>
@@ -171,7 +175,7 @@
 										<object class="NSMenuItem" key="NSMenuItem" id="384395576">
 											<reference key="NSMenu" ref="301640492"/>
 											<string key="NSTitle">Manga</string>
-											<string key="NSKeyEquiv">2</string>
+											<string key="NSKeyEquiv">9</string>
 											<int key="NSKeyEquivModMask">1048576</int>
 											<int key="NSMnemonicLoc">2147483647</int>
 											<int key="NSState">1</int>
@@ -195,7 +199,7 @@
 												<object class="NSMenuItem" id="901814021">
 													<reference key="NSMenu" ref="301640492"/>
 													<string key="NSTitle">Anime</string>
-													<string key="NSKeyEquiv">1</string>
+													<string key="NSKeyEquiv">8</string>
 													<int key="NSKeyEquivModMask">1048576</int>
 													<int key="NSMnemonicLoc">2147483647</int>
 													<reference key="NSOnImage" ref="306854540"/>
@@ -254,9 +258,11 @@
 								<string key="NSToolbarItemPaletteLabel">Filter</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSearchField" key="NSToolbarItemView" id="703116148">
-									<nil key="NSNextResponder"/>
+									<reference key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{0, 14}, {138, 22}}</string>
+									<reference key="NSSuperview"/>
+									<reference key="NSWindow"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSearchFieldCell" key="NSCell" id="864567800">
 										<int key="NSCellFlags">343014976</int>
@@ -2589,8 +2595,8 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{66, 861}, {381, 134}}</string>
-					<string>{{66, 861}, {381, 134}}</string>
+					<string>{{97, 574}, {381, 134}}</string>
+					<string>{{97, 574}, {381, 134}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

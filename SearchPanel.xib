@@ -8,11 +8,11 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="254"/>
-			<integer value="29"/>
-			<integer value="228"/>
-			<integer value="182"/>
+			<integer value="83"/>
+			<integer value="215"/>
+			<integer value="161"/>
 			<integer value="302"/>
+			<integer value="29"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -356,7 +356,7 @@
 							<object class="NSMenuItem" key="NSMenuItem" id="168785947">
 								<reference key="NSMenu" ref="438109801"/>
 								<string key="NSTitle">Plan to Watch</string>
-								<string key="NSKeyEquiv"/>
+								<string key="NSKeyEquiv">5</string>
 								<int key="NSKeyEquivModMask">1048576</int>
 								<int key="NSMnemonicLoc">2147483647</int>
 								<int key="NSState">1</int>
@@ -380,7 +380,7 @@
 									<object class="NSMenuItem" id="54551600">
 										<reference key="NSMenu" ref="438109801"/>
 										<string key="NSTitle">Watching</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">1</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -392,7 +392,7 @@
 									<object class="NSMenuItem" id="908327649">
 										<reference key="NSMenu" ref="438109801"/>
 										<string key="NSTitle">Completed</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">2</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -404,7 +404,7 @@
 									<object class="NSMenuItem" id="153129206">
 										<reference key="NSMenu" ref="438109801"/>
 										<string key="NSTitle">On Hold</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">3</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -416,7 +416,7 @@
 									<object class="NSMenuItem" id="226180909">
 										<reference key="NSMenu" ref="438109801"/>
 										<string key="NSTitle">Dropped</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">4</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -589,7 +589,7 @@
 							<object class="NSMenuItem" key="NSMenuItem" id="254352881">
 								<reference key="NSMenu" ref="595003369"/>
 								<string key="NSTitle">Plan to Read</string>
-								<string key="NSKeyEquiv"/>
+								<string key="NSKeyEquiv">5</string>
 								<int key="NSKeyEquivModMask">1048576</int>
 								<int key="NSMnemonicLoc">2147483647</int>
 								<int key="NSState">1</int>
@@ -607,7 +607,7 @@
 									<object class="NSMenuItem" id="943259386">
 										<reference key="NSMenu" ref="595003369"/>
 										<string key="NSTitle">Reading</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">1</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -619,7 +619,7 @@
 									<object class="NSMenuItem" id="292058825">
 										<reference key="NSMenu" ref="595003369"/>
 										<string key="NSTitle">Completed</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">2</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -631,7 +631,7 @@
 									<object class="NSMenuItem" id="102392475">
 										<reference key="NSMenu" ref="595003369"/>
 										<string key="NSTitle">On Hold</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">3</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -643,7 +643,7 @@
 									<object class="NSMenuItem" id="723876537">
 										<reference key="NSMenu" ref="595003369"/>
 										<string key="NSTitle">Dropped</string>
-										<string key="NSKeyEquiv"/>
+										<string key="NSKeyEquiv">4</string>
 										<int key="NSKeyEquivModMask">1048576</int>
 										<int key="NSMnemonicLoc">2147483647</int>
 										<reference key="NSOnImage" ref="501034383"/>
@@ -1498,6 +1498,15 @@
 				<string key="NSMaxSize">{3.40282e+38, 3.40282e+38}</string>
 				<string key="NSFrameAutosaveName">SearchPanel</string>
 			</object>
+			<object class="NSUserDefaultsController" id="14836663">
+				<object class="NSMutableArray" key="NSDeclaredKeys">
+					<bool key="EncodedWithXMLCoder">YES</bool>
+					<string>searchSelectedType</string>
+					<string>searchSelectedTab</string>
+					<string>searchSelectedIdentifier</string>
+				</object>
+				<bool key="NSSharedInstance">YES</bool>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -2213,6 +2222,72 @@
 						<reference key="destination" ref="1001"/>
 					</object>
 					<int key="connectionID">330</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectedTag: values.selectedAddAnimeStatus</string>
+						<reference key="source" ref="965657045"/>
+						<reference key="destination" ref="14836663"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="965657045"/>
+							<reference key="NSDestination" ref="14836663"/>
+							<string key="NSLabel">selectedTag: values.selectedAddAnimeStatus</string>
+							<string key="NSBinding">selectedTag</string>
+							<string key="NSKeyPath">values.selectedAddAnimeStatus</string>
+							<object class="NSDictionary" key="NSOptions">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<object class="NSMutableArray" key="dict.sortedKeys">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>NSMultipleValuesPlaceholder</string>
+									<string>NSNoSelectionPlaceholder</string>
+									<string>NSNotApplicablePlaceholder</string>
+									<string>NSNullPlaceholder</string>
+								</object>
+								<object class="NSMutableArray" key="dict.values">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<real value="6.000000e+00"/>
+									<real value="6.000000e+00"/>
+									<real value="6.000000e+00"/>
+									<real value="6.000000e+00"/>
+								</object>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">357</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBBindingConnection" key="connection">
+						<string key="label">selectedTag: values.selectedAddMangaStatus</string>
+						<reference key="source" ref="29858757"/>
+						<reference key="destination" ref="14836663"/>
+						<object class="NSNibBindingConnector" key="connector">
+							<reference key="NSSource" ref="29858757"/>
+							<reference key="NSDestination" ref="14836663"/>
+							<string key="NSLabel">selectedTag: values.selectedAddMangaStatus</string>
+							<string key="NSBinding">selectedTag</string>
+							<string key="NSKeyPath">values.selectedAddMangaStatus</string>
+							<object class="NSDictionary" key="NSOptions">
+								<bool key="EncodedWithXMLCoder">YES</bool>
+								<object class="NSMutableArray" key="dict.sortedKeys">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<string>NSMultipleValuesPlaceholder</string>
+									<string>NSNoSelectionPlaceholder</string>
+									<string>NSNotApplicablePlaceholder</string>
+									<string>NSNullPlaceholder</string>
+								</object>
+								<object class="NSMutableArray" key="dict.values">
+									<bool key="EncodedWithXMLCoder">YES</bool>
+									<real value="6.000000e+00"/>
+									<real value="6.000000e+00"/>
+									<real value="6.000000e+00"/>
+									<real value="6.000000e+00"/>
+								</object>
+							</object>
+							<int key="NSNibBindingConnectorVersion">2</int>
+						</object>
+					</object>
+					<int key="connectionID">361</int>
 				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -3179,6 +3254,11 @@
 						<reference key="object" ref="153129206"/>
 						<reference key="parent" ref="438109801"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">331</int>
+						<reference key="object" ref="14836663"/>
+						<reference key="parent" ref="1002"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -3350,7 +3430,7 @@
 							<string key="accessibilityValue">Additional Search View</string>
 						</object>
 					</object>
-					<string>{{681, 318}, {507, 59}}</string>
+					<string>{{390, 462}, {507, 59}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3360,7 +3440,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{830, 255}, {161, 103}}</string>
+					<string>{{539, 399}, {169, 103}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3380,7 +3460,7 @@
 							<string key="accessibilityValue">Additional Search View</string>
 						</object>
 					</object>
-					<string>{{640, 115}, {597, 62}}</string>
+					<string>{{265, 273}, {597, 62}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3394,7 +3474,7 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{775, 55}, {153, 103}}</string>
+					<string>{{529, 55}, {161, 103}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3468,9 +3548,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{646, 442}, {600, 500}}</string>
+					<string>{{391, 442}, {600, 500}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{646, 442}, {600, 500}}</string>
+					<string>{{391, 442}, {600, 500}}</string>
 					<reference ref="5"/>
 					<reference ref="5"/>
 					<string>{590, 0}</string>
@@ -3520,11 +3600,18 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">330</int>
+			<int key="maxID">361</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
+				<object class="IBPartialClassDescription">
+					<string key="className">NSManagedObjectContext</string>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">NSManagedObjectContext+PGZUtils.h</string>
+					</object>
+				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">SearchWindowController</string>
 					<string key="superclassName">NSWindowController</string>
