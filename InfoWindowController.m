@@ -16,8 +16,10 @@
 
 -(void)increaseEpisodeCallback:(Entry *)e
 {
+	[e willChangeValueForKey:@"imageSubtitle"];
 	int ep = [[e valueForKey:@"my_episodes"] intValue]+1;
 	[e setValue:[NSNumber numberWithInt:ep] forKey:@"my_episodes"];
+	[e didChangeValueForKey:@"imageSubtitle"];
 }
 
 -(IBAction)increaseEpisodeCount:(id)sender

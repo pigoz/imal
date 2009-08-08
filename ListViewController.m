@@ -95,6 +95,8 @@
 	/// observe changing properties
 	[__array_controller addObserver:self forKeyPath:@"arrangedObjects.imageRepresentation" 
 			  options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+	[__array_controller addObserver:self forKeyPath:@"arrangedObjects.imageSubtitle" 
+							options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
 
 	// refreshes the IKImageBrowserView
 	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
@@ -164,7 +166,9 @@
 	}
 	if([keyPath isEqual:@"arrangedObjects.imageRepresentation"]){
 		[mImageBrowser performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
-		//[mImageBrowser reloadData];
+	}
+	if([keyPath isEqual:@"arrangedObjects.imageSubtitle"]){
+		[mImageBrowser performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:YES];
 	}
 }
 @end

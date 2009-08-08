@@ -143,7 +143,7 @@
 
 - (void)awakeFromNib
 {
-	[self changeViewController: 0];
+	[self viewChoicePopupAction:showingList];
 }
 - (ListViewController*)viewController
 {
