@@ -13,7 +13,6 @@
 
 @synthesize __db;
 @synthesize __sort;
-@synthesize zoomValue;
 @synthesize watchingFlag;
 @synthesize completedFlag;
 @synthesize holdFlag;
@@ -22,25 +21,36 @@
 @synthesize searchString;
 
 -(void) awakeFromNib
-{
-	CGFloat f = 15.0/255.0;
-	CGFloat s = 180.0/255.0;
-	[mImageBrowser setValue:[NSColor colorWithCalibratedRed:f green:f blue:f alpha:1.0] forKey:IKImageBrowserBackgroundColorKey];
-	//[mImageBrowser setValue:@"title" forKey:IKImageBrowserCellsTitleAttributesKey];
+{	
 	
+	/// IKImageBrowserView background
+	CGFloat b = 38.0/255.0; // background
+	[mImageBrowser setValue:[NSColor colorWithCalibratedRed:b green:b blue:b alpha:1.0] forKey:IKImageBrowserBackgroundColorKey];	
 	
+	/// Paragraph style for IKImageBrowserView titles/subtitles
 	NSMutableParagraphStyle *paragraphStyle = [[[NSMutableParagraphStyle alloc] init] autorelease];
 	[paragraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
 	[paragraphStyle setAlignment:NSCenterTextAlignment];
 	
+	/// Titles
+	CGFloat t = 220.0/255.0; // titles brightness
 	NSMutableDictionary * attributes = [[NSMutableDictionary alloc] initWithCapacity:3]; 
-	
 	[attributes setObject:[NSFont fontWithName:@"Lucida Grande Bold" size:12] forKey:NSFontAttributeName];
 	[attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];    
-	[attributes setObject:[NSColor colorWithDeviceRed:s green:s blue:s alpha:1] forKey:NSForegroundColorAttributeName];
+	[attributes setObject:[NSColor colorWithDeviceRed:t green:t blue:t alpha:1] forKey:NSForegroundColorAttributeName];
 	[mImageBrowser setValue:attributes forKey:IKImageBrowserCellsTitleAttributesKey];
 	[attributes release];
 	
+	/// Subtitles
+	CGFloat s = 180.0/255.0; // subtitles brightness
+	NSMutableDictionary * s_attributes = [[NSMutableDictionary alloc] initWithCapacity:3]; 
+	[s_attributes setObject:[NSFont fontWithName:@"Lucida Grande Bold" size:10] forKey:NSFontAttributeName];
+	[s_attributes setObject:paragraphStyle forKey:NSParagraphStyleAttributeName];    
+	[s_attributes setObject:[NSColor colorWithDeviceRed:s green:s blue:s alpha:1] forKey:NSForegroundColorAttributeName];
+	[mImageBrowser setValue:s_attributes forKey:IKImageBrowserCellsSubtitleAttributesKey];
+	[s_attributes release];
+	
+	/// Observing self for predicate change on NSArrayController
 	[self addObserver:self forKeyPath:@"watchingFlag" options:(NSKeyValueObservingOptionNew |
 															   NSKeyValueObservingOptionOld) context:NULL];
 	[self addObserver:self forKeyPath:@"completedFlag" options:(NSKeyValueObservingOptionNew |
@@ -54,10 +64,16 @@
 	[self addObserver:self forKeyPath:@"searchString" options:(NSKeyValueObservingOptionNew |
 															   NSKeyValueObservingOptionOld) context:NULL];
 	
-	self.watchingFlag = YES;
-	self.zoomValue = 0.62;
-	//[self constructPredicate];
+	/// binding to NSUserDefaultsController
+	NSUserDefaultsController * defaults = [NSUserDefaultsController sharedUserDefaultsController];
+	[self bind:@"watchingFlag" toObject:defaults withKeyPath:@"values.watchingFlag" options:nil];
+	[self bind:@"completedFlag" toObject:defaults withKeyPath:@"values.completedFlag" options:nil];
+	[self bind:@"holdFlag" toObject:defaults withKeyPath:@"values.holdFlag" options:nil];
+	[self bind:@"droppedFlag" toObject:defaults withKeyPath:@"values.droppedFlag" options:nil];
+	[self bind:@"planFlag" toObject:defaults withKeyPath:@"values.planFlag" options:nil];
 	
+	//self.watchingFlag = YES;
+	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
 }
 
 -(id)initWithContext:(NSManagedObjectContext *) db
@@ -69,10 +85,11 @@
 	return self;
 }
 
--(IBAction) zoomSliderDidChange:(id)sender
+/// seems like the IKImageBrowserView picks the wrong zoomValue, so I force a key-value change on awakeFromNib
+-(void) refreshZoom
 {
-	[mImageBrowser setZoomValue:[sender floatValue]];
-    [mImageBrowser setNeedsDisplay:YES];
+	NSUserDefaultsController * defaults = [NSUserDefaultsController sharedUserDefaultsController];
+	[[defaults values] setValue:[[defaults values] valueForKey:@"zoomValue"] forKey:@"zoomValue"];
 }
 
 -(void)constructPredicate

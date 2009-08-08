@@ -28,7 +28,9 @@
 
 - (NSString *)imageTitle
 {
-	return [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 1 withReferenceString:@"'"];
+	NSString * _result = [(NSString* )[self valueForKey:@"title"] stringByMatching:@"&apos;" replace: 5 withReferenceString:@"'"];
+	_result = [_result stringByMatching:@"&amp;" replace:5 withReferenceString:@"&"];
+	return _result;
 }
 
 - (NSString *)imageSubtitle

@@ -12,7 +12,6 @@
 @interface AnimeListViewController : NSViewController {
 	NSManagedObjectContext * __db;
 	IBOutlet IKImageBrowserView * mImageBrowser;
-	float zoomValue;
 	
 	BOOL watchingFlag;
 	BOOL holdFlag;
@@ -26,8 +25,6 @@
 }
 
 @property (retain) NSManagedObjectContext * __db;
-@property (assign) float zoomValue;
-
 @property (assign) BOOL watchingFlag;
 @property (assign) BOOL holdFlag;
 @property (assign) BOOL completedFlag;
@@ -39,6 +36,5 @@
 
 -(id)initWithContext:(NSManagedObjectContext *) db;
 -(void)constructPredicate;
--(IBAction) zoomSliderDidChange:(id)sender;
 
 @end
