@@ -9,10 +9,13 @@
 #import <Cocoa/Cocoa.h>
 #import <Quartz/Quartz.h>
 
+@class InfoWindowController;
+
 @interface ListViewController : NSViewController {
 	NSManagedObjectContext * __db;
 	NSString * __type;
 	IBOutlet IKImageBrowserView * mImageBrowser;
+	IBOutlet InfoWindowController * infoPanelController;
 	
 	BOOL watchingFlag;
 	BOOL holdFlag;
@@ -40,6 +43,9 @@
 @property (retain) NSString * wrString;
 @property (retain) NSString * planString;
 
+@property (retain) NSArrayController * __array_controller;
+
+-(IBAction)showInfoPanel:(id)sender;
 -(id)initWithType:(NSString*) type context:(NSManagedObjectContext *) db;
 -(void)constructPredicate;
 

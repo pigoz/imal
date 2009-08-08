@@ -7,7 +7,7 @@
 //
 
 #import "ListViewController.h"
-
+#import "InfoWindowController.h"
 
 @implementation ListViewController
 
@@ -24,8 +24,13 @@
 @synthesize wrString;
 @synthesize planString;
 
+@synthesize __array_controller;
+
 -(void) awakeFromNib
 {	
+	// Add ourselves to end of the responder chain for this nib file
+	[self.view setNextResponder:self];
+	
 	if([self.__type isEqual:@"anime"]){
 		self.wrString = @"Watching";
 		self.planString = @"Plan to Watch";
@@ -44,7 +49,7 @@
 	[paragraphStyle setLineBreakMode:NSLineBreakByTruncatingTail];
 	[paragraphStyle setAlignment:NSCenterTextAlignment];
 	
-	/// Titles
+	/// IKImageBrowserView Titles
 	CGFloat t = 220.0/255.0; // titles brightness
 	NSMutableDictionary * attributes = [[NSMutableDictionary alloc] initWithCapacity:3]; 
 	[attributes setObject:[NSFont fontWithName:@"Lucida Grande Bold" size:12] forKey:NSFontAttributeName];
@@ -53,7 +58,7 @@
 	[mImageBrowser setValue:attributes forKey:IKImageBrowserCellsTitleAttributesKey];
 	[attributes release];
 	
-	/// Subtitles
+	/// IKImageBrowserView Subtitles
 	CGFloat s = 180.0/255.0; // subtitles brightness
 	NSMutableDictionary * s_attributes = [[NSMutableDictionary alloc] initWithCapacity:3]; 
 	[s_attributes setObject:[NSFont fontWithName:@"Lucida Grande Bold" size:10] forKey:NSFontAttributeName];
@@ -91,7 +96,7 @@
 	[__array_controller addObserver:self forKeyPath:@"arrangedObjects.imageRepresentation" 
 			  options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
 
-	// refreshes the ikimagebrowserview
+	// refreshes the IKImageBrowserView
 	[self performSelector:@selector(refreshZoom) withObject:nil afterDelay:0.0];
 	[self constructPredicate];
 }
@@ -137,6 +142,17 @@
 	}
 	
 	[__array_controller setFilterPredicate:[NSPredicate predicateWithFormat:_and_pred]];	
+}
+
+// overriding NSResponder keydown
+- (void)keyDown:(NSEvent *)theEvent
+{
+	NSLog(@"asd");
+}
+
+-(IBAction)showInfoPanel:(id)sender
+{
+	[infoPanelController showWindow:sender];
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {

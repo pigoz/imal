@@ -30,6 +30,11 @@
 	[searchWindowController showWindow:self];
 }
 
+-(IBAction)showInfoPanel:(id)sender
+{
+	[currentViewController showInfoPanel:sender];
+}
+
 -(void)changeViewController:(NSInteger)whichViewTag
 {
 	// we are about to change the current view controller,
@@ -140,7 +145,7 @@
 {
 	[self changeViewController: 0];
 }
-- (NSViewController*)viewController
+- (ListViewController*)viewController
 {
 	return currentViewController;
 }

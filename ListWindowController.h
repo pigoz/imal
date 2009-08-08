@@ -10,6 +10,7 @@
 
 @class iMAL_AppDelegate;
 @class SearchWindowController;
+@class ListViewController;
 
 @interface ListWindowController : NSWindowController {
 	IBOutlet iMAL_AppDelegate * __app;	
@@ -17,7 +18,7 @@
 	
 	IBOutlet NSView * targetView; // view targeted for switch
 	IBOutlet NSPopUpButton * showingList;
-	NSViewController * currentViewController;
+	ListViewController * currentViewController;
 	
 	IBOutlet NSWindow * progressSheet;
 	IBOutlet NSProgressIndicator * progressIndicator;
@@ -25,12 +26,13 @@
 
 // TOOLBAR Actions
 -(IBAction)showSearchPanel:(id)sender;
+-(IBAction)showInfoPanel:(id)sender;
 -(IBAction)refeshList:(id)sender;
 -(IBAction)viewChoicePopupAction:(id)sender;
 -(IBAction)search:(id)sender;
 -(IBAction)cancelProgressAction:(id)sender;
 
--(NSViewController*)viewController;
+-(ListViewController *)viewController;
 
 -(NSManagedObjectContext *)managedObjectContext;
 

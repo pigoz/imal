@@ -20,5 +20,6 @@
 
 @property (retain) NSString * __title;
 -(NSAttributedString *)__bold_title;
+-(NSString *)imageTitle;
 
 @end
