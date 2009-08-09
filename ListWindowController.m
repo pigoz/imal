@@ -22,6 +22,7 @@
 
 @synthesize increaseString;
 @synthesize decreaseString;
+@synthesize searchField;
 
 -(IBAction)showSearchPanel:(id)sender
 {
@@ -63,6 +64,7 @@
 				[currentViewController setTitle:@"Anime"];
 				self.increaseString = @"Increase episode count";
 				self.decreaseString = @"Decrease episode count";
+				[currentViewController setRepresentedObject:self]; // need to share the window
 			}
 			break;
 		}
@@ -78,6 +80,7 @@
 				[currentViewController setTitle:@"Manga"];
 				self.increaseString = @"Increase chapter count";
 				self.decreaseString = @"Decrease chapter count";
+				[currentViewController setRepresentedObject:self]; // need to share the window
 			}
 			break;
 		}

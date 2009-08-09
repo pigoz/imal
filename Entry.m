@@ -92,7 +92,7 @@
 		__downloadOperation = [[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
 																  entryid:[[self valueForKey:@"id"] intValue] 
 																 callback:callback];
-		[mal.queue addOperation:__downloadOperation];
+		[mal.dl_queue addOperation:__downloadOperation];
 	}
 	return __img;
 }

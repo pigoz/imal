@@ -31,6 +31,7 @@
 
 @property (retain) NSString * increaseString;
 @property (retain) NSString * decreaseString;
+@property (retain) NSSearchField * searchField;
 
 // TOOLBAR Actions
 -(IBAction)showSearchPanel:(id)sender;

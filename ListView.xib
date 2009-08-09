@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="113"/>
 			<integer value="4"/>
+			<integer value="113"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -69,7 +69,7 @@
 											</object>
 											<reference key="NSControlView" ref="59492960"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">268435629</int>
+											<int key="NSButtonFlags2">134217901</int>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent">1</string>
 											<int key="NSPeriodicDelay">400</int>
@@ -89,7 +89,7 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="1014819353"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">268435629</int>
+											<int key="NSButtonFlags2">134217901</int>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent">2</string>
 											<int key="NSPeriodicDelay">400</int>
@@ -109,7 +109,7 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="703767082"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">268435629</int>
+											<int key="NSButtonFlags2">134217901</int>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent">3</string>
 											<int key="NSPeriodicDelay">400</int>
@@ -129,7 +129,7 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="138069023"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">268435629</int>
+											<int key="NSButtonFlags2">134217901</int>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent">4</string>
 											<int key="NSPeriodicDelay">400</int>
@@ -149,7 +149,7 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="983243333"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">268435629</int>
+											<int key="NSButtonFlags2">134217901</int>
 											<string key="NSAlternateContents"/>
 											<string key="NSKeyEquivalent">5</string>
 											<int key="NSPeriodicDelay">400</int>
@@ -1248,8 +1248,17 @@
 					<string key="className">InfoWindowController</string>
 					<string key="superclassName">NSWindowController</string>
 					<object class="NSMutableDictionary" key="actions">
-						<string key="NS.key.0">increaseEpisodeCount:</string>
-						<string key="NS.object.0">id</string>
+						<bool key="EncodedWithXMLCoder">YES</bool>
+						<object class="NSMutableArray" key="dict.sortedKeys">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>decreaseEpisodeCount:</string>
+							<string>increaseEpisodeCount:</string>
+						</object>
+						<object class="NSMutableArray" key="dict.values">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
+							<string>id</string>
+						</object>
 					</object>
 					<object class="NSMutableDictionary" key="outlets">
 						<string key="NS.key.0">__array_controller</string>

@@ -11,6 +11,7 @@
 
 @implementation MALHandler
 @synthesize queue;
+@synthesize dl_queue;
 
 - (id) init
 {

@@ -14,5 +14,6 @@
 }
 
 -(IBAction)increaseEpisodeCount:(id)sender;
+-(IBAction)decreaseEpisodeCount:(id)sender;
 
 @end

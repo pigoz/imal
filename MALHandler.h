@@ -21,7 +21,8 @@ static const int MALReading = MALWatching;
 static const int MALPlantoRead = MALPlantoWatch;
 
 @interface MALHandler : NSObject {
-	NSOperationQueue * queue;
+	NSOperationQueue * queue; // queue to be used for small operations
+	NSOperationQueue * dl_queue; // que to be used for batched of operations, i.e.: ImageDownloadOperations
 }
 
 + (MALHandler *)sharedHandler;
@@ -31,5 +32,6 @@ static const int MALPlantoRead = MALPlantoWatch;
 - (NSData *) getList:(NSString *)type;
 
 @property (retain, readonly) NSOperationQueue *queue;
+@property (retain, readonly) NSOperationQueue *dl_queue;
 
 @end
