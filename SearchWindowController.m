@@ -21,11 +21,14 @@
 
 -(void)windowDidLoad
 {
-	NSLog(@"Loaded search window");
+	/// this binding is not working in the awakeFromNib, and does not work in IB too :s
+	NSUserDefaultsController * defaults = [NSUserDefaultsController sharedUserDefaultsController];
+	[tabView bind:@"selectedIdentifier" toObject:defaults withKeyPath:@"values.selectedIdentifierSearchPanel" options:nil];
 }
 
 -(void)awakeFromNib
 {	
+	
 	// observe the selection
 	[__anime_entries_controller addObserver:self forKeyPath:@"selectedObjects" 
 									options:(NSKeyValueObservingOptionNew) 
@@ -45,18 +48,8 @@
 	__was_showing_manga_info = NO;
 	__anime_frame = [self.window frame];
 	__manga_frame = [self.window frame];
+	
 }
-
-/// Helper Method: converts popup tag [0,5] to MAL status [1,4]U[6]
--(int) PopUpToMALStatus:(int)status
-{
-	switch (status)
-	{
-		case 4:	return MALPlantoWatch;
-		default: return status-1;
-	}
-}
-
 
 -(IBAction) searchAnime:(id) sender
 {
@@ -172,7 +165,6 @@
 	[animeInfoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
 	[addAnime setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
-	//[[self.window contentView] addSubview:animeInfoView];
 	[animeTab addSubview:animeInfoView];
 	[animeTab addSubview:addAnime];
 	[NSAnimationContext endGrouping];
@@ -204,7 +196,6 @@
 	[mangaInfoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
 	[addManga setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
-	//[[self.window contentView] addSubview:animeInfoView];
 	[mangaTab addSubview:mangaInfoView];
 	[mangaTab addSubview:addManga];
 	[NSAnimationContext endGrouping];

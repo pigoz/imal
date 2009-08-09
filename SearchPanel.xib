@@ -8,11 +8,11 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="83"/>
 			<integer value="215"/>
 			<integer value="161"/>
-			<integer value="302"/>
 			<integer value="29"/>
+			<integer value="56"/>
+			<integer value="302"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -896,9 +896,9 @@
 							<object class="NSMutableArray" key="NSTabViewItems">
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSTabViewItem" id="92004543">
-									<string key="NSIdentifier">1</string>
+									<string key="NSIdentifier">0</string>
 									<object class="NSView" key="NSView" id="30047212">
-										<nil key="NSNextResponder"/>
+										<reference key="NSNextResponder" ref="931731117"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1180,15 +1180,16 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 33}, {574, 450}}</string>
+										<reference key="NSSuperview" ref="931731117"/>
 									</object>
 									<string key="NSLabel">Anime</string>
 									<reference key="NSColor" ref="107215418"/>
 									<reference key="NSTabView" ref="931731117"/>
 								</object>
 								<object class="NSTabViewItem" id="402664871">
-									<string key="NSIdentifier">2</string>
+									<string key="NSIdentifier">1</string>
 									<object class="NSView" key="NSView" id="608062100">
-										<reference key="NSNextResponder" ref="931731117"/>
+										<nil key="NSNextResponder"/>
 										<int key="NSvFlags">256</int>
 										<object class="NSMutableArray" key="NSSubviews">
 											<bool key="EncodedWithXMLCoder">YES</bool>
@@ -1472,21 +1473,20 @@
 											</object>
 										</object>
 										<string key="NSFrame">{{10, 33}, {574, 450}}</string>
-										<reference key="NSSuperview" ref="931731117"/>
 									</object>
 									<string key="NSLabel">Manga</string>
 									<reference key="NSColor" ref="107215418"/>
 									<reference key="NSTabView" ref="931731117"/>
 								</object>
 							</object>
-							<reference key="NSSelectedTabViewItem" ref="402664871"/>
+							<reference key="NSSelectedTabViewItem" ref="92004543"/>
 							<reference key="NSFont" ref="195223375"/>
 							<int key="NSTvFlags">0</int>
 							<bool key="NSAllowTruncatedLabels">YES</bool>
 							<bool key="NSDrawsBackground">YES</bool>
 							<object class="NSMutableArray" key="NSSubviews">
 								<bool key="EncodedWithXMLCoder">YES</bool>
-								<reference ref="608062100"/>
+								<reference ref="30047212"/>
 							</object>
 						</object>
 					</object>
@@ -1501,9 +1501,8 @@
 			<object class="NSUserDefaultsController" id="14836663">
 				<object class="NSMutableArray" key="NSDeclaredKeys">
 					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>searchSelectedType</string>
 					<string>searchSelectedTab</string>
-					<string>searchSelectedIdentifier</string>
+					<string>searchSelectedTabLabel</string>
 				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
@@ -3548,9 +3547,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{391, 442}, {600, 500}}</string>
+					<string>{{330, 440}, {600, 500}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{391, 442}, {600, 500}}</string>
+					<string>{{330, 440}, {600, 500}}</string>
 					<reference ref="5"/>
 					<reference ref="5"/>
 					<string>{590, 0}</string>
@@ -3600,7 +3599,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">361</int>
+			<int key="maxID">369</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">

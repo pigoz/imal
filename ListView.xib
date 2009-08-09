@@ -8,8 +8,8 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="4"/>
 			<integer value="113"/>
+			<integer value="1"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -69,9 +69,9 @@
 											</object>
 											<reference key="NSControlView" ref="59492960"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">134217901</int>
+											<int key="NSButtonFlags2">173</int>
 											<string key="NSAlternateContents"/>
-											<string key="NSKeyEquivalent">1</string>
+											<string key="NSKeyEquivalent"/>
 											<int key="NSPeriodicDelay">400</int>
 											<int key="NSPeriodicInterval">75</int>
 										</object>
@@ -89,9 +89,9 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="1014819353"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">134217901</int>
+											<int key="NSButtonFlags2">173</int>
 											<string key="NSAlternateContents"/>
-											<string key="NSKeyEquivalent">2</string>
+											<string key="NSKeyEquivalent"/>
 											<int key="NSPeriodicDelay">400</int>
 											<int key="NSPeriodicInterval">75</int>
 										</object>
@@ -109,9 +109,9 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="703767082"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">134217901</int>
+											<int key="NSButtonFlags2">173</int>
 											<string key="NSAlternateContents"/>
-											<string key="NSKeyEquivalent">3</string>
+											<string key="NSKeyEquivalent"/>
 											<int key="NSPeriodicDelay">400</int>
 											<int key="NSPeriodicInterval">75</int>
 										</object>
@@ -129,9 +129,9 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="138069023"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">134217901</int>
+											<int key="NSButtonFlags2">173</int>
 											<string key="NSAlternateContents"/>
-											<string key="NSKeyEquivalent">4</string>
+											<string key="NSKeyEquivalent"/>
 											<int key="NSPeriodicDelay">400</int>
 											<int key="NSPeriodicInterval">75</int>
 										</object>
@@ -149,9 +149,9 @@
 											<reference key="NSSupport" ref="29"/>
 											<reference key="NSControlView" ref="983243333"/>
 											<int key="NSButtonFlags">-1232846593</int>
-											<int key="NSButtonFlags2">134217901</int>
+											<int key="NSButtonFlags2">173</int>
 											<string key="NSAlternateContents"/>
-											<string key="NSKeyEquivalent">5</string>
+											<string key="NSKeyEquivalent"/>
 											<int key="NSPeriodicDelay">400</int>
 											<int key="NSPeriodicInterval">75</int>
 										</object>
@@ -371,7 +371,7 @@
 								<reference key="NSSuperview" ref="113578611"/>
 								<reference key="NSTarget" ref="113578611"/>
 								<string key="NSAction">_doScroller:</string>
-								<double key="NSCurValue">1.000000e+00</double>
+								<double key="NSCurValue">7.480314e-01</double>
 								<double key="NSPercent">9.636363e-01</double>
 							</object>
 							<object class="NSScroller" id="312067279">
@@ -937,10 +937,10 @@
 						<object class="NSMutableArray" key="children">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="983243333"/>
-							<reference ref="138069023"/>
 							<reference ref="703767082"/>
 							<reference ref="59492960"/>
 							<reference ref="1014819353"/>
+							<reference ref="138069023"/>
 						</object>
 						<reference key="parent" ref="84592046"/>
 					</object>
@@ -1190,9 +1190,9 @@
 					<string>{{217, 442}, {480, 272}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{67, 506}, {302, 495}}</string>
+					<string>{{610, 432}, {302, 495}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{67, 506}, {302, 495}}</string>
+					<string>{{610, 432}, {302, 495}}</string>
 					<boolean value="NO"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>

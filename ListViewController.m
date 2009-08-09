@@ -32,7 +32,7 @@
 -(void) awakeFromNib
 {	
 	// Add ourselves to end of the responder chain for this nib file
-	[self.view setNextResponder:self];
+	//[self.view setNextResponder:self];
 	
 	if([self.__type isEqual:@"anime"]){
 		self.wrString = @"Watching";
@@ -179,12 +179,6 @@
 	}
 	
 	[__array_controller setFilterPredicate:[NSPredicate predicateWithFormat:_and_pred]];	
-}
-
-// overriding NSResponder keydown
-- (void)keyDown:(NSEvent *)theEvent
-{
-	NSLog(@"asd");
 }
 
 -(IBAction)showInfoPanel:(id)sender
