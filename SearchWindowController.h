@@ -11,6 +11,8 @@
 
 @interface SearchWindowController : NSWindowController {
 	
+	NSManagedObjectContext * __db;
+	
 	// TABS
 	IBOutlet NSTabView * tabView;
 	IBOutlet NSView * animeTab;
@@ -45,6 +47,9 @@
 	IBOutlet NSView * animeInfoView;
 	IBOutlet NSView * mangaInfoView;
 	
+	IBOutlet NSView * animeAlredyInYourList;
+	IBOutlet NSView * mangaAlredyInYourList;
+	
 	// Managed Models
 	IBOutlet NSArrayController * __anime_entries_controller;
 	NSMutableArray * __anime_entries;
@@ -62,6 +67,8 @@
 	BOOL __was_showing_manga_info;
 	
 }
+
+@property (retain) NSManagedObjectContext * __db;
 
 @property (retain) NSMutableArray * __anime_entries;
 @property (retain) NSMutableArray * __manga_entries;

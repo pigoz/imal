@@ -11,7 +11,7 @@
 
 @implementation NSManagedObjectContext (PGZUtils)
 
-- (NSManagedObject *) fetchOrCreateForEntityName:(NSString *)entityName withID:(int)value
+- (NSManagedObject *) fetchOrCreateEntityWithName:(NSString *)entityName withID:(int)value
 {
 	NSSet *a = [self fetchObjectsForEntityName:entityName
 								 withPredicate: [NSPredicate predicateWithFormat:@"id == %d", value]];
@@ -27,6 +27,16 @@
 		return [[a allObjects] objectAtIndex:0];
 	}
 	return nil;
+}
+
+- (NSManagedObject *) fetchEntityWithName:(NSString *)entityName withID:(int)value
+{
+	NSSet *a = [self fetchObjectsForEntityName:entityName
+								 withPredicate: [NSPredicate predicateWithFormat:@"id == %d", value]];
+	if(a!=nil && [a count]>0)
+		return [[a allObjects] objectAtIndex:0];
+	else
+		return nil;
 }
 
 - (NSSet *)fetchObjectsForEntityName:(NSString *)newEntityName

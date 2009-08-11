@@ -12,9 +12,12 @@
 #import "SearchOperation.h"
 #import "SearchModel.h"
 #import "PGZCallback.h"
+#import "NSManagedObjectContext+PGZUtils.h"
 
 
 @implementation SearchWindowController
+
+@synthesize __db;
 
 @synthesize __anime_entries;
 @synthesize __manga_entries;
@@ -109,7 +112,9 @@
 	[values setObject:[NSString stringWithFormat:@"%d", [[animeStatus selectedCell] tag]] forKey:@"status"];
 	
 	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addAnimeCallback:)];
-	[mal.queue addOperation:[[AddOperation alloc] initWithID:sm.__id withType:@"anime" values:values callback:callback]];
+	AddOperation * o = [[AddOperation alloc] initWithID:sm.__id withType:@"anime" values:values callback:callback];
+	o.__db = self.__db;
+	[mal.queue addOperation:o];
 }
 
 -(void) addAnimeCallback:(NSArray *) entries
@@ -117,6 +122,8 @@
 	@synchronized(self){
 		[addAnimeSpinner stopAnimation:nil];
 		[addAnimeSpinner setHidden:YES];
+		[addAnime removeFromSuperview];
+		[animeTab addSubview:animeAlredyInYourList];
 	}
 	
 }
@@ -134,7 +141,9 @@
 	[values setObject:[NSString stringWithFormat:@"%d", [[mangaStatus selectedCell] tag]] forKey:@"status"];
 	
 	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addMangaCallback:)];
-	[mal.queue addOperation:[[AddOperation alloc] initWithID:sm.__id withType:@"manga" values:values callback:callback]];
+	AddOperation * o = [[AddOperation alloc] initWithID:sm.__id withType:@"manga" values:values callback:callback];
+	o.__db = self.__db;
+	[mal.queue addOperation:o];
 }
 
 -(void) addMangaCallback:(NSArray *) entries
@@ -142,6 +151,8 @@
 	@synchronized(self){
 		[addMangaSpinner stopAnimation:nil];
 		[addMangaSpinner setHidden:YES];
+		[addManga removeFromSuperview];
+		[mangaTab addSubview:mangaAlredyInYourList];
 	}
 	
 }
@@ -163,10 +174,15 @@
 	[NSAnimationContext beginGrouping];
 	[self.window setFrame:w_frame display:YES animate:YES];
 	[animeInfoView setFrame:NSMakeRect(0.0, i_bounds.size.height, t_bounds.size.width, bounds.size.height)];
+	
 	[addAnime setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
 	[animeTab addSubview:animeInfoView];
-	[animeTab addSubview:addAnime];
+	SearchModel * e = [[__anime_entries_controller selectedObjects] objectAtIndex:0];
+	if([__db fetchEntityWithName:@"anime" withID:e.__id]==nil)
+		[animeTab addSubview:addAnime];
+	else
+		[animeTab addSubview:animeAlredyInYourList];
 	[NSAnimationContext endGrouping];
 	
 	// Making the scrollview autoresize again in all directions.
@@ -195,7 +211,14 @@
 	[addManga setFrame:NSMakeRect(0.0, 0.0, t_bounds.size.width, i_bounds.size.height)];
 	
 	[mangaTab addSubview:mangaInfoView];
-	[mangaTab addSubview:addManga];
+	
+	SearchModel * e = [[__manga_entries_controller selectedObjects] objectAtIndex:0];
+	NSLog(@"%d",e.__id);
+	if([__db fetchEntityWithName:@"manga" withID:e.__id]==nil)
+		[mangaTab addSubview:addManga];
+	else
+		[mangaTab addSubview:mangaAlredyInYourList];
+	
 	[NSAnimationContext endGrouping];
 	
 	// Making the scrollview autoresize again in all directions.
@@ -221,6 +244,7 @@
 	[NSAnimationContext beginGrouping];
 	
 	[addAnime removeFromSuperview];
+	[animeAlredyInYourList removeFromSuperview];
 	[animeInfoView removeFromSuperview];
 	[self.window setFrame:w_frame display:YES animate:YES];
 	[NSAnimationContext endGrouping];
@@ -248,6 +272,7 @@
 	[NSAnimationContext beginGrouping];
 	
 	[addManga removeFromSuperview];
+	[mangaAlredyInYourList removeFromSuperview];
 	[mangaInfoView removeFromSuperview];
 	[self.window setFrame:w_frame display:YES animate:YES];
 	[NSAnimationContext endGrouping];
@@ -264,6 +289,13 @@
 			SearchModel * sm = nil;
 			if([[__anime_entries_controller selectedObjects] count] > 0){
 				sm = (SearchModel *)[[__anime_entries_controller selectedObjects] objectAtIndex:0];
+				[addAnime removeFromSuperview];
+				[animeAlredyInYourList removeFromSuperview];
+				NSManagedObject * f = [__db fetchEntityWithName:@"anime" withID:sm.__id];
+				if(f==nil)
+					[animeTab addSubview:addAnime];
+				else
+					[animeTab addSubview:animeAlredyInYourList];
 			}
 			if(sm!=nil && __showing_anime_info == NO){
 				[self showAnimeInfo];
@@ -280,6 +312,13 @@
 			SearchModel * sm = nil;
 			if([[__manga_entries_controller selectedObjects] count] > 0){
 				sm = (SearchModel *)[[__manga_entries_controller selectedObjects] objectAtIndex:0];
+				[addManga removeFromSuperview];
+				[mangaAlredyInYourList removeFromSuperview];
+				NSManagedObject * f = [__db fetchEntityWithName:@"manga" withID:sm.__id];
+				if(f==nil)
+					[mangaTab addSubview:addManga];
+				else
+					[mangaTab addSubview:mangaAlredyInYourList];
 			}
 			if(sm!=nil && __showing_manga_info == NO){
 				[self showMangaInfo];

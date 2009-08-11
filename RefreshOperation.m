@@ -48,7 +48,7 @@
 		NSArray * entryNodes = [doc nodesForXPath:[NSString stringWithFormat:@"myanimelist/%@",__type] error:&error];
 		for(NSXMLNode * n in entryNodes){
 			NSInteger __id = [[n stringForXPath:[NSString stringWithFormat:@"series_%@db_id", __type]] intValue];
-			NSManagedObject * m = [__db fetchOrCreateForEntityName:__type withID:__id];
+			NSManagedObject * m = [__db fetchOrCreateEntityWithName:__type withID:__id];
 			[m setValue:[n stringForXPath:@"series_title"] forKey:@"title"];
 			[m setValue:[n stringForXPath:@"series_image" ] forKey:@"image_url"];
 			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_status"] intValue]] forKey:@"my_status"];

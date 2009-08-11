@@ -19,6 +19,9 @@
 	if (self != nil) {
 		self->queue = [NSOperationQueue new];
 		[self->queue setMaxConcurrentOperationCount:2];
+		
+		self->dl_queue = [NSOperationQueue new];
+		[self->dl_queue setMaxConcurrentOperationCount:2];
 	}
 	return self;
 }

@@ -10,11 +10,15 @@
 @class PGZCallback;
 
 @interface AddOperation : NSOperation {
+	NSManagedObjectContext * __db;
+	
 	int __id;
 	NSMutableDictionary * __values;
 	NSString * __type;
 	PGZCallback * __callback;
 }
+
+@property (retain) NSManagedObjectContext * __db;
 
 @property (assign) int __id;
 @property (retain) NSMutableDictionary * __values;

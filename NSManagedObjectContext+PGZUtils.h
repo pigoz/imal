@@ -10,7 +10,8 @@
 
 @interface NSManagedObjectContext (PGZUtils)
 
--(NSManagedObject *)fetchOrCreateForEntityName:(NSString *)entityName withID:(int)value;
+-(NSManagedObject *)fetchOrCreateEntityWithName:(NSString *)entityName withID:(int)value;
+-(NSManagedObject *)fetchEntityWithName:(NSString *)entityName withID:(int)value;
 -(NSSet *)fetchObjectsForEntityName:(NSString *)newEntityName
 					   withPredicate:(id)stringOrPredicate, ...;
 

@@ -9,8 +9,11 @@
 #import "AddOperation.h"
 #import "PGZCallback.h"
 #import "MALHandler.h"
+#import "RefreshOperation.h"
 
 @implementation AddOperation
+
+@synthesize __db;
 
 @synthesize __id;
 @synthesize __type;
@@ -47,8 +50,12 @@
 	NSString * xmlstr = [[[NSString alloc] initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease];
 	xmldata = [[NSString stringWithFormat:@"data=%@", xmlstr] dataUsingEncoding:NSUTF8StringEncoding];
 	[mal post:resource data:xmldata];
-	[self.__callback perform];
 	[xml release];
+	
+	RefreshOperation * r = [[RefreshOperation alloc] initWithType:self.__type context:self.__db start:nil done:self.__callback];
+	[mal.queue addOperation:r];
+	
+	//[self.__callback perform];
 }
 
 @end

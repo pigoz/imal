@@ -29,6 +29,7 @@
 	@synchronized(self){
 		if(!searchWindowController){
 			searchWindowController = [[SearchWindowController alloc] initWithWindowNibName:@"SearchPanel"];
+			searchWindowController.__db = [self managedObjectContext];
 		}
 	}
 	[searchWindowController showWindow:self];
