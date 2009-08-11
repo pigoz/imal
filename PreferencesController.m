@@ -16,6 +16,16 @@
 
 + (void) initialize
 {
+	// Create directory to cache images
+	NSFileManager * fm = [NSFileManager defaultManager];
+	NSString * anime_path = [NSString stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/anime",NSUserName()];
+	NSString * manga_path = [NSString stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/manga",NSUserName()];
+	if(![fm fileExistsAtPath:anime_path])
+		[fm createDirectoryAtPath:anime_path withIntermediateDirectories:YES attributes:nil error:NULL];
+	if(![fm fileExistsAtPath:manga_path])
+		[fm createDirectoryAtPath:manga_path withIntermediateDirectories:YES attributes:nil error:NULL];
+	
+	// Register defaults
 	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
 	[defaultValues setObject:@"http://myanimelist.net/api" forKey:@"mal_api_address"];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
