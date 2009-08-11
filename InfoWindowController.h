@@ -14,6 +14,8 @@
 	IBOutlet NSTextField * title;
 	IBOutlet NSTextField * subTitle;
 	IBOutlet NSPopUpButton * status;
+	IBOutlet NSPopUpButton * score;
+	
 	IBOutlet NSButton * rewatching;
 	IBOutlet NSTextField * episodes;
 	IBOutlet NSTextField * my_episodes;

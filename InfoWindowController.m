@@ -32,10 +32,19 @@
 -(void)updateVisibility
 {
 	if(__entry && shouldShow){
-		[self showWindow:nil];
+		if(![self.window isVisible])
+			[self.window orderFront:nil];
 	} else {
 		[self.window orderOut:nil];
 	}
+}
+
+-(BOOL)windowShouldClose:(id)window
+{
+	if([window isEqual:self.window]){
+		shouldShow = NO;
+	}
+	return YES;
 }
 
 -(void)updateUIWithEntry:(Entry *)e
@@ -47,6 +56,7 @@
 		[rewatching setState:[[e valueForKey:@"my_rewatching"] intValue]];
 		[episodes setStringValue:[[e valueForKey:@"episodes"] stringValue]];
 		[my_episodes setStringValue:[[e valueForKey:@"my_episodes"] stringValue]];
+		[score selectItemWithTag:[[e valueForKey:@"score"] intValue]];
 	}
 }
 
@@ -70,11 +80,13 @@
 	[e setValue:[NSNumber numberWithInt:[rewatching intValue]] forKey:@"my_rewatching"];
 	[e setValue:[NSNumber numberWithInt:[my_episodes intValue]] forKey:@"my_episodes"];
 	[e setValue:[NSNumber numberWithInt:[status selectedTag]] forKey:@"my_status"];
+	[e setValue:[NSNumber numberWithInt:[score selectedTag]] forKey:@"score"];
 		
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	[values setObject:[my_episodes stringValue] forKey:@"episode"];
 	[values setObject:[rewatching stringValue] forKey:@"enable_rewatching"];
-	[values setObject:[status stringValue] forKey:@"status"];
+	[values setObject:[NSString stringWithFormat:@"%d", [status selectedTag]] forKey:@"status"];
+	[values setObject:[NSString stringWithFormat:@"%d", [score selectedTag]] forKey:@"score"];
 	
 	PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(editCallback)] autorelease];
 	MALHandler * mal = [MALHandler sharedHandler];
@@ -141,7 +153,7 @@
 	}
 }
 
-- (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+-(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
 	if([keyPath isEqual:@"__entry"]){
 		[self updateVisibility];
 		[self updateUIWithEntry:self.__entry];

@@ -88,10 +88,14 @@
 	// image browser first responder, next key => search field
 	[[[self representedObject] window] makeFirstResponder:mImageBrowser];
 	
-	infoPanelController = [[InfoWindowController alloc] initWithWindowNibName:@"InfoPanel"];
-	[infoPanelController loadWindow];
-	[__array_controller addObserver:self forKeyPath:@"selectedObjects" 
-							options:(NSKeyValueObservingOptionNew) context:NULL];
+	if([self.__type isEqual:@"anime"]){
+		infoPanelController = [[InfoWindowController alloc] initWithWindowNibName:@"InfoPanel"];
+		[infoPanelController loadWindow];
+		[__array_controller addObserver:self forKeyPath:@"selectedObjects" 
+								options:(NSKeyValueObservingOptionNew) context:NULL];
+	} else {
+		// TODO infoPanel for mangas
+	}
 
 }
 
