@@ -171,8 +171,6 @@
 	
 	// Making the scrollview autoresize again in all directions.
 	[animeScrollView setAutoresizingMask:mask];
-	[animeScrollView setNextKeyView:episodesField];
-	[episodesField setNextKeyView:animeSearchField];
 	
 	__showing_anime_info = YES;
 }
@@ -202,9 +200,6 @@
 	
 	// Making the scrollview autoresize again in all directions.
 	[mangaScrollView setAutoresizingMask:mask];
-	[mangaScrollView setNextKeyView:chaptersField];
-	[chaptersField setNextKeyView:volumesField];
-	[volumesField setNextKeyView:mangaSearchField];
 	
 	__showing_manga_info = YES;
 }
@@ -232,7 +227,6 @@
 	
 	// Making the scrollview autoresize again in all directions.
 	[animeScrollView setAutoresizingMask:mask];
-	[animeScrollView setNextKeyView:nil];
 	
 	__showing_anime_info = NO;
 }
@@ -260,7 +254,6 @@
 	
 	// Making the scrollview autoresize again in all directions.
 	[mangaScrollView setAutoresizingMask:mask];
-	[mangaScrollView setNextKeyView:nil];
 	
 	__showing_manga_info = NO;
 }

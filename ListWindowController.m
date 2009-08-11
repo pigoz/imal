@@ -92,10 +92,6 @@
 	// make sure we automatically resize the controller's view to the current window size
 	[[currentViewController view] setFrame: [targetView bounds]];
 	
-	// set the view controller's represented object to the number of subviews in that controller
-	// (our NSTextField's value binding will reflect this value)
-	[currentViewController setRepresentedObject: [NSNumber numberWithUnsignedInt: [[[currentViewController view] subviews] count]]];
-	
 	[self didChangeValueForKey:@"viewController"];	// this will trigger the NSTextField's value binding to change
 }
 

@@ -8,9 +8,9 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="554"/>
 			<integer value="566"/>
 			<integer value="169"/>
+			<integer value="21"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -42,7 +42,7 @@
 				<int key="NSWindowStyleMask">271</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{6, 593}, {480, 360}}</string>
-				<int key="NSWTFlags">1886912512</int>
+				<int key="NSWTFlags">1886914560</int>
 				<string key="NSWindowTitle">iMAL</string>
 				<string key="NSWindowClass">NSWindow</string>
 				<object class="NSToolbar" key="NSViewClass" id="827255113">
@@ -2802,8 +2802,8 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{471, 55}, {480, 360}}</string>
-					<string>{{471, 55}, {480, 360}}</string>
+					<string>{{469, 53}, {480, 360}}</string>
+					<string>{{469, 53}, {480, 360}}</string>
 					<reference ref="9"/>
 					<reference ref="9"/>
 					<reference ref="9"/>

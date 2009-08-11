@@ -87,9 +87,7 @@
 	
 	// image browser first responder, next key => search field
 	[[[self representedObject] window] makeFirstResponder:mImageBrowser];
-	ListWindowController * lwc = [self representedObject];
-	[mImageBrowser setNextKeyView:lwc.searchField];
-	[lwc.searchField setNextKeyView:mImageBrowser];
+
 }
 
 -(id)initWithType:(NSString*) type context:(NSManagedObjectContext *) db

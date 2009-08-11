@@ -8,11 +8,11 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
+			<integer value="302"/>
 			<integer value="215"/>
+			<integer value="56"/>
 			<integer value="161"/>
 			<integer value="29"/>
-			<integer value="56"/>
-			<integer value="302"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -877,7 +877,7 @@
 				<int key="NSWindowStyleMask">31</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{533, 273}, {600, 500}}</string>
-				<int key="NSWTFlags">-1543503872</int>
+				<int key="NSWTFlags">-1543501824</int>
 				<string key="NSWindowTitle">Search</string>
 				<string key="NSWindowClass">NSPanel</string>
 				<nil key="NSViewClass"/>
@@ -1499,11 +1499,6 @@
 				<string key="NSFrameAutosaveName">SearchPanel</string>
 			</object>
 			<object class="NSUserDefaultsController" id="14836663">
-				<object class="NSMutableArray" key="NSDeclaredKeys">
-					<bool key="EncodedWithXMLCoder">YES</bool>
-					<string>searchSelectedTab</string>
-					<string>searchSelectedTabLabel</string>
-				</object>
 				<bool key="NSSharedInstance">YES</bool>
 			</object>
 		</object>
