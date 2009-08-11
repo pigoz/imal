@@ -43,7 +43,10 @@
 {
 	if([[[self entity] name] isEqual:@"anime"]){
 		if([[self valueForKey:@"my_status"] intValue] == 1)
-			return [NSString stringWithFormat:@"Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+			if([[self valueForKey:@"my_rewatching"] boolValue])
+				return [NSString stringWithFormat:@"Re-Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+			else
+				return [NSString stringWithFormat:@"Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
 		if([[self valueForKey:@"my_status"] intValue] == 2)
 			return @"Completed";
 		if([[self valueForKey:@"my_status"] intValue] == 3)
@@ -66,6 +69,18 @@
 			return @"Plan to Read";
 	}
 	return nil;
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+	// notifies observers of the imageSubtitle property when an update is done :)
+	if([key isEqual:@"my_status"] || [key isEqual:@"my_episodes"] || [key isEqual:@"my_chapters"] || [key isEqual:@"my_rewatching"]){
+		[self willChangeValueForKey:@"imageSubtitle"];
+		[super setValue:value forKey:key];
+		[self didChangeValueForKey:@"imageSubtitle"];
+	} else {
+		[super setValue:value forKey:key];
+	}
 }
 
 - (NSString *)imageUID {

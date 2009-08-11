@@ -15,7 +15,7 @@
 	NSManagedObjectContext * __db;
 	NSString * __type;
 	IBOutlet IKImageBrowserView * mImageBrowser;
-	IBOutlet InfoWindowController * infoPanelController;
+	InfoWindowController * infoPanelController;
 	
 	BOOL watchingFlag;
 	BOOL holdFlag;

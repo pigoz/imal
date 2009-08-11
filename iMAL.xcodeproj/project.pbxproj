@@ -31,6 +31,7 @@
 		7B94E786102C4D68005D6501 /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7B94E785102C4D68005D6501 /* Quartz.framework */; };
 		7B9610ED1026DA440053D032 /* NSString+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9610EC1026DA440053D032 /* NSString+Base64.m */; };
 		7B9612741027026E0053D032 /* SearchModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B9612731027026E0053D032 /* SearchModel.m */; };
+		7B97510C1031784D0053E007 /* InfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B97510B1031784D0053E007 /* InfoPanel.xib */; };
 		7B98FB91102AF99D00173E92 /* ListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B98FB90102AF99D00173E92 /* ListView.xib */; };
 		7B98FB9F102AFDB000173E92 /* ListWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B98FB9E102AFDB000173E92 /* ListWindowController.m */; };
 		7BACB5CB102B64C8009E41C9 /* ImageDownloadOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */; };
@@ -111,6 +112,7 @@
 		7B9610EC1026DA440053D032 /* NSString+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Base64.m"; sourceTree = "<group>"; };
 		7B9612721027026E0053D032 /* SearchModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchModel.h; sourceTree = "<group>"; };
 		7B9612731027026E0053D032 /* SearchModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchModel.m; sourceTree = "<group>"; };
+		7B97510B1031784D0053E007 /* InfoPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoPanel.xib; sourceTree = "<group>"; };
 		7B98FB90102AF99D00173E92 /* ListView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListView.xib; sourceTree = "<group>"; };
 		7B98FB9D102AFDB000173E92 /* ListWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListWindowController.h; sourceTree = "<group>"; };
 		7B98FB9E102AFDB000173E92 /* ListWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListWindowController.m; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				7BBBAB1810256BCB00E33747 /* PreferencesGeneral.xib */,
 				7BD2337C10282BC0009447A6 /* SearchPanel.xib */,
 				7B98FB90102AF99D00173E92 /* ListView.xib */,
+				7B97510B1031784D0053E007 /* InfoPanel.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */,
 				7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */,
 				7BC945AB102D698A00F8063D /* icon.icns in Resources */,
+				7B97510C1031784D0053E007 /* InfoPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

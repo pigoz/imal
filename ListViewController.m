@@ -87,6 +87,11 @@
 	
 	// image browser first responder, next key => search field
 	[[[self representedObject] window] makeFirstResponder:mImageBrowser];
+	
+	infoPanelController = [[InfoWindowController alloc] initWithWindowNibName:@"InfoPanel"];
+	[infoPanelController loadWindow];
+	[__array_controller addObserver:self forKeyPath:@"selectedObjects" 
+							options:(NSKeyValueObservingOptionNew) context:NULL];
 
 }
 
@@ -181,7 +186,9 @@
 
 -(IBAction)showInfoPanel:(id)sender
 {
-	[infoPanelController showWindow:sender];
+	//[infoPanelController showWindow:sender];
+	infoPanelController.shouldShow = !infoPanelController.shouldShow;
+	[infoPanelController updateVisibility];
 }
 
 -(IBAction)increaseEp:(id)sender
@@ -196,6 +203,8 @@
 
  -(void) dealloc
 {
+	[infoPanelController.window orderOut:nil];
+	[infoPanelController release];
 	NSUserDefaultsController * defaults = [NSUserDefaultsController sharedUserDefaultsController];
 	[defaults removeObserver:self forKeyPath:@"values.zoomValue"];
 	[super dealloc];
@@ -208,6 +217,13 @@
 	}
 	if([keyPath isEqual:@"searchString"]){
 		[self constructPredicate];
+		return;
+	}
+	if([keyPath isEqual:@"selectedObjects"]){
+		if([[__array_controller selectedObjects] count] > 0)
+			infoPanelController.__entry = [[__array_controller selectedObjects] objectAtIndex:0];
+		else
+			infoPanelController.__entry = nil;
 		return;
 	}
 	if([keyPath isEqual:@"values.zoomValue"]){

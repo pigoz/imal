@@ -116,6 +116,13 @@
 	[NSApp endSheet:progressSheet];
 }
 
+-(BOOL)validateToolbarItem:(NSToolbarItem *)toolbarItem
+{
+    if ([toolbarItem tag] == 13) // Info
+		return [[currentViewController.__array_controller selectedObjects] count] > 0;
+	return YES;
+}
+
 -(IBAction)cancelProgressAction:(id)sender
 {
 	MALHandler * mal = [MALHandler sharedHandler];

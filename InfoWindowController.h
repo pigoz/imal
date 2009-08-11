@@ -7,13 +7,31 @@
 //
 
 #import <Cocoa/Cocoa.h>
-
+#import "Entry.h"
 
 @interface InfoWindowController : NSWindowController {
-	IBOutlet NSArrayController * __array_controller; /// array controller managing displayed anime/manga
+	
+	IBOutlet NSTextField * title;
+	IBOutlet NSTextField * subTitle;
+	IBOutlet NSPopUpButton * status;
+	IBOutlet NSButton * rewatching;
+	IBOutlet NSTextField * episodes;
+	IBOutlet NSTextField * my_episodes;
+	
+	IBOutlet NSProgressIndicator * spinner;
+	
+	Entry * __entry;
+	
+	BOOL shouldShow;
 }
 
+@property (retain) Entry * __entry;
+@property (assign) BOOL shouldShow;
+
+-(void)updateVisibility;
 -(IBAction)increaseEpisodeCount:(id)sender;
 -(IBAction)decreaseEpisodeCount:(id)sender;
+-(IBAction)cancel:(id)sender;
+-(IBAction)edit:(id)sender;
 
 @end
