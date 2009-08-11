@@ -55,11 +55,16 @@
 			if([__type isEqual:@"anime"]){
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_episodes"] intValue]] forKey:@"episodes"];
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_watched_episodes"] intValue]] forKey:@"my_episodes"];
+				[m setValue:[NSNumber numberWithBool:[[n stringForXPath:@"my_rewatching"] boolValue]] forKey:@"my_rewatching"];
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_rewatching_ep"] intValue]] forKey:@"my_rewatching_ep"];
 			} else { // manga
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_chapters"] intValue]] forKey:@"chapters"];
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_read_chapters"] intValue]] forKey:@"my_chapters"];
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_volumes"] intValue]] forKey:@"volumes"];
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_read_volumes"] intValue]] forKey:@"my_volumes"];
+				// rereadingg is a typo by Xinil in the XML :|
+				[m setValue:[NSNumber numberWithBool:[[n stringForXPath:@"my_rereadingg"] boolValue]] forKey:@"my_rereading"];
+				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_rereading_chap"] intValue]] forKey:@"my_rereading_chap"];
 			}
 		}
 	}
