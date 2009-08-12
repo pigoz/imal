@@ -31,6 +31,8 @@ static const int MALPlantoRead = MALPlantoWatch;
 - (NSData *) search:(NSString *) query type:(NSString *) type;
 - (NSData *) getList:(NSString *)type;
 
+-(void)increaseRewatchedValue:(int)my_id anime_id:(int)anime_id;
+
 @property (retain) NSOperationQueue *queue;
 @property (retain) NSOperationQueue *dl_queue;
 

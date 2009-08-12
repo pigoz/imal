@@ -117,6 +117,13 @@
 	[e setValue:[NSNumber numberWithInt:ep] forKey:@"my_chapters"];
 }
 
+-(IBAction)increaseWatchedTimes:(id)sender
+{
+	Entry * e = self.__entry;
+	MALHandler * mal = [MALHandler sharedHandler];
+	[mal increaseRewatchedValue:[[e valueForKey:@"my_id"] intValue] anime_id:[[e valueForKey:@"id"] intValue]];
+}
+
 -(IBAction)increaseEpisodeCount:(id)sender
 {
 	Entry * e = self.__entry;
