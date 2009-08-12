@@ -28,6 +28,8 @@
 	// Register defaults
 	NSMutableDictionary *defaultValues = [NSMutableDictionary dictionary];
 	[defaultValues setObject:@"http://myanimelist.net/api" forKey:@"mal_api_address"];
+	[defaultValues setObject:[NSNumber numberWithFloat:0.5] forKey:@"zoomValue"];
+	[defaultValues setObject:[NSNumber numberWithInt:1] forKey:@"watchingFlag"];
 	[[NSUserDefaults standardUserDefaults] registerDefaults:defaultValues];
 }
 

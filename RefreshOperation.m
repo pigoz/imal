@@ -53,6 +53,7 @@
 			[m setValue:[n stringForXPath:@"series_image" ] forKey:@"image_url"];
 			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_status"] intValue]] forKey:@"my_status"];
 			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_score"] intValue]] forKey:@"score"];
+			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_id"] intValue]] forKey:@"my_id"];
 			if([__type isEqual:@"anime"]){
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"series_episodes"] intValue]] forKey:@"episodes"];
 				[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_watched_episodes"] intValue]] forKey:@"my_episodes"];
