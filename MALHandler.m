@@ -17,11 +17,11 @@
 {
 	self = [super init];
 	if (self != nil) {
-		self->queue = [NSOperationQueue new];
-		[self->queue setMaxConcurrentOperationCount:2];
+		self.queue = [NSOperationQueue new];
+		[self.queue setMaxConcurrentOperationCount:2];
 		
-		self->dl_queue = [NSOperationQueue new];
-		[self->dl_queue setMaxConcurrentOperationCount:2];
+		self.dl_queue = [NSOperationQueue new];
+		[self.dl_queue setMaxConcurrentOperationCount:2];
 	}
 	return self;
 }
@@ -123,6 +123,12 @@
 //	[resp release];
 //	[error release];
 	return _r;
+}
+
+// using html parsing because Xinil is a lazy motherfucker
+-(void)increaseRewatchedValue
+{
+	
 }
 
 @end

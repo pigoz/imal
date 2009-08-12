@@ -60,8 +60,8 @@
 	[animeSpinner setHidden:NO];
 	MALHandler * mal = [MALHandler sharedHandler];
 	NSString * type = @"anime";
-	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(searchAnimeCallback:)];
-	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type callback: [callback autorelease]]];
+	PGZCallback * callback = [[[PGZCallback alloc] initWithInstance:self selector:@selector(searchAnimeCallback:)] autorelease];
+	[mal.queue addOperation:[[[SearchOperation alloc] initWithQuery:[animeSearchField stringValue] withType:type callback:callback]autorelease]];
 }
 
 -(void) searchAnimeCallback:(NSArray *) entries
@@ -83,8 +83,8 @@
 	[mangaSpinner setHidden:NO];
 	MALHandler * mal = [MALHandler sharedHandler];
 	NSString * type = @"manga";
-	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(searchMangaCallback:)];
-	[mal.queue addOperation:[[SearchOperation alloc] initWithQuery:[mangaSearchField stringValue] withType:type callback: [callback autorelease]]];
+	PGZCallback * callback = [[[PGZCallback alloc] initWithInstance:self selector:@selector(searchMangaCallback:)] autorelease];
+	[mal.queue addOperation:[[[SearchOperation alloc] initWithQuery:[mangaSearchField stringValue] withType:type callback: callback] autorelease]];
 }
 
 -(void) searchMangaCallback:(NSArray *) entries
@@ -111,8 +111,8 @@
 	[values setObject:[NSString stringWithFormat:@"%@", [episodesField stringValue]] forKey:@"episode"];
 	[values setObject:[NSString stringWithFormat:@"%d", [[animeStatus selectedCell] tag]] forKey:@"status"];
 	
-	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addAnimeCallback:)];
-	AddOperation * o = [[AddOperation alloc] initWithID:sm.__id withType:@"anime" values:values callback:callback];
+	PGZCallback * callback = [[[PGZCallback alloc] initWithInstance:self selector:@selector(addAnimeCallback:)] autorelease];
+	AddOperation * o = [[[AddOperation alloc] initWithID:sm.__id withType:@"anime" values:values callback:callback] autorelease];
 	o.__db = self.__db;
 	[mal.queue addOperation:o];
 }
@@ -140,8 +140,8 @@
 	[values setObject:[NSString stringWithFormat:@"%@", [volumesField stringValue]] forKey:@"volume"];
 	[values setObject:[NSString stringWithFormat:@"%d", [[mangaStatus selectedCell] tag]] forKey:@"status"];
 	
-	PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(addMangaCallback:)];
-	AddOperation * o = [[AddOperation alloc] initWithID:sm.__id withType:@"manga" values:values callback:callback];
+	PGZCallback * callback = [[[PGZCallback alloc] initWithInstance:self selector:@selector(addMangaCallback:)] autorelease];
+	AddOperation * o = [[[AddOperation alloc] initWithID:sm.__id withType:@"manga" values:values callback:callback] autorelease];
 	o.__db = self.__db;
 	[mal.queue addOperation:o];
 }

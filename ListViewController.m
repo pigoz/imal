@@ -9,6 +9,7 @@
 #import "ListViewController.h"
 #import "InfoWindowController.h"
 #import "ListWindowController.h"
+#import "MALHandler.h"
 
 @implementation ListViewController
 
@@ -164,6 +165,11 @@
 
 -(void)constructPredicate
 {
+	MALHandler * mal = [MALHandler sharedHandler];
+	[mal.dl_queue cancelAllOperations]; // this is to keep downloading first the images we are currently displaying
+	mal.dl_queue = [NSOperationQueue new];
+	[mal.dl_queue setMaxConcurrentOperationCount:2];
+	
 	NSString * _search_pred = nil;
 	if(searchString) 
 		_search_pred = [NSString stringWithFormat:@"(title like[c] \"*%@*\") OR (synonyms like[c] \"*%@*\")", searchString, searchString];

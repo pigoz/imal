@@ -92,6 +92,11 @@
 	return IKImageBrowserNSImageRepresentationType;
 }
 
+-(void)imageDownloadCancel
+{
+	__downloadOperation = nil;
+}
+
 - (id) imageRepresentation
 {
 	if(!__img){ //image not cached in memory
@@ -103,10 +108,11 @@
 	if(!__img && !__downloadOperation){
 		MALHandler *mal = [MALHandler sharedHandler];
 		NSString * url = (NSString*) [self valueForKey:@"image_url"];
-		PGZCallback * callback = [[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)];
-		__downloadOperation = [[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
+		PGZCallback * callback = [[[PGZCallback alloc] initWithInstance:self selector:@selector(scaledImageCallback:)] autorelease];
+		__downloadOperation = [[[ImageDownloadOperation alloc] initWithURL:url type:[[self entity] name] 
 																  entryid:[[self valueForKey:@"id"] intValue] 
-																 callback:callback];
+																 callback:callback] autorelease];
+		__downloadOperation.__cancelled = [[[PGZCallback alloc] initWithInstance:self selector:@selector(imageDownloadCancel)] autorelease];
 		[mal.dl_queue addOperation:__downloadOperation];
 	}
 	return __img;

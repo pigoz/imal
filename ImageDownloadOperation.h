@@ -15,6 +15,7 @@
 	NSString * __type;
 	NSInteger __id;
 	PGZCallback * __callback;
+	PGZCallback * __cancelled;
 }
 
 -(ImageDownloadOperation *) initWithURL:(NSString *) url type:(NSString *) type entryid:(NSInteger) entryid callback:(PGZCallback *) callback;
@@ -23,5 +24,7 @@
 @property (retain) NSString *__type;
 @property (assign) NSInteger __id;
 @property (retain) PGZCallback * __callback;
+
+@property (retain) PGZCallback * __cancelled;
 
 @end
