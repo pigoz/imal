@@ -36,6 +36,7 @@
 -(IBAction)cancel:(id)sender;
 -(IBAction)edit:(id)sender;
 
--(IBAction)increaseWatchedTimes:(id)sender;
+-(IBAction)viewOnMAL:(id)sender;
+-(IBAction)editOnMAL:(id)sender;
 
 @end

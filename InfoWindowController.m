@@ -24,8 +24,6 @@
 	
 	[self addObserver:self forKeyPath:@"__entry" 
 							options:(NSKeyValueObservingOptionNew) context:NULL];
-	
-	//[(NSPanel *)self.window becomesKeyOnlyIfNeeded:YES];
 }
 
 
@@ -71,17 +69,26 @@
 	[spinner stopAnimation:nil];
 }
 
+-(IBAction)viewOnMAL:(id)sender
+{
+	NSString * url = [NSString stringWithFormat:@"http://myanimelist.net/%@/%@/", 
+					 [[__entry entity] name],
+					 [__entry valueForKey:@"id"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+-(IBAction)editOnMAL:(id)sender
+{
+	NSString * url = [NSString stringWithFormat:@"http://myanimelist.net/panel.php?go=edit%@&id=%@", 
+					  [[[__entry entity] name] isEqual:@"anime"] ? @"" : @"manga",
+					  [__entry valueForKey:@"my_id"]];
+	[[NSWorkspace sharedWorkspace] openURL:[NSURL URLWithString:url]];
+}
+
 -(IBAction)edit:(id)sender
 {
 	[spinner startAnimation:nil];
 	[spinner setHidden:NO];
 	
-	Entry * e = self.__entry;
-	[e setValue:[NSNumber numberWithInt:[rewatching intValue]] forKey:@"my_rewatching"];
-	[e setValue:[NSNumber numberWithInt:[my_episodes intValue]] forKey:@"my_episodes"];
-	[e setValue:[NSNumber numberWithInt:[status selectedTag]] forKey:@"my_status"];
-	[e setValue:[NSNumber numberWithInt:[score selectedTag]] forKey:@"score"];
-		
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	[values setObject:[my_episodes stringValue] forKey:@"episode"];
 	[values setObject:[rewatching stringValue] forKey:@"enable_rewatching"];
@@ -90,38 +97,7 @@
 	
 	PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(editCallback)] autorelease];
 	MALHandler * mal = [MALHandler sharedHandler];
-	[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
-}
-
--(void)increaseEpisodeCallback:(Entry *)e
-{
-	int ep = [[e valueForKey:@"my_episodes"] intValue]+1;
-	[e setValue:[NSNumber numberWithInt:ep] forKey:@"my_episodes"];
-}
-
--(void)increaseChapterCallback:(Entry *)e
-{
-	int ep = [[e valueForKey:@"my_chapters"] intValue]+1;
-	[e setValue:[NSNumber numberWithInt:ep] forKey:@"my_chapters"];
-}
-
--(void)decreaseEpisodeCallback:(Entry *)e
-{
-	int ep = [[e valueForKey:@"my_episodes"] intValue]-1;
-	[e setValue:[NSNumber numberWithInt:ep] forKey:@"my_episodes"];
-}
-
--(void)decreaseChapterCallback:(Entry *)e
-{
-	int ep = [[e valueForKey:@"my_chapters"] intValue]-1;
-	[e setValue:[NSNumber numberWithInt:ep] forKey:@"my_chapters"];
-}
-
--(IBAction)increaseWatchedTimes:(id)sender
-{
-	Entry * e = self.__entry;
-	MALHandler * mal = [MALHandler sharedHandler];
-	[mal increaseRewatchedValue:[[e valueForKey:@"my_id"] intValue] anime_id:[[e valueForKey:@"id"] intValue]];
+	[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:self.__entry values:values callback:cb] autorelease]];
 }
 
 -(IBAction)increaseEpisodeCount:(id)sender
@@ -132,13 +108,13 @@
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	if([[[e entity] name] isEqual:@"anime"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_episodes"] intValue]+1] forKey:@"episode"];
-		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(increaseEpisodeCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
+		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(increaseEpisodeCallback:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
 	}
 	if([[[e entity] name] isEqual:@"manga"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_chapters"] intValue]+1] forKey:@"chapter"];
-		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(increaseChapterCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
+		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(increaseChapterCallback:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
 	}
 }
 
@@ -150,13 +126,13 @@
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	if([[[e entity] name] isEqual:@"anime"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_episodes"] intValue]-1] forKey:@"episode"];
-		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(decreaseEpisodeCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
+		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(decreaseEpisodeCallback:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
 	}
 	if([[[e entity] name] isEqual:@"manga"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_chapters"] intValue]-1] forKey:@"chapter"];
-		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(decreaseChapterCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
+		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(decreaseChapterCallback:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
 	}
 }
 
