@@ -191,7 +191,7 @@
 		if(_search_pred) _and_pred = _search_pred;
 	}
 	
-	[__array_controller setFilterPredicate:[NSPredicate predicateWithFormat:_and_pred]];	
+	[__array_controller setFilterPredicate:[NSPredicate predicateWithFormat:_and_pred]];
 }
 
 -(IBAction)showInfoPanel:(id)sender

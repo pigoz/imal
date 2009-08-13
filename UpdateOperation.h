@@ -8,21 +8,20 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Entry;
 
 @class PGZCallback;
 
 @interface UpdateOperation : NSOperation {
-	int __id;
+	Entry * __entry;
 	NSMutableDictionary * __values;
-	NSString * __type;
 	PGZCallback * __callback;
 }
 
-@property (assign) int __id;
+@property (retain) Entry * __entry;
 @property (retain) NSMutableDictionary * __values;
-@property (retain) NSString * __type;
 @property (retain) PGZCallback * __callback;
 
--(UpdateOperation *) initWithID:(int) entryID withType:(NSString *) type values:(NSMutableDictionary*) values callback:(PGZCallback *) callback;
+-(UpdateOperation *) initWithEntry:(Entry *) entry values:(NSMutableDictionary*) values callback:(PGZCallback *) callback;
 
 @end
