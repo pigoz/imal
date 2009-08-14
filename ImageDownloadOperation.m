@@ -37,7 +37,7 @@
 		[self.__cancelled perform];
 		return;
 	}
-	
+	//NSLog(@"Downloading image-id: %d", self.__id);
 	NSData *fetchedData = [NSData dataWithContentsOfURL:[NSURL URLWithString:self.__url]];
 	
 	if(self.isCancelled){

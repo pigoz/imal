@@ -47,7 +47,19 @@
 
 -(void)updateUIWithEntry:(Entry *)e
 {
-	if(e){
+	if (e && [[[e entity] name] isEqual:@"manga"]){
+		[mangaTitle setStringValue:[e imageTitle]];
+		[mangaSubTitle setStringValue:[e imageSubtitle]];
+		[mangaStatus selectItemWithTag:[[e valueForKey:@"my_status"] intValue]];
+		[rereading setState:[[e valueForKey:@"my_rereading"] intValue]];
+		[chapters setStringValue:[[e valueForKey:@"chapters"] stringValue]];
+		[my_chapters setStringValue:[[e valueForKey:@"my_chapters"] stringValue]];
+		[volumes setStringValue:[[e valueForKey:@"volumes"] stringValue]];
+		[my_volumes setStringValue:[[e valueForKey:@"my_volumes"] stringValue]];
+		[mangaScore selectItemWithTag:[[e valueForKey:@"score"] intValue]];
+	}
+	
+	if(e && [[[e entity] name] isEqual:@"anime"]){
 		[title setStringValue:[e imageTitle]];
 		[subTitle setStringValue:[e imageSubtitle]];
 		[status selectItemWithTag:[[e valueForKey:@"my_status"] intValue]];
@@ -67,6 +79,9 @@
 {
 	[spinner setHidden:YES];
 	[spinner stopAnimation:nil];
+	[manga_spinner setHidden:YES];
+	[manga_spinner stopAnimation:nil];
+	[self updateUIWithEntry:self.__entry];
 }
 
 -(IBAction)viewOnMAL:(id)sender
@@ -88,6 +103,8 @@
 {
 	[spinner startAnimation:nil];
 	[spinner setHidden:NO];
+	[manga_spinner startAnimation:nil];
+	[manga_spinner setHidden:NO];
 	
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	[values setObject:[my_episodes stringValue] forKey:@"episode"];

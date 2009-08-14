@@ -95,7 +95,10 @@
 		[__array_controller addObserver:self forKeyPath:@"selectedObjects" 
 								options:(NSKeyValueObservingOptionNew) context:NULL];
 	} else {
-		// TODO infoPanel for mangas
+		infoPanelController = [[InfoWindowController alloc] initWithWindowNibName:@"MangaInfoPanel"];
+		[infoPanelController loadWindow];
+		[__array_controller addObserver:self forKeyPath:@"selectedObjects" 
+								options:(NSKeyValueObservingOptionNew) context:NULL];
 	}
 
 }
@@ -217,6 +220,9 @@
 	[infoPanelController release];
 	NSUserDefaultsController * defaults = [NSUserDefaultsController sharedUserDefaultsController];
 	[defaults removeObserver:self forKeyPath:@"values.zoomValue"];
+	[__array_controller removeObserver:self forKeyPath:@"selectedObjects"];
+	[__array_controller removeObserver:self forKeyPath:@"arrangedObjects.imageRepresentation"];
+	[__array_controller removeObserver:self forKeyPath:@"arrangedObjects.imageSubtitle"];
 	[super dealloc];
 }
 

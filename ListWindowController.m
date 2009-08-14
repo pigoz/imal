@@ -24,12 +24,6 @@
 @synthesize decreaseString;
 @synthesize searchField;
 
-- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
-{
-	[self showWindow:nil];
-	return NO;
-}
-
 -(IBAction)showSearchPanel:(id)sender
 {
 	@synchronized(self){

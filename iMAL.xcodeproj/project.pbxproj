@@ -21,6 +21,7 @@
 		7B64251F1028795A00E87480 /* NSImage+NiceScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */; };
 		7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */; };
 		7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67F3F1102996520031EAC2 /* PGZCallback.m */; };
+		7B69323F10355F7100F45D3C /* MangaInfoPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B69323E10355F7100F45D3C /* MangaInfoPanel.xib */; };
 		7B6DFCA2102DC00400A0D261 /* InfoWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DFCA1102DC00400A0D261 /* InfoWindowController.m */; };
 		7B6DFD23102DCB7000A0D261 /* UpdateOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B6DFD22102DCB7000A0D261 /* UpdateOperation.m */; };
 		7B70955F102D6C9200FED6BA /* ListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B70955E102D6C9200FED6BA /* ListViewController.m */; };
@@ -92,6 +93,7 @@
 		7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSXMLNode+stringForXPath.m"; sourceTree = "<group>"; };
 		7B67F3F0102996520031EAC2 /* PGZCallback.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGZCallback.h; sourceTree = "<group>"; };
 		7B67F3F1102996520031EAC2 /* PGZCallback.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGZCallback.m; sourceTree = "<group>"; };
+		7B69323E10355F7100F45D3C /* MangaInfoPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MangaInfoPanel.xib; sourceTree = "<group>"; };
 		7B6DFCA0102DC00400A0D261 /* InfoWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoWindowController.h; sourceTree = "<group>"; };
 		7B6DFCA1102DC00400A0D261 /* InfoWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoWindowController.m; sourceTree = "<group>"; };
 		7B6DFD21102DCB7000A0D261 /* UpdateOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UpdateOperation.h; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				7BD2337C10282BC0009447A6 /* SearchPanel.xib */,
 				7B98FB90102AF99D00173E92 /* ListView.xib */,
 				7B97510B1031784D0053E007 /* InfoPanel.xib */,
+				7B69323E10355F7100F45D3C /* MangaInfoPanel.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -401,6 +404,7 @@
 				7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */,
 				7BC945AB102D698A00F8063D /* icon.icns in Resources */,
 				7B97510C1031784D0053E007 /* InfoPanel.xib in Resources */,
+				7B69323F10355F7100F45D3C /* MangaInfoPanel.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

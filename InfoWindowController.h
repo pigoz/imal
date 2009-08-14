@@ -20,7 +20,20 @@
 	IBOutlet NSTextField * episodes;
 	IBOutlet NSTextField * my_episodes;
 	
+	
+	IBOutlet NSTextField * mangaTitle;
+	IBOutlet NSTextField * mangaSubTitle;
+	IBOutlet NSPopUpButton * mangaStatus;
+	IBOutlet NSPopUpButton * mangaScore;
+	
+	IBOutlet NSButton * rereading;
+	IBOutlet NSTextField * chapters;
+	IBOutlet NSTextField * my_chapters;
+	IBOutlet NSTextField * volumes;
+	IBOutlet NSTextField * my_volumes;
+	
 	IBOutlet NSProgressIndicator * spinner;
+	IBOutlet NSProgressIndicator * manga_spinner;
 	
 	Entry * __entry;
 	

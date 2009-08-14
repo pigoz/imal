@@ -104,7 +104,6 @@
 					stringWithFormat:@"/Users/%@/Library/Application Support/iMAL/images/%@/%@.jpg",NSUserName(),
 										[[self entity] name],[self valueForKey:@"id"]];
 		__img = [[NSImage alloc] initWithContentsOfFile: image_path];
-		return __img;
 	}
 	if(!__img && !__downloadOperation){
 		MALHandler *mal = [MALHandler sharedHandler];

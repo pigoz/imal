@@ -171,6 +171,11 @@
     return reply;
 }
 
+- (BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication hasVisibleWindows:(BOOL)flag
+{
+	[window makeKeyAndOrderFront:nil];
+	return NO;
+}
 
 /**
     Implementation of dealloc, to release the retained variables.
