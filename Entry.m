@@ -44,7 +44,7 @@
 	if([[[self entity] name] isEqual:@"anime"]){
 		if([[self valueForKey:@"my_status"] intValue] == 1)
 			if([[self valueForKey:@"my_rewatching"] boolValue])
-				return [NSString stringWithFormat:@"Re-Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
+				return [NSString stringWithFormat:@"Rewatching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
 			else
 				return [NSString stringWithFormat:@"Watching: %@/%@ episodes", [self valueForKey:@"my_episodes"],[self valueForKey:@"episodes"]];
 		if([[self valueForKey:@"my_status"] intValue] == 2)
@@ -58,7 +58,10 @@
 	}
 	if([[[self entity] name] isEqual:@"manga"]){
 		if([[self valueForKey:@"my_status"] intValue] == 1)
-			return [NSString stringWithFormat:@"Reading: %@/%@ chapters", [self valueForKey:@"my_chapters"],[self valueForKey:@"chapters"]];
+			if([[self valueForKey:@"my_rereading"] boolValue])
+				return [NSString stringWithFormat:@"Rereading: %@/%@ chapters", [self valueForKey:@"my_chapters"],[self valueForKey:@"chapters"]];
+			else
+				return [NSString stringWithFormat:@"Reading: %@/%@ chapters", [self valueForKey:@"my_chapters"],[self valueForKey:@"chapters"]];
 		if([[self valueForKey:@"my_status"] intValue] == 2)
 			return @"Completed";
 		if([[self valueForKey:@"my_status"] intValue] == 3)

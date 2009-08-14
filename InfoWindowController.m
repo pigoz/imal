@@ -50,13 +50,13 @@
 	if (e && [[[e entity] name] isEqual:@"manga"]){
 		[mangaTitle setStringValue:[e imageTitle]];
 		[mangaSubTitle setStringValue:[e imageSubtitle]];
-		[mangaStatus selectItemWithTag:[[e valueForKey:@"my_status"] intValue]];
+		[status selectItemWithTag:[[e valueForKey:@"my_status"] intValue]];
 		[rereading setState:[[e valueForKey:@"my_rereading"] intValue]];
 		[chapters setStringValue:[[e valueForKey:@"chapters"] stringValue]];
 		[my_chapters setStringValue:[[e valueForKey:@"my_chapters"] stringValue]];
 		[volumes setStringValue:[[e valueForKey:@"volumes"] stringValue]];
 		[my_volumes setStringValue:[[e valueForKey:@"my_volumes"] stringValue]];
-		[mangaScore selectItemWithTag:[[e valueForKey:@"score"] intValue]];
+		[score selectItemWithTag:[[e valueForKey:@"score"] intValue]];
 	}
 	
 	if(e && [[[e entity] name] isEqual:@"anime"]){
@@ -107,10 +107,18 @@
 	[manga_spinner setHidden:NO];
 	
 	NSMutableDictionary * values = [NSMutableDictionary new];
-	[values setObject:[my_episodes stringValue] forKey:@"episode"];
-	[values setObject:[rewatching stringValue] forKey:@"enable_rewatching"];
-	[values setObject:[NSString stringWithFormat:@"%d", [status selectedTag]] forKey:@"status"];
-	[values setObject:[NSString stringWithFormat:@"%d", [score selectedTag]] forKey:@"score"];
+	if([[[__entry entity] name] isEqual:@"anime"]){
+		[values setObject:[my_episodes stringValue] forKey:@"episode"];
+		[values setObject:[rewatching stringValue] forKey:@"enable_rewatching"];
+		[values setObject:[NSString stringWithFormat:@"%d", [status selectedTag]] forKey:@"status"];
+		[values setObject:[NSString stringWithFormat:@"%d", [score selectedTag]] forKey:@"score"];
+	} else {
+		[values setObject:[my_chapters stringValue] forKey:@"chapter"];
+		[values setObject:[my_volumes stringValue] forKey:@"volume"];
+		[values setObject:[rereading stringValue] forKey:@"enable_rereading"];
+		[values setObject:[NSString stringWithFormat:@"%d", [status selectedTag]] forKey:@"status"];
+		[values setObject:[NSString stringWithFormat:@"%d", [score selectedTag]] forKey:@"score"];
+	}
 	
 	PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(editCallback)] autorelease];
 	MALHandler * mal = [MALHandler sharedHandler];
@@ -125,13 +133,13 @@
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	if([[[e entity] name] isEqual:@"anime"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_episodes"] intValue]+1] forKey:@"episode"];
-		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(increaseEpisodeCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
+		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(updateUIWithEntry:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
 	}
 	if([[[e entity] name] isEqual:@"manga"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_chapters"] intValue]+1] forKey:@"chapter"];
-		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(increaseChapterCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
+		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(updateUIWithEntry:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
 	}
 }
 
@@ -143,13 +151,13 @@
 	NSMutableDictionary * values = [NSMutableDictionary new];
 	if([[[e entity] name] isEqual:@"anime"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_episodes"] intValue]-1] forKey:@"episode"];
-		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(decreaseEpisodeCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
+		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(updateUIWithEntry:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
 	}
 	if([[[e entity] name] isEqual:@"manga"]){
 		[values setObject:[NSString stringWithFormat:@"%d", [[e valueForKey:@"my_chapters"] intValue]-1] forKey:@"chapter"];
-		//PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(decreaseChapterCallback:) argumentObject:e] autorelease];
-		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:nil] autorelease]];
+		PGZCallback * cb = [[[PGZCallback alloc] initWithInstance:self selector:@selector(updateUIWithEntry:) argumentObject:e] autorelease];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:e values:values callback:cb] autorelease]];
 	}
 }
 

@@ -207,4 +207,46 @@
 	[_resp release];
 }
 
+-(void)increaseRereadValue:(int)my_id manga_id:(int)manga_id
+{
+	if(![self isLoggedIn]) [self login]; // let's login?
+	
+	NSURLResponse* resp;
+	NSError* error;
+	
+	// scraping HTML page
+	NSString * url = [NSString stringWithFormat:@"http://myanimelist.net/panel.php?go=editmanga&id=%d", my_id];
+	NSMutableURLRequest * req = [[NSMutableURLRequest alloc] initWithURL: [NSURL URLWithString:url]];
+	
+	[req setHTTPMethod:@"GET"];
+	[req setValue:@"application/x-www-form-urlencoded" forHTTPHeaderField:@"Content-Type"];
+	[req setValue:@"gzip" forHTTPHeaderField:@"Accept-Encoding"];
+	
+	NSData * _r = [NSURLConnection sendSynchronousRequest:req returningResponse:&resp error:&error];
+	NSString * _resp = [[NSString alloc] initWithData:_r encoding:NSUTF8StringEncoding];
+	
+	NSString * value = [_resp stringByMatching:@"<input type=\"text\" class=\"inputtext\" size=\"4\" value=\"([0-9]+)\" name=\"times_read\"/>"
+						   withReferenceFormat:@"$1"];
+	
+	NSString *new_value = [NSString stringWithFormat:@"%d",[value intValue]+1];
+	
+	// Building XML to post with normal API
+	NSXMLElement *entry = (NSXMLElement *)[NSXMLNode elementWithName:@"entry"];
+	NSXMLDocument *xml = [[NSXMLDocument alloc] initWithRootElement:entry];
+	[xml setVersion:@"1.0"];
+	[xml setCharacterEncoding:@"UTF-8"];
+	[entry addChild:[NSXMLNode elementWithName:@"times_reread" stringValue:new_value]];
+	NSData *xmldata = [xml XMLDataWithOptions:NSXMLDocumentTidyXML];
+	NSLog(@"%@", [[[NSString alloc]initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease]);
+	
+	// Send post request
+	NSString * resource = [NSString stringWithFormat:@"/%@list/update/%d.xml", @"manga", manga_id];
+	NSString * xmlstr = [[[NSString alloc] initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease];
+	xmldata = [[NSString stringWithFormat:@"data=%@", xmlstr] dataUsingEncoding:NSUTF8StringEncoding];
+	[self post:resource data:xmldata];
+	[xml release];
+	
+	[_resp release];
+}
+
 @end

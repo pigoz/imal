@@ -42,8 +42,14 @@
 		   [[self.__entry valueForKey:@"chapters"] intValue] == 0)){
 			[self.__entry setValue:[NSNumber numberWithInt:[[self.__values valueForKey:@"chapter"] intValue]] forKey:@"my_chapters"];
 		}
+		if([_k isEqual:@"volume"] && ([[self.__values valueForKey:@"volume"] intValue] <= [[self.__entry valueForKey:@"volumes"] intValue] || 
+									   [[self.__entry valueForKey:@"volumes"] intValue] == 0)){
+			[self.__entry setValue:[NSNumber numberWithInt:[[self.__values valueForKey:@"volume"] intValue]] forKey:@"my_volumes"];
+		}
 		if([_k isEqual:@"enable_rewatching"])
 			[self.__entry setValue:[NSNumber numberWithInt:[[self.__values valueForKey:@"enable_rewatching"] intValue]] forKey:@"my_rewatching"];
+		if([_k isEqual:@"enable_rereading"])
+			[self.__entry setValue:[NSNumber numberWithInt:[[self.__values valueForKey:@"enable_rereading"] intValue]] forKey:@"my_rereading"];
 		if([_k isEqual:@"status"])
 			[self.__entry setValue:[NSNumber numberWithInt:[[self.__values valueForKey:@"status"] intValue]] forKey:@"my_status"];
 		if([_k isEqual:@"score"])
@@ -73,6 +79,7 @@
 	
 	if([resp_code isMatchedByRegex:@"^Updated$"]){ // RegExKit ownz?
 		BOOL will_increase_rewatched_value = NO; // will we or not?
+		BOOL will_increase_reread_value = NO; // will we or not? (the return)
 		
 		if([[[self.__entry entity] name] isEqual:@"anime"]){
 			if([[__entry valueForKey:@"my_rewatching"] boolValue] &&
@@ -80,13 +87,22 @@
 			   [[__values valueForKey:@"episode"] intValue] == [[__entry valueForKey:@"episodes"] intValue]) // we finished the episodes
 				will_increase_rewatched_value = YES;
 		} else {
-			// TODO check rereading for manga
+			if([[__entry valueForKey:@"my_rereading"] boolValue] &&
+			   ([[__entry valueForKey:@"my_chapters"] intValue] < [[__entry valueForKey:@"chapters"] intValue] &&
+			   [[__values valueForKey:@"chapter"] intValue] == [[__entry valueForKey:@"chapters"] intValue] ||
+				[[__entry valueForKey:@"my_volumes"] intValue] < [[__entry valueForKey:@"volumes"] intValue] &&
+				[[__values valueForKey:@"volume"] intValue] == [[__entry valueForKey:@"volumes"] intValue]))
+				will_increase_reread_value = YES;
 		}
 		[self updateEntryWithCurrentValues]; // modify data model if network model was updated correctly
 		
 		if(will_increase_rewatched_value){
 			[mal increaseRewatchedValue:[[__entry valueForKey:@"my_id"] intValue]// increases rewatched/reread values
 							   anime_id:[[__entry valueForKey:@"id"] intValue]]; // this is not reflected on the local model
+		}
+		if(will_increase_reread_value){
+			[mal increaseRereadValue:[[__entry valueForKey:@"my_id"] intValue] 
+							manga_id:[[__entry valueForKey:@"id"] intValue]];
 		}
 	}
 	
