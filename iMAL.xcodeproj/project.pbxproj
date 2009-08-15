@@ -18,6 +18,8 @@
 		7B2AC6761025DCCC004559D0 /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AC6751025DCCC004559D0 /* SearchWindowController.m */; };
 		7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5610199C48007B3B7F /* PreferencesController.m */; };
 		7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7B3B802F102C9DCF00A5D2F0 /* Repository.icns */; };
+		7B5E36DD1036DC9000C0FA69 /* PreferencesRecognition.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E36DC1036DC9000C0FA69 /* PreferencesRecognition.xib */; };
+		7B5E36E01036DCC300C0FA69 /* RecognitionPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E36DF1036DCC300C0FA69 /* RecognitionPrefsViewController.m */; };
 		7B64251F1028795A00E87480 /* NSImage+NiceScaling.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */; };
 		7B64254210287C3500E87480 /* NSXMLNode+stringForXPath.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B64254110287C3500E87480 /* NSXMLNode+stringForXPath.m */; };
 		7B67F3F2102996520031EAC2 /* PGZCallback.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B67F3F1102996520031EAC2 /* PGZCallback.m */; };
@@ -88,6 +90,9 @@
 		7B2AC6741025DCCC004559D0 /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		7B2AC6751025DCCC004559D0 /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
 		7B3B802F102C9DCF00A5D2F0 /* Repository.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Repository.icns; sourceTree = "<group>"; };
+		7B5E36DC1036DC9000C0FA69 /* PreferencesRecognition.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesRecognition.xib; sourceTree = "<group>"; };
+		7B5E36DE1036DCC300C0FA69 /* RecognitionPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognitionPrefsViewController.h; sourceTree = "<group>"; };
+		7B5E36DF1036DCC300C0FA69 /* RecognitionPrefsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecognitionPrefsViewController.m; sourceTree = "<group>"; };
 		7B64251D1028795A00E87480 /* NSImage+NiceScaling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSImage+NiceScaling.h"; sourceTree = "<group>"; };
 		7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSImage+NiceScaling.m"; sourceTree = "<group>"; };
 		7B64254010287C3500E87480 /* NSXMLNode+stringForXPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSXMLNode+stringForXPath.h"; sourceTree = "<group>"; };
@@ -233,6 +238,7 @@
 				7B98FB90102AF99D00173E92 /* ListView.xib */,
 				7B97510B1031784D0053E007 /* InfoPanel.xib */,
 				7B69323E10355F7100F45D3C /* MangaInfoPanel.xib */,
+				7B5E36DC1036DC9000C0FA69 /* PreferencesRecognition.xib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -281,6 +287,8 @@
 				7B939F6010199CCE007B3B7F /* GeneralPrefsViewController.m */,
 				7BBBAB15102569E600E33747 /* MALPrefsViewController.h */,
 				7BBBAB16102569E600E33747 /* MALPrefsViewController.m */,
+				7B5E36DE1036DCC300C0FA69 /* RecognitionPrefsViewController.h */,
+				7B5E36DF1036DCC300C0FA69 /* RecognitionPrefsViewController.m */,
 			);
 			name = Preferences;
 			sourceTree = "<group>";
@@ -418,6 +426,7 @@
 				7BC945AB102D698A00F8063D /* icon.icns in Resources */,
 				7B97510C1031784D0053E007 /* InfoPanel.xib in Resources */,
 				7B69323F10355F7100F45D3C /* MangaInfoPanel.xib in Resources */,
+				7B5E36DD1036DC9000C0FA69 /* PreferencesRecognition.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +463,7 @@
 				7B6DFCA2102DC00400A0D261 /* InfoWindowController.m in Sources */,
 				7B6DFD23102DCB7000A0D261 /* UpdateOperation.m in Sources */,
 				7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */,
+				7B5E36E01036DCC300C0FA69 /* RecognitionPrefsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

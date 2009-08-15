@@ -11,6 +11,7 @@
 #import "MBPreferencesController.h"
 #import "GeneralPrefsViewController.h"
 #import "MALPrefsViewController.h"
+#import "RecognitionPrefsViewController.h"
 
 @implementation PreferencesController
 
@@ -37,7 +38,8 @@
 {
 	GeneralPrefsViewController *general = [[GeneralPrefsViewController alloc] initWithNibName:@"PreferencesGeneral" bundle:nil];
 	MALPrefsViewController *mal = [[MALPrefsViewController alloc] initWithNibName:@"PreferencesMAL" bundle:nil];
-	[[MBPreferencesController sharedController] setModules:[NSArray arrayWithObjects:general, mal, nil]];
+	RecognitionPrefsViewController *rec = [[RecognitionPrefsViewController alloc] initWithNibName:@"PreferencesRecognition" bundle:nil];
+	[[MBPreferencesController sharedController] setModules:[NSArray arrayWithObjects:general, mal, rec, nil]];
 	[general release];
 }
 

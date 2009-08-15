@@ -14,13 +14,25 @@
 
 -(void) sample
 {
+	NSUserDefaultsController * defaults = [NSUserDefaultsController sharedUserDefaultsController];
+	NSMutableArray * paths = [[[NSMutableArray alloc] init] autorelease];
+	
+	BOOL only_rec_paths = [[defaults.values valueForKey:@"recognizedPathsOnly"] boolValue];
+	
+	if(only_rec_paths)
+	for(NSMutableDictionary * d in [defaults.values valueForKey:@"preferencesAnimePaths"]){
+		NSString * path = [d valueForKey:@"path"];
+		if(path && [[NSFileManager defaultManager] fileExistsAtPath:path]){
+			[paths addObject:[[path copy] autorelease]];
+		}
+	}
+	
 	NSTask *lsof = [[[NSTask alloc] init] autorelease];
 	NSTask *grep = [[[NSTask alloc] init] autorelease];
 	
 	// lsof task
 	[lsof setLaunchPath:@"/usr/sbin/lsof"];
-	// TODO Build a preference pane with directories
-	[lsof setArguments:[NSArray arrayWithObjects:@"-c", @"mplayer", @"+D", @"/Users/stefano/Movies/", @"+D", @"/Volumes/external#1/", @"-F", @"n", nil]];
+	[lsof setArguments:[NSArray arrayWithObjects:@"-c", @"mplayer", @"-F", @"n", nil]];
 	
 	// grep task
 	[grep setLaunchPath:@"/usr/bin/grep"];
@@ -41,14 +53,22 @@
 	NSString *string = [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
 	NSString *path = [string stringByMatching:@"^n" replace:1 withReferenceFormat:@""];
 	
-	if(path && ![path isEqual:@""])
-		self.playingPath = [string stringByMatching:@"^n" replace:1 withReferenceFormat:@""];
-	else
+	if(path && ![path isEqual:@""]){
+		BOOL detected = YES;
+		if(only_rec_paths){
+			detected = NO;
+			for(NSString * default_path in paths)
+				if([path rangeOfString:default_path].location!=NSNotFound) detected = YES;
+		}
+		if(detected){
+			self.playingPath = [string stringByMatching:@"^n" replace:1 withReferenceFormat:@""];
+			#ifdef DEBUG
+			NSLog([NSString stringWithFormat:@"Detected file playing: %@", self.playingPath]);
+			#endif
+		}
+	} else {
 		self.playingPath = nil;
-	
-	#ifdef DEBUG
-	if(self.playingPath) NSLog([NSString stringWithFormat:@"Detected file playing: %@", self.playingPath]);
-	#endif
+	}
 	
 	[self performSelector:@selector(sample) withObject:nil afterDelay: 10];
 }
