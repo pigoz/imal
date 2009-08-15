@@ -45,6 +45,7 @@
 		7BC945AB102D698A00F8063D /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7BC945AA102D698A00F8063D /* icon.icns */; };
 		7BCCF93D102C31B3000423D9 /* PGZFilterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCCF93C102C31B3000423D9 /* PGZFilterView.m */; };
 		7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BCCF989102C382D000423D9 /* toolbar_get_info.png */; };
+		7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD895D1036AA6A0081692E /* MPlayerHandler.m */; };
 		7BD2337D10282BC0009447A6 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD2337C10282BC0009447A6 /* SearchPanel.xib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
@@ -132,6 +133,8 @@
 		7BCCF93B102C31B3000423D9 /* PGZFilterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGZFilterView.h; sourceTree = "<group>"; };
 		7BCCF93C102C31B3000423D9 /* PGZFilterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PGZFilterView.m; sourceTree = "<group>"; };
 		7BCCF989102C382D000423D9 /* toolbar_get_info.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_get_info.png; sourceTree = "<group>"; };
+		7BCD895C1036AA6A0081692E /* MPlayerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPlayerHandler.h; sourceTree = "<group>"; };
+		7BCD895D1036AA6A0081692E /* MPlayerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPlayerHandler.m; sourceTree = "<group>"; };
 		7BD2337C10282BC0009447A6 /* SearchPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iMAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -154,6 +157,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7BCD895B1036AA100081692E /* Recognition */,
 				7BCCF93A102C31A6000423D9 /* Widgets */,
 				7B98FB94102AFB3200173E92 /* List */,
 				7BD2336E10282B1B009447A6 /* Search */,
@@ -339,6 +343,15 @@
 			name = Widgets;
 			sourceTree = "<group>";
 		};
+		7BCD895B1036AA100081692E /* Recognition */ = {
+			isa = PBXGroup;
+			children = (
+				7BCD895C1036AA6A0081692E /* MPlayerHandler.h */,
+				7BCD895D1036AA6A0081692E /* MPlayerHandler.m */,
+			);
+			name = Recognition;
+			sourceTree = "<group>";
+		};
 		7BD2336E10282B1B009447A6 /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -440,6 +453,7 @@
 				7B70955F102D6C9200FED6BA /* ListViewController.m in Sources */,
 				7B6DFCA2102DC00400A0D261 /* InfoWindowController.m in Sources */,
 				7B6DFD23102DCB7000A0D261 /* UpdateOperation.m in Sources */,
+				7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +495,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = iMAL_Prefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = iMAL;
