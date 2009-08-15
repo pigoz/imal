@@ -29,30 +29,41 @@
 	
 	NSTask *lsof = [[[NSTask alloc] init] autorelease];
 	NSTask *grep = [[[NSTask alloc] init] autorelease];
+	NSTask *grep2 = [[[NSTask alloc] init] autorelease];
 	
 	// lsof task
 	[lsof setLaunchPath:@"/usr/sbin/lsof"];
 	[lsof setArguments:[NSArray arrayWithObjects:@"-c", @"mplayer", @"-F", @"n", nil]];
 	
-	// grep task
+	//grep task
 	[grep setLaunchPath:@"/usr/bin/grep"];
 	[grep setArguments:[NSArray arrayWithObjects:@"-e", @".mkv$", @"-e", @".avi$",nil]];
 	
-	// lets pipe lsof | grep
+	// grep2 task
+	[grep2 setLaunchPath:@"/usr/bin/egrep"];
+	[grep2 setArguments:[NSArray arrayWithObjects:@"-v", @"(OP|ED)", nil]]; // will not report openings and endings, 
+																	//which get reported if you have mplayer with ordered chapters
+	
+	// lets pipe lsof | grep | grep
 	NSPipe * pipe = [NSPipe pipe];
 	[lsof setStandardOutput:pipe];
 	[grep setStandardInput:pipe];
 	
+	NSPipe * pipe_b = [NSPipe pipe];
+	[grep setStandardOutput:pipe_b];
+	[grep2 setStandardInput:pipe_b];
+	
 	[lsof setStandardError:[NSFileHandle fileHandleWithNullDevice]]; // we dont need errors!
-	[grep setStandardOutput:[NSPipe pipe]];
+	[grep2 setStandardOutput:[NSPipe pipe]];
 	
 	[lsof launch];
 	[grep launch];
+	[grep2 launch];
 	 	
-	NSData *data = [[[grep standardOutput] fileHandleForReading] readDataToEndOfFile];
+	NSData *data = [[[grep2 standardOutput] fileHandleForReading] readDataToEndOfFile];
 	NSString *string = [[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding] autorelease];
 	NSString *path = [string stringByMatching:@"^n" replace:1 withReferenceFormat:@""];
-	
+		
 	if(path && ![path isEqual:@""]){
 		BOOL detected = YES;
 		if(only_rec_paths){
@@ -61,15 +72,14 @@
 				if([path rangeOfString:default_path].location!=NSNotFound) detected = YES;
 		}
 		if(detected){
-			self.playingPath = [string stringByMatching:@"^n" replace:1 withReferenceFormat:@""];
 			#ifdef DEBUG
-			NSLog([NSString stringWithFormat:@"Detected file playing: %@", self.playingPath]);
+			NSLog([NSString stringWithFormat:@"Detected file playing: %@", path]);
 			#endif
+			self.playingPath = path;
 		}
 	} else {
 		self.playingPath = nil;
 	}
-	
 	[self performSelector:@selector(sample) withObject:nil afterDelay: 10];
 }
 

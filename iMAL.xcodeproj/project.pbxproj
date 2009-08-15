@@ -49,6 +49,7 @@
 		7BCCF98A102C382D000423D9 /* toolbar_get_info.png in Resources */ = {isa = PBXBuildFile; fileRef = 7BCCF989102C382D000423D9 /* toolbar_get_info.png */; };
 		7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD895D1036AA6A0081692E /* MPlayerHandler.m */; };
 		7BD2337D10282BC0009447A6 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD2337C10282BC0009447A6 /* SearchPanel.xib */; };
+		7BD7BE3F1036FD62009C9A66 /* AnimeRecognitionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7BE3E1036FD62009C9A66 /* AnimeRecognitionEngine.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -141,6 +142,8 @@
 		7BCD895C1036AA6A0081692E /* MPlayerHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPlayerHandler.h; sourceTree = "<group>"; };
 		7BCD895D1036AA6A0081692E /* MPlayerHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPlayerHandler.m; sourceTree = "<group>"; };
 		7BD2337C10282BC0009447A6 /* SearchPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
+		7BD7BE3D1036FD62009C9A66 /* AnimeRecognitionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeRecognitionEngine.h; sourceTree = "<group>"; };
+		7BD7BE3E1036FD62009C9A66 /* AnimeRecognitionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeRecognitionEngine.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iMAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -356,6 +359,8 @@
 			children = (
 				7BCD895C1036AA6A0081692E /* MPlayerHandler.h */,
 				7BCD895D1036AA6A0081692E /* MPlayerHandler.m */,
+				7BD7BE3D1036FD62009C9A66 /* AnimeRecognitionEngine.h */,
+				7BD7BE3E1036FD62009C9A66 /* AnimeRecognitionEngine.m */,
 			);
 			name = Recognition;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				7B6DFD23102DCB7000A0D261 /* UpdateOperation.m in Sources */,
 				7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */,
 				7B5E36E01036DCC300C0FA69 /* RecognitionPrefsViewController.m in Sources */,
+				7BD7BE3F1036FD62009C9A66 /* AnimeRecognitionEngine.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
