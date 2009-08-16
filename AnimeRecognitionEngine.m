@@ -32,16 +32,16 @@
 	_sanitized_name = [_sanitized_name stringByMatching:@"(XviD|DivX|H264|H\\.264|h264|h\\.264|AVI|MP4|x264|x\\.264)" replace:50 withReferenceString:@""];
 	
 	return _sanitized_name;
-} 
+}
 
-- (int) recognize: (NSString *)name
+- (NSArray *) allAnime
 {
 	NSManagedObjectContext *moc = [_app managedObjectContext];
 	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"anime" inManagedObjectContext:moc];
 	
 	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
 	[request setEntity:entityDescription];
-		
+	
 	// Set example predicate and sort orderings...
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(my_status == 1)"];
 	
@@ -49,13 +49,15 @@
 	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"id" ascending:YES];
 	[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
 	[sortDescriptor release];
-		
+	
 	NSError *error = nil;
 	NSArray *array = [moc executeFetchRequest:request error:&error];
-	if (array == nil)
-	{
-		// Deal with error...
-	}
+	return array;
+}
+
+- (int) recognize: (NSString *)name
+{
+	NSArray * array = [self allAnime];
 	NSManagedObject * match = nil;
 	NSRange max = NSMakeRange(0, 0);
 	for(NSManagedObject * _e in array){

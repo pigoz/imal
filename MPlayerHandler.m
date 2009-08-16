@@ -41,7 +41,7 @@
 	
 	// grep2 task
 	[grep2 setLaunchPath:@"/usr/bin/egrep"];
-	[grep2 setArguments:[NSArray arrayWithObjects:@"-v", @"(OP|ED)", nil]]; // will not report openings and endings, 
+	[grep2 setArguments:[NSArray arrayWithObjects:@"-v", @"(OP|ED|Teaser)", nil]]; // will not report openings and endings, 
 																	//which get reported if you have mplayer with ordered chapters
 	
 	// lets pipe lsof | grep | grep
