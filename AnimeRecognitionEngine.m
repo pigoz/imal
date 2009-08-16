@@ -8,6 +8,7 @@
 
 #import "AnimeRecognitionEngine.h"
 #import "Entry.h";
+#import "NSManagedObjectContext+PGZUtils.h"
 
 
 @implementation AnimeRecognitionEngine
@@ -104,31 +105,37 @@
 	
 	// will do group by myself since core data sucks
 	NSMutableArray * animes = [[NSMutableArray alloc] init];
-//	Entry * cur = nil;
-//	int score_sum = 0;
 	NSArray * animes_tgs = [self allAnimeWithTrigrams:tgs];
-	for(NSManagedObject * o in animes_tgs){
-		Entry * e = [o valueForKey:@"anime"];
-
+	for(NSManagedObject * o in animes_tgs){ // single anime tag
 		BOOL found = NO;
-		NSMutableArray * cur;
-		for(NSMutableArray * temp in animes){
+		NSMutableDictionary * cur;
+		for(NSMutableDictionary * temp in animes){
 			cur = temp;
-			if([[temp objectAtIndex:0] isEqual:e]){
+			if([[temp valueForKey:@"anime_id"] isEqual:[[o valueForKey:@"anime"] valueForKey:@"id"]]){
 				found = YES; break;
 			}
 		}
 		
 		if(found){
-			int score = [[o valueForKey:@"score"] intValue] + [[cur objectAtIndex:1] intValue];
-			[cur removeObjectAtIndex:1];
-			[cur insertObject:[NSNumber numberWithInt:score] atIndex:1];
+			int score = [[o valueForKey:@"score"] intValue] + [[cur valueForKey:@"score"] intValue];
+			[cur setValue:[NSNumber numberWithInt:score] forKey:@"score"];
 		} else {
-			[animes insertObject:[NSMutableArray arrayWithObjects:e, [o valueForKey:@"score"]] atIndex:[animes count]];
+			Entry * anime = [[o valueForKey:@"anime"] valueForKey:@"id"];
+			NSNumber * score = [o valueForKey:@"score"];
+			[animes addObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:anime,score,nil]
+																 forKeys:[NSArray arrayWithObjects:@"anime_id",@"score",nil]]];
 		}
 	}
 	
-	NSLog(@"%@", [animes objectAtIndex:0]);
+	int max;
+	int score_max = 0;
+	for(NSMutableDictionary * a in animes){
+		if([[a valueForKey:@"score"] intValue] > score_max){
+			max = [[a valueForKey:@"anime_id"] intValue];
+			score_max = [[a valueForKey:@"score"] intValue];
+		}
+	}
+	NSLog(@"%@", [[[_app managedObjectContext] fetchEntityWithName:@"anime" withID:max] valueForKey:@"title"]);
 	
 	return 1;
 }
