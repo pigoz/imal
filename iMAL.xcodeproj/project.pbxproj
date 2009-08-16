@@ -10,6 +10,7 @@
 		2F7446990DB6B7EA00F9684A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2F7446970DB6B7EA00F9684A /* MainMenu.xib */; };
 		770B37ED0679A11B001EADE2 /* iMAL_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 770B37EC0679A11B001EADE2 /* iMAL_DataModel.xcdatamodel */; };
 		77C8280E06725ACE000B614F /* iMAL_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */; };
+		7B09FA0F1037FD560031C5DF /* IndexOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B09FA0E1037FD560031C5DF /* IndexOperation.m */; };
 		7B0B9DB8102B0C2D004A3AF5 /* NSManagedObjectContext+PGZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B9DB7102B0C2D004A3AF5 /* NSManagedObjectContext+PGZUtils.m */; };
 		7B0B9DBB102B0DC5004A3AF5 /* RefreshOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B9DBA102B0DC5004A3AF5 /* RefreshOperation.m */; };
 		7B0B9DC2102B0F71004A3AF5 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B0B9DC1102B0F71004A3AF5 /* Entry.m */; };
@@ -80,6 +81,8 @@
 		77C82804067257F0000B614F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		77C8280B06725ACE000B614F /* iMAL_AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iMAL_AppDelegate.h; sourceTree = "<group>"; };
 		77C8280C06725ACE000B614F /* iMAL_AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iMAL_AppDelegate.m; sourceTree = "<group>"; };
+		7B09FA0D1037FD560031C5DF /* IndexOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IndexOperation.h; sourceTree = "<group>"; };
+		7B09FA0E1037FD560031C5DF /* IndexOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IndexOperation.m; sourceTree = "<group>"; };
 		7B0B9DB6102B0C2D004A3AF5 /* NSManagedObjectContext+PGZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSManagedObjectContext+PGZUtils.h"; sourceTree = "<group>"; };
 		7B0B9DB7102B0C2D004A3AF5 /* NSManagedObjectContext+PGZUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSManagedObjectContext+PGZUtils.m"; sourceTree = "<group>"; };
 		7B0B9DB9102B0DC5004A3AF5 /* RefreshOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RefreshOperation.h; sourceTree = "<group>"; };
@@ -341,6 +344,8 @@
 				7BACB5CA102B64C8009E41C9 /* ImageDownloadOperation.m */,
 				7B6DFD21102DCB7000A0D261 /* UpdateOperation.h */,
 				7B6DFD22102DCB7000A0D261 /* UpdateOperation.m */,
+				7B09FA0D1037FD560031C5DF /* IndexOperation.h */,
+				7B09FA0E1037FD560031C5DF /* IndexOperation.m */,
 			);
 			name = Network;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */,
 				7B5E36E01036DCC300C0FA69 /* RecognitionPrefsViewController.m in Sources */,
 				7BD7BE3F1036FD62009C9A66 /* AnimeRecognitionEngine.m in Sources */,
+				7B09FA0F1037FD560031C5DF /* IndexOperation.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,6 +13,8 @@
 #import "PGZCallback.h"
 #import "Entry.h"
 
+#import "IndexOperation.h"
+
 @implementation RefreshOperation
 
 @synthesize __type;
@@ -71,7 +73,8 @@
 		}
 	}
 	
-	[__done perform];
+	[mal.queue addOperation:[[[IndexOperation alloc] initWithContext:self.__db callback:__done]autorelease]];
+	//[__done perform];
 	
 }
 
