@@ -55,6 +55,84 @@
 	return array;
 }
 
+- (NSArray *) allAnimeWithTrigrams:(NSArray *) trigrams
+{
+	NSManagedObjectContext *moc = [_app managedObjectContext];
+	NSEntityDescription *entityDescription = [NSEntityDescription entityForName:@"trigram" inManagedObjectContext:moc];
+	
+	NSFetchRequest *request = [[[NSFetchRequest alloc] init] autorelease];
+	[request setEntity:entityDescription];
+	
+	// Set example predicate and sort orderings...
+	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tg IN %@", trigrams];
+	
+	[request setPredicate:predicate];
+	//NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"anime" ascending:YES];
+	//[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
+	//[sortDescriptor release];
+	
+	NSError *error = nil;
+	NSArray *array = [moc executeFetchRequest:request error:&error];
+	return array;
+}
+
+- (void) insertSortedinArray:(NSMutableArray *)a anime:(NSDictionary *) d
+{
+	int idx = 0;
+	for(NSDictionary * e in a){
+		if([[d valueForKey:@"score"] intValue] > [[e valueForKey:@"score"] intValue]){
+			[a insertObject:d atIndex:idx];
+			return;
+		}
+		idx++;
+	}
+	[a insertObject:d atIndex:[a count]];
+	return;
+}
+
+- (int) recognizetg: (NSString *)name
+{
+	NSMutableArray * tgs = [[[NSMutableArray alloc] init] autorelease];
+	NSArray * words = [name componentsSeparatedByString:@" "];
+	for(NSString * word in words){
+		word = [@" " stringByAppendingString:word]; // this way the first trigram will notice it is a word start
+		if([word length]>=3)
+			for(int idx = 0; idx <= [word length]-3; idx++){
+				[tgs addObject: [word substringWithRange:NSMakeRange(idx, 3)]]; //trigram
+			}
+	}
+	
+	// will do group by myself since core data sucks
+	NSMutableArray * animes = [[NSMutableArray alloc] init];
+//	Entry * cur = nil;
+//	int score_sum = 0;
+	NSArray * animes_tgs = [self allAnimeWithTrigrams:tgs];
+	for(NSManagedObject * o in animes_tgs){
+		Entry * e = [o valueForKey:@"anime"];
+
+		BOOL found = NO;
+		NSMutableArray * cur;
+		for(NSMutableArray * temp in animes){
+			cur = temp;
+			if([[temp objectAtIndex:0] isEqual:e]){
+				found = YES; break;
+			}
+		}
+		
+		if(found){
+			int score = [[o valueForKey:@"score"] intValue] + [[cur objectAtIndex:1] intValue];
+			[cur removeObjectAtIndex:1];
+			[cur insertObject:[NSNumber numberWithInt:score] atIndex:1];
+		} else {
+			[animes insertObject:[NSMutableArray arrayWithObjects:e, [o valueForKey:@"score"]] atIndex:[animes count]];
+		}
+	}
+	
+	NSLog(@"%@", [animes objectAtIndex:0]);
+	
+	return 1;
+}
+
 - (int) recognize: (NSString *)name
 {
 	NSArray * array = [self allAnime];
@@ -88,7 +166,7 @@
 	//NSString * _dir = ([path stringByMatching:@"(/.+/)" withReferenceFormat:@"$1"]);
 	NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
 	NSLog(@"Detected file to recognize: %@", [self sanitize:_f_name]);
-	[self recognize:[self sanitize:_f_name]];
+	[self recognizetg:[self sanitize:_f_name]];
 	
 }
 

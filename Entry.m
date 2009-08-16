@@ -30,6 +30,11 @@
 	return self;
 }
 
+-(int)compare:(Entry *)e
+{
+	return [[self valueForKey:@"id"] compare:[e valueForKey:@"id"]];
+}
+
 - (NSString *)imageTitle
 {
 	if(!__title){

@@ -52,6 +52,7 @@
 			NSInteger __id = [[n stringForXPath:[NSString stringWithFormat:@"series_%@db_id", __type]] intValue];
 			NSManagedObject * m = [__db fetchOrCreateEntityWithName:__type withID:__id];
 			[m setValue:[n stringForXPath:@"series_title"] forKey:@"title"];
+			[m setValue:[n stringForXPath:@"series_synonyms"] forKey:@"synonyms"];
 			[m setValue:[n stringForXPath:@"series_image" ] forKey:@"image_url"];
 			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_status"] intValue]] forKey:@"my_status"];
 			[m setValue:[NSNumber numberWithInt:[[n stringForXPath:@"my_score"] intValue]] forKey:@"score"];
@@ -73,8 +74,10 @@
 		}
 	}
 	
-	[mal.queue addOperation:[[[IndexOperation alloc] initWithContext:self.__db callback:__done]autorelease]];
-	//[__done perform];
+	if([self.__type isEqual:@"anime"])
+		[mal.queue addOperation:[[[IndexOperation alloc] initWithContext:self.__db callback:__done]autorelease]];
+	else
+		[__done perform];
 	
 }
 

@@ -52,10 +52,10 @@
 {
 	NSString * _sanitized_name;
 	
-	_sanitized_name = [string stringByMatching:@"[\\_|\\-|\\.]" replace:50 withReferenceString:@" "];
-	_sanitized_name = [_sanitized_name stringByMatching:@"^\\s" replace:50 withReferenceString:@""];
-	_sanitized_name = [_sanitized_name stringByMatching:@"[:&\\!]" replace:50 withReferenceString:@""];
+	_sanitized_name = [string stringByMatching:@"[\\_|\\.|\\-]" replace:50 withReferenceString:@" "];
+	_sanitized_name = [_sanitized_name stringByMatching:@"[:&;]" replace:50 withReferenceString:@""];
 	_sanitized_name = [_sanitized_name stringByMatching:@"\\s\\s+" replace:50 withReferenceString:@" "];
+	_sanitized_name = [_sanitized_name stringByMatching:@"^\\s" replace:50 withReferenceString:@""];
 	
 	return _sanitized_name;
 }
@@ -72,9 +72,14 @@
 								inManagedObjectContext:self.__db];
 		[new setValue:tg forKey:@"tg"];
 		[new setValue:anime forKey:@"anime"];
+		[new setValue:[NSNumber numberWithInt:1] forKey:@"score"];
+#ifdef DEBUG
 		NSLog(@"Inserted trigram:%@", tg);
+#endif
 	} else {
+#ifdef DEBUG
 		NSLog(@"Old Trigram:%@", tg);
+#endif
 	}
 }
 
@@ -82,16 +87,36 @@
 {
 	NSArray * animes = [self allAnime];
 	for(Entry * e in animes){
-		NSLog(@"Indexing:%@", [self sanitize: [e imageTitle]]);
+#ifdef DEBUG
+		NSLog(@"Indexing title:%@", [self sanitize: [e imageTitle]]);
+#endif
 		NSArray * title_words = [[self sanitize: [e imageTitle]] componentsSeparatedByString:@" "];
 		for(NSString * word in title_words){
 			word = [@" " stringByAppendingString:word]; // this way the first trigram will notice it is a word start
 			if([word length]>=3)
+			for(int idx = 0; idx <= [word length]-3; idx++){
+				NSString * tg = [word substringWithRange:NSMakeRange(idx, 3)]; //trigram
+				[self insertTrigram:tg anime:e];
+			}
+		}
+		
+		// Index synonyms
+		
+		if([e valueForKey:@"synonyms"] && ![[e valueForKey:@"synonyms"] isEqual:@""]){
+#ifdef DEBUG
+			NSLog(@"Indexing synonyms:%@", [self sanitize: [e valueForKey:@"synonyms"]]);
+#endif
+			NSArray * subtitle_words = [[self sanitize: [e valueForKey:@"synonyms"]] componentsSeparatedByString:@" "]; // we have alredy removed the ;
+			for(NSString * word in subtitle_words){
+				word = [@" " stringByAppendingString:word]; // this way the first trigram will notice it is a word start
+				if([word length]>=3)
 				for(int idx = 0; idx <= [word length]-3; idx++){
 					NSString * tg = [word substringWithRange:NSMakeRange(idx, 3)]; //trigram
 					[self insertTrigram:tg anime:e];
 				}
+			}
 		}
+		
 	}
 	
 	[__done perform];
