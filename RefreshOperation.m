@@ -20,17 +20,19 @@
 @synthesize __type;
 @synthesize __db;
 @synthesize __start;
+@synthesize __update;
 @synthesize __done;
 
 
--(RefreshOperation *) initWithType:(NSString *) type context:(NSManagedObjectContext *) db 
-							 start:(PGZCallback *) start done:(PGZCallback *) done
+-(RefreshOperation *) initWithType:(NSString *) type context:(NSManagedObjectContext *) db  
+							 start:(PGZCallback *) start update:(PGZCallback *)update done:(PGZCallback *) done
 {
 	self = [super init];
 	if (self != nil) {
 		self.__type = type;
 		self.__db = db;
 		self.__start = start;
+		self.__update = update;
 		self.__done = done;
 	}
 	return self;
@@ -41,10 +43,16 @@
 {
 	[__start perform];
 	
+	[__update performWithObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Refreshing %@list", self.__type],
+																			@"title", @"downloading data from MAL", @"message", nil]];
+	
 	MALHandler * mal = [MALHandler sharedHandler];
 	NSData * _result = [mal getList:self.__type];
 	
+	
 	if(_result != nil){ // recived something
+		[__update performWithObject:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"Refreshing %@list", self.__type],
+									  @"title", @"parsing XML data", @"message", nil]];
 		NSError* error;
 		NSXMLDocument * doc = [[NSXMLDocument alloc] initWithData:_result options:NSXMLDocumentTidyXML error:&error];
 		NSArray * entryNodes = [doc nodesForXPath:[NSString stringWithFormat:@"myanimelist/%@",__type] error:&error];
@@ -76,7 +84,7 @@
 	}
 	
 	if([self.__type isEqual:@"anime"])
-		[mal.queue addOperation:[[[IndexOperation alloc] initWithContext:self.__db callback:__done]autorelease]];
+		[mal.queue addOperation:[[[IndexOperation alloc] initWithContext:self.__db update:self.__update callback:__done]autorelease]];
 	else
 		[__done perform];
 	

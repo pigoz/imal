@@ -22,6 +22,8 @@
 	
 	IBOutlet NSWindow * progressSheet;
 	IBOutlet NSProgressIndicator * progressIndicator;
+	IBOutlet NSTextField * progressTitle;
+	IBOutlet NSTextField * progressMessage;
 	
 	NSString * increaseString;
 	NSString * decreaseString;

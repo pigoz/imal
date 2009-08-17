@@ -12,12 +12,14 @@
 
 @interface IndexOperation : NSOperation {
 	NSManagedObjectContext * __db;
+	PGZCallback * __update;
 	PGZCallback * __done;
 }
 
 @property (retain) NSManagedObjectContext * __db;
+@property (retain) PGZCallback * __update;
 @property (retain) PGZCallback * __done;
 
--(IndexOperation *)initWithContext:(NSManagedObjectContext *)ctx callback:(PGZCallback *) cb;
+-(IndexOperation *)initWithContext:(NSManagedObjectContext *)ctx update:(PGZCallback *)update callback:(PGZCallback *) cb;
 
 @end

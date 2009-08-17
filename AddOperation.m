@@ -52,7 +52,7 @@
 	[mal post:resource data:xmldata];
 	[xml release];
 	
-	RefreshOperation * r = [[RefreshOperation alloc] initWithType:self.__type context:self.__db start:nil done:self.__callback];
+	RefreshOperation * r = [[RefreshOperation alloc] initWithType:self.__type context:self.__db start:nil update:nil done:self.__callback];
 	[mal.queue addOperation:r];
 	
 	//[self.__callback perform];

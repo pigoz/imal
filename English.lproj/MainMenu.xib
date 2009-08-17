@@ -8,9 +8,9 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="656"/>
 			<integer value="566"/>
-			<integer value="426"/>
+			<integer value="21"/>
+			<integer value="656"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -101,10 +101,9 @@
 								<string key="NSToolbarItemPaletteLabel">Showing List</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSPopUpButton" key="NSToolbarItemView" id="215251779">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{0, 14}, {100, 25}}</string>
-									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSPopUpButtonCell" key="NSCell" id="1060197370">
 										<int key="NSCellFlags">-2076049856</int>
@@ -211,10 +210,9 @@
 								<string key="NSToolbarItemPaletteLabel">Filter</string>
 								<nil key="NSToolbarItemToolTip"/>
 								<object class="NSSearchField" key="NSToolbarItemView" id="703116148">
-									<reference key="NSNextResponder"/>
+									<nil key="NSNextResponder"/>
 									<int key="NSvFlags">268</int>
 									<string key="NSFrame">{{0, 14}, {138, 22}}</string>
-									<reference key="NSSuperview"/>
 									<bool key="NSEnabled">YES</bool>
 									<object class="NSSearchFieldCell" key="NSCell" id="864567800">
 										<int key="NSCellFlags">343014976</int>
@@ -1848,6 +1846,22 @@
 					</object>
 					<int key="connectionID">665</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">progressTitle</string>
+						<reference key="source" ref="1071184351"/>
+						<reference key="destination" ref="377961131"/>
+					</object>
+					<int key="connectionID">666</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">progressMessage</string>
+						<reference key="source" ref="1071184351"/>
+						<reference key="destination" ref="601829540"/>
+					</object>
+					<int key="connectionID">667</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -2914,7 +2928,7 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
-					<string>{{401, 186}, {616, 227}}</string>
+					<string>{{401, 413}, {616, 0}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3006,7 +3020,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">665</int>
+			<int key="maxID">667</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3066,7 +3080,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>__app</string>
 							<string>progressIndicator</string>
+							<string>progressMessage</string>
 							<string>progressSheet</string>
+							<string>progressTitle</string>
 							<string>searchField</string>
 							<string>showingList</string>
 							<string>targetView</string>
@@ -3075,7 +3091,9 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>iMAL_AppDelegate</string>
 							<string>NSProgressIndicator</string>
+							<string>NSTextField</string>
 							<string>NSWindow</string>
+							<string>NSTextField</string>
 							<string>NSSearchField</string>
 							<string>NSPopUpButton</string>
 							<string>NSView</string>

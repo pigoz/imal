@@ -9,7 +9,8 @@
 #import "AnimeRecognitionEngine.h"
 #import "Entry.h";
 #import "NSManagedObjectContext+PGZUtils.h"
-
+#import "MALHandler.h"
+#import "UpdateOperation.h"
 
 @implementation AnimeRecognitionEngine
 
@@ -143,34 +144,7 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 	return _result;
 }
 
-- (int) recognize: (NSString *)name
-{
-	NSArray * array = [self allAnime];
-	NSManagedObject * match = nil;
-	NSRange max = NSMakeRange(0, 0);
-	for(NSManagedObject * _e in array){
-		NSRange range = [name rangeOfString:[_e valueForKey:@"title"]];
-		if(range.location!=NSNotFound && range.length > max.length){
-			max = range;
-			match = _e;
-		} else { // title did not match try alternatives
-			NSArray * alternatives = [[_e valueForKey:@"synonyms"] componentsSeparatedByString:@";"];
-			for(NSString *_a in alternatives){
-				NSRange range = [name rangeOfString:_a];
-				if(range.location!=NSNotFound && range.length > max.length){
-					max = range;
-					match = _e;
-				}
-			}
-		}
-	}
-	if(match){
-		NSLog(@"Recognized playing anime: ", [match valueForKey:@"title"]);
-		return [[match valueForKey:@"id"] intValue];
-	}
-	return -1;
-}
-
+#ifdef DEBUG
 -(void)printRecognitionStats:(NSArray *)a
 {
 	@try{
@@ -180,6 +154,27 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 	}
 	}@catch (NSException * e) { return; }
 }
+#endif
+
+- (BOOL) recognizeEpisodeByTryingNext:(NSArray *)a onName:(NSString *)title{
+	@try{
+		for(int i=0; i<3; i++){
+			NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:i] valueForKey:@"anime_id"] intValue]];
+			if([[anime valueForKey:@"type"] intValue] != 3){ // not a movie
+				int next_episode = [[anime valueForKey:@"my_episodes"] intValue] + 1;
+				if([title isMatchedByRegex:[NSString stringWithFormat:@"%d", next_episode]]){ // filename contains the episode number
+					MALHandler * mal = [MALHandler sharedHandler];
+					NSMutableDictionary * values = [NSMutableDictionary new];
+					[values setObject:@"1" forKey:@"status"];
+					[values setObject:[NSString stringWithFormat:@"%d", next_episode] forKey:@"episode"];
+					[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:(Entry *)anime values:values callback:nil] autorelease]];
+					return YES;
+				}
+			}
+		}
+	}@catch (NSException * e) { return NO; }
+	return NO;
+}
 
 - (void) scrobble: (NSString *)path
 {
@@ -187,7 +182,10 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 		NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
 		NSLog(@"Detected file to recognize: %@", [self sanitize:_f_name]);
 		NSArray * animes = [self recognizetg:[self sanitize:_f_name]];
+#ifdef DEBUG
 		[self printRecognitionStats:animes];
+#endif
+		[self recognizeEpisodeByTryingNext:animes onName:_f_name];
 	}
 }
 

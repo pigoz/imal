@@ -15,13 +15,15 @@
 @implementation IndexOperation
 
 @synthesize __db;
+@synthesize __update;
 @synthesize __done;
 
--(IndexOperation *)initWithContext:(NSManagedObjectContext *)ctx callback:(PGZCallback *) cb
+-(IndexOperation *)initWithContext:(NSManagedObjectContext *)ctx update:(PGZCallback *)update callback:(PGZCallback *) cb
 {
 	self = [super init];
 	if (self != nil) {
 		self.__db = ctx;
+		self.__update = update;
 		self.__done = cb;
 	}
 	return self;
@@ -48,6 +50,7 @@
 	return array;
 }
 
+// removes some useless punctuation from string
 - (NSString *) sanitize: (NSString *) string
 {
 	NSString * _sanitized_name;
@@ -105,6 +108,8 @@
 	NSArray * animes = [self allAnime];
 	for(Entry * e in animes){
 		if(![[e valueForKey:@"indexed"] boolValue]){
+		[__update performWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Indexing animelist",@"title", 
+									 [NSString stringWithFormat:@"indexing: %@", [e imageTitle]], @"message", nil]];
 #ifdef DEBUG
 			NSLog(@"Indexing title:%@", [self sanitize: [e imageTitle]]);
 #endif

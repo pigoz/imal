@@ -105,8 +105,14 @@
 
 -(void)updateSheet:(NSDictionary *)options
 {
-	//NSString * title = [options valueForKey:@"title"];
-	//NSString * message = [options valueForKey:@"title"];
+	NSString * title = [options valueForKey:@"title"];
+	NSString * message = [options valueForKey:@"message"];
+	if(title){
+		[progressTitle setStringValue:title];
+	}
+	if(message){
+		[progressMessage setStringValue:message];
+	}
 }
 
 -(void)hideSheet
@@ -142,11 +148,12 @@
 	[[__app managedObjectContext] save:&error];
 	MALHandler * mal = [MALHandler sharedHandler];
 	PGZCallback * start = [[PGZCallback alloc] initWithInstance:self selector:@selector(showSheet)];
+	PGZCallback * update = [[PGZCallback alloc] initWithInstance:self selector:@selector(updateSheet:)];
 	PGZCallback * done = [[PGZCallback alloc] initWithInstance:self selector:@selector(hideSheet)];
 	if([[showingList selectedCell] tag] == 0 ){
-		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext] start:start done:done]];
+		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"anime" context:[__app managedObjectContext] start:start update:update done:done]];
 	} else {
-		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"manga" context:[__app managedObjectContext] start:start done:done]];
+		[mal.queue addOperation:[[RefreshOperation alloc] initWithType:@"manga" context:[__app managedObjectContext] start:start update:update done:done]];
 	}
 }
 

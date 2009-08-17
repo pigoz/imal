@@ -14,15 +14,17 @@
 	NSString * __type;
 	NSManagedObjectContext * __db;
 	PGZCallback * __start;
+	PGZCallback * __update;
 	PGZCallback * __done;
 }
 
 @property (retain) NSString * __type;
 @property (retain) NSManagedObjectContext * __db;
 @property (retain) PGZCallback * __start;
+@property (retain) PGZCallback * __update;
 @property (retain) PGZCallback * __done;
 
 -(RefreshOperation *) initWithType:(NSString *) type context:(NSManagedObjectContext *) db 
-							 start:(PGZCallback *) start done:(PGZCallback *) done;
+							 start:(PGZCallback *) start update:(PGZCallback *)update done:(PGZCallback *) done;
 
 @end
