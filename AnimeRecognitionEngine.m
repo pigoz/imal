@@ -68,30 +68,35 @@
 	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"tg IN %@", trigrams];
 	
 	[request setPredicate:predicate];
-	//NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"anime" ascending:YES];
-	//[request setSortDescriptors:[NSArray arrayWithObject:sortDescriptor]];
-	//[sortDescriptor release];
 	
 	NSError *error = nil;
 	NSArray *array = [moc executeFetchRequest:request error:&error];
 	return array;
 }
 
-- (void) insertSortedinArray:(NSMutableArray *)a anime:(NSDictionary *) d
+// sort the anime array first using descending score, if score is equal sort by 
+// ascending anime id (this way first seasons will be first when their
+// title is a substring of the second season)
+NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 {
-	int idx = 0;
-	for(NSDictionary * e in a){
-		if([[d valueForKey:@"score"] intValue] > [[e valueForKey:@"score"] intValue]){
-			[a insertObject:d atIndex:idx];
-			return;
-		}
-		idx++;
+    int v1 = [[ob1 objectForKey:@"score"] intValue];
+    int v2 = [[ob2 objectForKey:@"score"] intValue];
+    if (v1 > v2)
+        return NSOrderedAscending;
+    else if (v1 < v2)
+        return NSOrderedDescending;
+    else {
+		int id1 = [[ob1 objectForKey:@"anime_id"] intValue];
+		int id2 = [[ob2 objectForKey:@"anime_id"] intValue];
+		if (id1 > id2)
+			return NSOrderedDescending;
+		else if (v1 < v2)
+			return NSOrderedAscending;
+        else return NSOrderedSame;
 	}
-	[a insertObject:d atIndex:[a count]];
-	return;
 }
 
-- (int) recognizetg: (NSString *)name
+- (NSArray *) recognizetg: (NSString *)name
 {
 	NSMutableArray * tgs = [[[NSMutableArray alloc] init] autorelease];
 	NSArray * words = [name componentsSeparatedByString:@" "];
@@ -127,17 +132,15 @@
 		}
 	}
 	
-	int max;
-	int score_max = 0;
-	for(NSMutableDictionary * a in animes){
-		if([[a valueForKey:@"score"] intValue] > score_max){
-			max = [[a valueForKey:@"anime_id"] intValue];
-			score_max = [[a valueForKey:@"score"] intValue];
-		}
+	NSArray * ordered_animes = [animes sortedArrayUsingFunction:arraySortDesc context:@"score"];
+	NSArray * _result;
+	@try{
+		_result = [ordered_animes subarrayWithRange:NSMakeRange(0, 5)];
 	}
-	NSLog(@"%@", [[[_app managedObjectContext] fetchEntityWithName:@"anime" withID:max] valueForKey:@"title"]);
-	
-	return 1;
+	@catch (NSException *e){
+		_result = ordered_animes;
+	} @finally { }
+	return _result;
 }
 
 - (int) recognize: (NSString *)name
@@ -168,17 +171,28 @@
 	return -1;
 }
 
+-(void)printRecognitionStats:(NSArray *)a
+{
+	@try{
+	for(int i=0; i<3; i++){
+		NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:i] valueForKey:@"anime_id"] intValue]];
+		NSLog(@"%d: %@, score: %d", i+1,[anime valueForKey:@"title"], [[[a objectAtIndex:i] valueForKey:@"score"] intValue]);
+	}
+	}@catch (NSException * e) { return; }
+}
+
 - (void) scrobble: (NSString *)path
 {
-	//NSString * _dir = ([path stringByMatching:@"(/.+/)" withReferenceFormat:@"$1"]);
-	NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
-	NSLog(@"Detected file to recognize: %@", [self sanitize:_f_name]);
-	[self recognizetg:[self sanitize:_f_name]];
-	
+	if(path!=NULL && path!=nil && ![path isEqual:[NSNull null]]){
+		NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
+		NSLog(@"Detected file to recognize: %@", [self sanitize:_f_name]);
+		NSArray * animes = [self recognizetg:[self sanitize:_f_name]];
+		[self printRecognitionStats:animes];
+	}
 }
 
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-	if(![[change valueForKey:NSKeyValueChangeOldKey] isEqual:[change valueForKey:NSKeyValueChangeNewKey]] && [change valueForKey:NSKeyValueChangeNewKey])
+	if( ![[change valueForKey:NSKeyValueChangeOldKey] isEqual:[change valueForKey:NSKeyValueChangeNewKey]])
 		[self scrobble:[change valueForKey:NSKeyValueChangeNewKey]];
 }
 
