@@ -74,6 +74,9 @@
 	// Send post request
 	NSString * resource = [NSString stringWithFormat:@"/%@list/update/%d.xml", [[__entry entity] name], [[__entry valueForKey:@"id"] intValue]];
 	NSString * xmlstr = [[[NSString alloc] initWithData:xmldata encoding:NSUTF8StringEncoding] autorelease];
+#ifdef DEBUG
+	NSLog(xmlstr);
+#endif
 	xmldata = [[NSString stringWithFormat:@"data=%@", xmlstr] dataUsingEncoding:NSUTF8StringEncoding];
 	NSData * resp_code = [mal post:resource data:xmldata];
 	

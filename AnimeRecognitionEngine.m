@@ -176,11 +176,41 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 	return NO;
 }
 
+-(NSString *) inferSeriesNameFromFilepath:(NSString *)path
+{
+	NSString * _f_path = ([path stringByMatching:@"(/.+/).+$" withReferenceFormat:@"$1"]);
+	NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
+	
+	NSArray * ls = [[NSFileManager defaultManager] directoryContentsAtPath:_f_path];
+	
+	int min=9000;
+	for (NSString * _c_f_name in ls) {
+		if(![_c_f_name isEqualToString:_f_name] && [_c_f_name isMatchedByRegex:@"(.mkv$|.avi$)"] && ![_c_f_name isMatchedByRegex:@"(Teaser|OP|ED|Opening|Ending)"]){
+			NSString * _s_f_name = [self sanitize:_f_name];
+			NSString * _s_c_f_name = [self sanitize:_c_f_name];
+			
+			int l = 0;
+			for(int i = 0; i < [_s_f_name length] && i < [_s_c_f_name length]; i++){
+				NSRange r = NSMakeRange(0, i);
+				if([[_s_f_name substringWithRange:r] isEqualToString: [_s_c_f_name substringWithRange:r]]) l = i;
+				else break;
+			}
+			
+			if(l < min) min=l;
+		}	
+	}
+	NSString * result = [[self sanitize:_f_name] substringWithRange:NSMakeRange(0, min)];
+	result = [result stringByMatching:@"Ep$" replace:1 withReferenceString:@""];
+	result = [result stringByMatching:@"\\s+$" replace:1 withReferenceString:@""];	
+	return result;
+}
+
 - (void) scrobble: (NSString *)path
 {
 	if(path!=NULL && path!=nil && ![path isEqual:[NSNull null]]){
 		NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
 		NSLog(@"Detected file to recognize: %@", [self sanitize:_f_name]);
+		NSLog(@"Inferred series name: %@", [self inferSeriesNameFromFilepath:path]);
 		NSArray * animes = [self recognizetg:[self sanitize:_f_name]];
 #ifdef DEBUG
 		[self printRecognitionStats:animes];
