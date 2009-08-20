@@ -13,8 +13,8 @@
 
 
 - (NSDictionary *) registrationDictionaryForGrowl{
-	NSArray * n_all = [NSArray arrayWithObjects:@"Denwa", @"Scrobbled file", nil];
-	NSArray * n_default = [NSArray arrayWithObjects:@"Denwa", @"Scrobbled file", nil];
+	NSArray * n_all = [NSArray arrayWithObjects:@"KYON-KUN DENWA!!!", @"Scrobbled file", @"Added to list", nil];
+	NSArray * n_default = [NSArray arrayWithObjects:@"KYON-KUN DENWA!!!", @"Scrobbled file", @"Added to list", nil];
 	return [NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:n_all, n_default, nil]
 									   forKeys:[NSArray arrayWithObjects:GROWL_NOTIFICATIONS_ALL, GROWL_NOTIFICATIONS_DEFAULT, nil]];
 }
@@ -28,7 +28,7 @@
 {
 	[GrowlApplicationBridge notifyWithTitle:@"KYON-KUN DENWA!!!" 
 								description:@"Phone is ringing and iMAL is awesome!"
-						   notificationName:@"Denwa" iconData:nil 
+						   notificationName:@"KYON-KUN DENWA!!!" iconData:nil 
 								   priority:0 isSticky:NO clickContext:nil];
 }
 

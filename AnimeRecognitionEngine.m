@@ -38,6 +38,18 @@
 	return _sanitized_name;
 }
 
+- (NSString *) sanitize2: (NSString *) string
+{
+	NSString * _sanitized_name;
+	
+	_sanitized_name = [string stringByMatching:@"[\\_|\\.|\\-]" replace:50 withReferenceString:@" "];
+	_sanitized_name = [_sanitized_name stringByMatching:@"[:&;]" replace:50 withReferenceString:@""];
+	_sanitized_name = [_sanitized_name stringByMatching:@"\\s\\s+" replace:50 withReferenceString:@" "];
+	_sanitized_name = [_sanitized_name stringByMatching:@"^\\s" replace:50 withReferenceString:@""];
+	
+	return _sanitized_name;
+}
+
 - (NSArray *) allAnime
 {
 	NSManagedObjectContext *moc = [_app managedObjectContext];
@@ -150,6 +162,7 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 -(void)printRecognitionStats:(NSArray *)a
 {
 	@try{
+		NSLog(@"Relevant matches (ordered by relevance score):");
 	for(int i=0; i<6; i++){
 		NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:i] valueForKey:@"anime_id"] intValue]];
 		NSLog(@"%d: %@, score: %d, id: %d", i+1,[anime valueForKey:@"title"], [[[a objectAtIndex:i] valueForKey:@"score"] intValue],[[anime valueForKey:@"id"] intValue]);
@@ -158,30 +171,85 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 }
 #endif
 
-- (BOOL) recognizeEpisodeByTryingNext:(NSArray *)a onName:(NSString *)title{
-	@try{
-		for(int i=0; i<1; i++){
-			NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:i] valueForKey:@"anime_id"] intValue]];
-			if([[anime valueForKey:@"type"] intValue] != 3){ // not a movie
-				int next_episode = [[anime valueForKey:@"my_episodes"] intValue] + 1;
-				if([title isMatchedByRegex:[NSString stringWithFormat:@"%d", next_episode]]){ // filename contains the episode number
-					MALHandler * mal = [MALHandler sharedHandler];
-					NSMutableDictionary * values = [NSMutableDictionary new];
-					[values setObject:@"1" forKey:@"status"];
-					[values setObject:[NSString stringWithFormat:@"%d", next_episode] forKey:@"episode"];
-					[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:(Entry *)anime values:values callback:nil] autorelease]];
-					[GrowlApplicationBridge notifyWithTitle:[NSString stringWithFormat:@"Scrobbling file", [(Entry*)anime imageTitle]]
-												description:[NSString stringWithFormat:@"Scrobbling episode %@ of %@", [values valueForKey:@"episode"], [(Entry*)anime imageTitle]]
-										   notificationName:@"Scrobbled file" iconData:nil
-												   priority:0 isSticky:NO clickContext:nil];
-					return YES;
-				}
+-(NSArray *) updateScoreWithNumberBigramsOnResultArray:(NSArray *) array withFileName:(NSString *)string
+{
+	int highest_score = -1;
+	for(NSDictionary *d in array){
+		if(highest_score == -1) highest_score = [[d valueForKey:@"score"] intValue];
+		if(highest_score == [[d valueForKey:@"score"] intValue]){ // uncertainty state: try to resolve it with 
+													   // informations the trigrams didn't capture = bigrams!
+			NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[d valueForKey:@"anime_id"] intValue]];
+			NSString * title = [self sanitize2:[anime valueForKey:@"title"]];
+			NSString * synonyms = [self sanitize2:[anime valueForKey:@"synonyms"]];
+			
+			NSString * title_number_match = nil;
+			if([title isMatchedByRegex:@"\\s(\\d+)"]) title_number_match = [title stringByMatching:@"\\s(\\d+)" withReferenceFormat:@"$1"];
+
+			NSString * synonyms_number_match = nil;
+			if([synonyms isMatchedByRegex:@"\\s(\\d+)"]) synonyms_number_match = [synonyms stringByMatching:@"\\s(\\d+)" withReferenceFormat:@"$1"];
+			
+			if(title_number_match && [string isMatchedByRegex:[NSString stringWithFormat:@"\\s0{0,1}%@",title_number_match]] || 
+			   synonyms_number_match && [string isMatchedByRegex:[NSString stringWithFormat:@"\\s0{0,1}%@",synonyms_number_match]]){
+				
+				int new_score = [[d valueForKey:@"score"] intValue] + 4;
+				[d setValue:[NSNumber numberWithInt:new_score] forKey:@"score"];
 			}
 		}
-	}@catch (NSException * e) { return NO; }
+	}
+	NSArray * ordered_animes = [array sortedArrayUsingFunction:arraySortDesc context:@"score"];
+	NSArray * _result;
+	@try{
+		_result = [ordered_animes subarrayWithRange:NSMakeRange(0, 10)];
+	}
+	@catch (NSException *e){
+		_result = ordered_animes;
+	} @finally { }
+	return _result;
+}
+
+- (BOOL) recognizeEpisodeByTryingNext:(NSArray *)a onName:(NSString *)title{
+	NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:0] valueForKey:@"anime_id"] intValue]];
+	if([[anime valueForKey:@"type"] intValue] != 3){ // not a movie
+		int next_episode = [[anime valueForKey:@"my_episodes"] intValue] + 1 <= [[anime valueForKey:@"episodes"] intValue] ? [[anime valueForKey:@"my_episodes"] intValue] + 1 : 1;
+		if([title isMatchedByRegex:[NSString stringWithFormat:@"%d", next_episode]]){ // filename contains the episode number
+			MALHandler * mal = [MALHandler sharedHandler];
+			NSMutableDictionary * values = [NSMutableDictionary new];
+			
+			if(next_episode < [[anime valueForKey:@"episodes"] intValue]){
+				[values setObject:@"1" forKey:@"status"];
+			} else {
+				[values setObject:@"2" forKey:@"status"];
+				[values setObject:@"0" forKey:@"enable_rewatching"];
+			}
+			
+			if([[anime valueForKey:@"my_status"] intValue] == 2)
+				[values setObject:@"1" forKey:@"enable_rewatching"];
+			
+			[values setObject:[NSString stringWithFormat:@"%d", next_episode] forKey:@"episode"];
+			[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:(Entry *)anime values:values callback:nil] autorelease]];
+			[GrowlApplicationBridge notifyWithTitle:@"Scrobbling file"
+										description:[NSString stringWithFormat:@"Scrobbling episode %@ of %@", [values valueForKey:@"episode"], [(Entry*)anime imageTitle]]
+								   notificationName:@"Scrobbled file" iconData:nil
+										   priority:0 isSticky:NO clickContext:nil];
+			return YES;
+		}
+	} else { // it is a movie scrobble all the episodes in the movie
+		MALHandler * mal = [MALHandler sharedHandler];
+		NSMutableDictionary * values = [NSMutableDictionary new];
+		[values setObject:@"2" forKey:@"status"];
+		[values setObject:[[anime valueForKey:@"episodes"] stringValue] forKey:@"episode"];
+		[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:(Entry *)anime values:values callback:nil] autorelease]];
+		[GrowlApplicationBridge notifyWithTitle:@"Scrobbling file"
+									description:[NSString stringWithFormat:@"Scrobbling movie: %@", [(Entry*)anime imageTitle]]
+							   notificationName:@"Scrobbled file" iconData:nil
+									   priority:0 isSticky:NO clickContext:nil];
+		return YES;
+	}
+	
 	return NO;
 }
 
+// unused function which might be useful in the future
 -(NSString *) inferSeriesNameFromFilepath:(NSString *)path
 {
 	NSString * _f_path = ([path stringByMatching:@"(/.+/).+$" withReferenceFormat:@"$1"]);
@@ -215,13 +283,19 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 {
 	if(path!=NULL && path!=nil && ![path isEqual:[NSNull null]]){
 		NSString * _f_name = ([path stringByMatching:@"/.+/(.+$)" withReferenceFormat:@"$1"]);
+#ifdef DEBUG
 		NSLog(@"Detected file to recognize: %@", [self sanitize:_f_name]);
-		NSLog(@"Inferred series name: %@", [self inferSeriesNameFromFilepath:path]);
-		NSArray * animes = [self recognizetg:[self sanitize:_f_name]];
+#endif
+		NSArray * animes = [self updateScoreWithNumberBigramsOnResultArray:[self recognizetg:[self sanitize:_f_name]] 
+															  withFileName:[self sanitize:_f_name]];
 #ifdef DEBUG
 		[self printRecognitionStats:animes];
 #endif
-		[self recognizeEpisodeByTryingNext:animes onName:[self sanitize:_f_name]];
+		BOOL r = [self recognizeEpisodeByTryingNext:animes onName:[self sanitize:_f_name]];
+		if(!r) [GrowlApplicationBridge notifyWithTitle:@"Failed file recognition"
+											 description:@"Check system console and report bug to pigoz."
+										notificationName:@"Scrobbled file" iconData:nil
+												priority:0 isSticky:NO clickContext:nil];
 	}
 }
 
