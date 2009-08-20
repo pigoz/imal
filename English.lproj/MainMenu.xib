@@ -8,9 +8,9 @@
 		<string key="IBDocument.HIToolboxVersion">353.00</string>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
-			<integer value="566"/>
-			<integer value="21"/>
 			<integer value="656"/>
+			<integer value="566"/>
+			<integer value="554"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -478,6 +478,26 @@
 										<string key="NSContents">-</string>
 										<reference key="NSSupport" ref="26"/>
 										<reference key="NSControlView" ref="575204619"/>
+										<int key="NSButtonFlags">-2038152961</int>
+										<int key="NSButtonFlags2">160</int>
+										<string key="NSAlternateContents"/>
+										<string key="NSKeyEquivalent"/>
+										<int key="NSPeriodicDelay">400</int>
+										<int key="NSPeriodicInterval">75</int>
+									</object>
+								</object>
+								<object class="NSButton" id="228994650">
+									<reference key="NSNextResponder" ref="754222286"/>
+									<int key="NSvFlags">292</int>
+									<string key="NSFrame">{{68, 4}, {25, 18}}</string>
+									<reference key="NSSuperview" ref="754222286"/>
+									<bool key="NSEnabled">YES</bool>
+									<object class="NSButtonCell" key="NSCell" id="728038371">
+										<int key="NSCellFlags">-2080244224</int>
+										<int key="NSCellFlags2">134348800</int>
+										<string key="NSContents">?</string>
+										<reference key="NSSupport" ref="26"/>
+										<reference key="NSControlView" ref="228994650"/>
 										<int key="NSButtonFlags">-2038152961</int>
 										<int key="NSButtonFlags2">160</int>
 										<string key="NSAlternateContents"/>
@@ -1242,6 +1262,9 @@
 			<object class="NSCustomObject" id="769344718">
 				<string key="NSClassName">AnimeRecognitionEngine</string>
 			</object>
+			<object class="NSCustomObject" id="214163369">
+				<string key="NSClassName">MALNotificationsController</string>
+			</object>
 		</object>
 		<object class="IBObjectContainer" key="IBDocument.Objects">
 			<object class="NSMutableArray" key="connectionRecords">
@@ -1862,6 +1885,14 @@
 					</object>
 					<int key="connectionID">667</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">denwaAction:</string>
+						<reference key="source" ref="214163369"/>
+						<reference key="destination" ref="228994650"/>
+					</object>
+					<int key="connectionID">673</int>
+				</object>
 			</object>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<object class="NSArray" key="orderedObjects">
@@ -2413,6 +2444,7 @@
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<reference ref="497311029"/>
 							<reference ref="575204619"/>
+							<reference ref="228994650"/>
 						</object>
 						<reference key="parent" ref="823886803"/>
 					</object>
@@ -2629,6 +2661,25 @@
 						<reference key="object" ref="769344718"/>
 						<reference key="parent" ref="0"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">668</int>
+						<reference key="object" ref="214163369"/>
+						<reference key="parent" ref="0"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">669</int>
+						<reference key="object" ref="228994650"/>
+						<object class="NSMutableArray" key="children">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+							<reference ref="728038371"/>
+						</object>
+						<reference key="parent" ref="754222286"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">670</int>
+						<reference key="object" ref="728038371"/>
+						<reference key="parent" ref="228994650"/>
+					</object>
 				</object>
 			</object>
 			<object class="NSMutableDictionary" key="flattenedProperties">
@@ -2808,6 +2859,9 @@
 					<string>656.IBPluginDependency</string>
 					<string>662.IBPluginDependency</string>
 					<string>663.IBPluginDependency</string>
+					<string>668.IBPluginDependency</string>
+					<string>669.IBPluginDependency</string>
+					<string>670.IBPluginDependency</string>
 					<string>73.IBPluginDependency</string>
 					<string>73.ImportedFromIB2</string>
 					<string>81.IBEditorWindowLastContentRect</string>
@@ -2893,8 +2947,8 @@
 					<reference ref="9"/>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
-					<string>{{469, 53}, {480, 360}}</string>
-					<string>{{469, 53}, {480, 360}}</string>
+					<string>{{137, 14}, {480, 360}}</string>
+					<string>{{137, 14}, {480, 360}}</string>
 					<reference ref="9"/>
 					<reference ref="9"/>
 					<reference ref="9"/>
@@ -2992,6 +3046,9 @@
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
+					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
 					<reference ref="9"/>
 					<string>{{139, 941}, {118, 23}}</string>
 					<string>com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3020,7 +3077,7 @@
 				</object>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">667</int>
+			<int key="maxID">673</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3102,6 +3159,18 @@
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">ListWindowController.h</string>
+					</object>
+				</object>
+				<object class="IBPartialClassDescription">
+					<string key="className">MALNotificationsController</string>
+					<string key="superclassName">NSObject</string>
+					<object class="NSMutableDictionary" key="actions">
+						<string key="NS.key.0">denwaAction:</string>
+						<string key="NS.object.0">id</string>
+					</object>
+					<object class="IBClassDescriptionSource" key="sourceIdentifier">
+						<string key="majorKey">IBProjectSource</string>
+						<string key="minorKey">MALNotificationsController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

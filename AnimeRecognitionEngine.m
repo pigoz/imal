@@ -12,6 +12,8 @@
 #import "MALHandler.h"
 #import "UpdateOperation.h"
 
+#import <Growl/GrowlApplicationBridge.h>
+
 @implementation AnimeRecognitionEngine
 
 -(void)awakeFromNib
@@ -168,6 +170,10 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 					[values setObject:@"1" forKey:@"status"];
 					[values setObject:[NSString stringWithFormat:@"%d", next_episode] forKey:@"episode"];
 					[mal.queue addOperation:[[[UpdateOperation alloc] initWithEntry:(Entry *)anime values:values callback:nil] autorelease]];
+					[GrowlApplicationBridge notifyWithTitle:[NSString stringWithFormat:@"Scrobbling file", [(Entry*)anime imageTitle]]
+												description:[NSString stringWithFormat:@"Scrobbling episode %@ of %@", [values valueForKey:@"episode"], [(Entry*)anime imageTitle]]
+										   notificationName:@"Scrobbled file" iconData:nil
+												   priority:0 isSticky:NO clickContext:nil];
 					return YES;
 				}
 			}

@@ -51,6 +51,9 @@
 		7BCD895E1036AA6A0081692E /* MPlayerHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BCD895D1036AA6A0081692E /* MPlayerHandler.m */; };
 		7BD2337D10282BC0009447A6 /* SearchPanel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7BD2337C10282BC0009447A6 /* SearchPanel.xib */; };
 		7BD7BE3F1036FD62009C9A66 /* AnimeRecognitionEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BD7BE3E1036FD62009C9A66 /* AnimeRecognitionEngine.m */; };
+		7BE7C903103B0F9F00E12105 /* Growl-WithInstaller.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BE7C902103B0F9F00E12105 /* Growl-WithInstaller.framework */; };
+		7BE7C911103B0FAA00E12105 /* Growl-WithInstaller.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 7BE7C902103B0F9F00E12105 /* Growl-WithInstaller.framework */; };
+		7BE7C9D5103B1F9D00E12105 /* MALNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BE7C9D4103B1F9D00E12105 /* MALNotificationsController.m */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -63,6 +66,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				7BE7C911103B0FAA00E12105 /* Growl-WithInstaller.framework in CopyFiles */,
 				7BBBABB310258D8A00E33747 /* RegexKit.framework in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +151,9 @@
 		7BD2337C10282BC0009447A6 /* SearchPanel.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPanel.xib; sourceTree = "<group>"; };
 		7BD7BE3D1036FD62009C9A66 /* AnimeRecognitionEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimeRecognitionEngine.h; sourceTree = "<group>"; };
 		7BD7BE3E1036FD62009C9A66 /* AnimeRecognitionEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnimeRecognitionEngine.m; sourceTree = "<group>"; };
+		7BE7C902103B0F9F00E12105 /* Growl-WithInstaller.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = "Growl-WithInstaller.framework"; path = "/Library/Frameworks/Growl-WithInstaller.framework"; sourceTree = "<absolute>"; };
+		7BE7C9D3103B1F9D00E12105 /* MALNotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MALNotificationsController.h; sourceTree = "<group>"; };
+		7BE7C9D4103B1F9D00E12105 /* MALNotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MALNotificationsController.m; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* iMAL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMAL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -159,6 +166,7 @@
 				8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */,
 				7BBBABB110258D2B00E33747 /* RegexKit.framework in Frameworks */,
 				7B94E786102C4D68005D6501 /* Quartz.framework in Frameworks */,
+				7BE7C903103B0F9F00E12105 /* Growl-WithInstaller.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +176,7 @@
 		080E96DDFE201D6D7F000001 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				7BE7C976103B101600E12105 /* Notifications */,
 				7BCD895B1036AA100081692E /* Recognition */,
 				7BCCF93A102C31A6000423D9 /* Widgets */,
 				7B98FB94102AFB3200173E92 /* List */,
@@ -184,6 +193,7 @@
 		1058C7A0FEA54F0111CA2CBB /* Linked Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				7BE7C902103B0F9F00E12105 /* Growl-WithInstaller.framework */,
 				7B94E785102C4D68005D6501 /* Quartz.framework */,
 				7BBBABB010258D2B00E33747 /* RegexKit.framework */,
 				1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */,
@@ -379,6 +389,15 @@
 			name = Search;
 			sourceTree = "<group>";
 		};
+		7BE7C976103B101600E12105 /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				7BE7C9D3103B1F9D00E12105 /* MALNotificationsController.h */,
+				7BE7C9D4103B1F9D00E12105 /* MALNotificationsController.m */,
+			);
+			name = Notifications;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -476,6 +495,7 @@
 				7B5E36E01036DCC300C0FA69 /* RecognitionPrefsViewController.m in Sources */,
 				7BD7BE3F1036FD62009C9A66 /* AnimeRecognitionEngine.m in Sources */,
 				7B09FA0F1037FD560031C5DF /* IndexOperation.m in Sources */,
+				7BE7C9D5103B1F9D00E12105 /* MALNotificationsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -80,14 +80,14 @@
 	} else {
 		self.playingPath = nil;
 	}
-	[self performSelector:@selector(sample) withObject:nil afterDelay: 10];
+	[self performSelector:@selector(sample) withObject:nil afterDelay: 60];
 }
 
 - (id) init
 {
 	self = [super init];
 	if (self != nil) {
-		[self performSelector:@selector(sample) withObject:nil afterDelay: 10];
+		[self performSelector:@selector(sample) withObject:nil afterDelay: 60];
 	}
 	return self;
 }

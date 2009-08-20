@@ -22,5 +22,6 @@
 -(NSAttributedString *)__bold_title;
 -(NSString *)imageTitle;
 -(NSString *)imageSubtitle;
+-(id)imageRepresentation;
 
 @end
