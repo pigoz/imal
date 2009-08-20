@@ -18,6 +18,7 @@
 		7B2AC6681025D6EA004559D0 /* toolbar_refresh.png in Resources */ = {isa = PBXBuildFile; fileRef = 7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */; };
 		7B2AC6761025DCCC004559D0 /* SearchWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B2AC6751025DCCC004559D0 /* SearchWindowController.m */; };
 		7B314B251019A1A800AF0248 /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B939F5610199C48007B3B7F /* PreferencesController.m */; };
+		7B370A0B103DCF7800C436F9 /* NSString+Levenshtein.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B370A0A103DCF7800C436F9 /* NSString+Levenshtein.m */; };
 		7B3B8030102C9DCF00A5D2F0 /* Repository.icns in Resources */ = {isa = PBXBuildFile; fileRef = 7B3B802F102C9DCF00A5D2F0 /* Repository.icns */; };
 		7B5E36DD1036DC9000C0FA69 /* PreferencesRecognition.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7B5E36DC1036DC9000C0FA69 /* PreferencesRecognition.xib */; };
 		7B5E36E01036DCC300C0FA69 /* RecognitionPrefsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7B5E36DF1036DCC300C0FA69 /* RecognitionPrefsViewController.m */; };
@@ -97,6 +98,8 @@
 		7B2AC6671025D6EA004559D0 /* toolbar_refresh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = toolbar_refresh.png; sourceTree = "<group>"; };
 		7B2AC6741025DCCC004559D0 /* SearchWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchWindowController.h; sourceTree = "<group>"; };
 		7B2AC6751025DCCC004559D0 /* SearchWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchWindowController.m; sourceTree = "<group>"; };
+		7B370A09103DCF7800C436F9 /* NSString+Levenshtein.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Levenshtein.h"; sourceTree = "<group>"; };
+		7B370A0A103DCF7800C436F9 /* NSString+Levenshtein.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Levenshtein.m"; sourceTree = "<group>"; };
 		7B3B802F102C9DCF00A5D2F0 /* Repository.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Repository.icns; sourceTree = "<group>"; };
 		7B5E36DC1036DC9000C0FA69 /* PreferencesRecognition.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferencesRecognition.xib; sourceTree = "<group>"; };
 		7B5E36DE1036DCC300C0FA69 /* RecognitionPrefsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognitionPrefsViewController.h; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 		7B9610C81026D9D40053D032 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				7B370A09103DCF7800C436F9 /* NSString+Levenshtein.h */,
+				7B370A0A103DCF7800C436F9 /* NSString+Levenshtein.m */,
 				7B64251D1028795A00E87480 /* NSImage+NiceScaling.h */,
 				7B64251E1028795A00E87480 /* NSImage+NiceScaling.m */,
 				7B9610EB1026DA440053D032 /* NSString+Base64.h */,
@@ -496,6 +501,7 @@
 				7BD7BE3F1036FD62009C9A66 /* AnimeRecognitionEngine.m in Sources */,
 				7B09FA0F1037FD560031C5DF /* IndexOperation.m in Sources */,
 				7BE7C9D5103B1F9D00E12105 /* MALNotificationsController.m in Sources */,
+				7B370A0B103DCF7800C436F9 /* NSString+Levenshtein.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
