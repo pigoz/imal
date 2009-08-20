@@ -84,19 +84,20 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 {
     int v1 = [[ob1 objectForKey:@"score"] intValue];
     int v2 = [[ob2 objectForKey:@"score"] intValue];
-    if (v1 > v2)
+ 
+	if (v1 > v2)
         return NSOrderedAscending;
-    else if (v1 < v2)
+    if (v1 < v2)
         return NSOrderedDescending;
-    else {
-		int id1 = [[ob1 objectForKey:@"anime_id"] intValue];
-		int id2 = [[ob2 objectForKey:@"anime_id"] intValue];
-		if (id1 > id2)
-			return NSOrderedDescending;
-		else if (v1 < v2)
-			return NSOrderedAscending;
-        else return NSOrderedSame;
-	}
+	
+	int id1 = [[ob1 objectForKey:@"anime_id"] intValue];
+	int id2 = [[ob2 objectForKey:@"anime_id"] intValue];
+	
+	if (id1 > id2)
+		return NSOrderedDescending;
+	if (id1 < id2)
+		return NSOrderedAscending;
+	return NSOrderedSame;
 }
 
 - (NSArray *) recognizetg: (NSString *)name
@@ -134,11 +135,10 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 																 forKeys:[NSArray arrayWithObjects:@"anime_id",@"score",nil]]];
 		}
 	}
-	
 	NSArray * ordered_animes = [animes sortedArrayUsingFunction:arraySortDesc context:@"score"];
 	NSArray * _result;
 	@try{
-		_result = [ordered_animes subarrayWithRange:NSMakeRange(0, 5)];
+		_result = [ordered_animes subarrayWithRange:NSMakeRange(0, 6)];
 	}
 	@catch (NSException *e){
 		_result = ordered_animes;
@@ -150,9 +150,9 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 -(void)printRecognitionStats:(NSArray *)a
 {
 	@try{
-	for(int i=0; i<3; i++){
+	for(int i=0; i<6; i++){
 		NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:i] valueForKey:@"anime_id"] intValue]];
-		NSLog(@"%d: %@, score: %d", i+1,[anime valueForKey:@"title"], [[[a objectAtIndex:i] valueForKey:@"score"] intValue]);
+		NSLog(@"%d: %@, score: %d, id: %d", i+1,[anime valueForKey:@"title"], [[[a objectAtIndex:i] valueForKey:@"score"] intValue],[[anime valueForKey:@"id"] intValue]);
 	}
 	}@catch (NSException * e) { return; }
 }
@@ -160,7 +160,7 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 
 - (BOOL) recognizeEpisodeByTryingNext:(NSArray *)a onName:(NSString *)title{
 	@try{
-		for(int i=0; i<3; i++){
+		for(int i=0; i<1; i++){
 			NSManagedObject * anime = [[_app managedObjectContext] fetchEntityWithName:@"anime" withID:[[[a objectAtIndex:i] valueForKey:@"anime_id"] intValue]];
 			if([[anime valueForKey:@"type"] intValue] != 3){ // not a movie
 				int next_episode = [[anime valueForKey:@"my_episodes"] intValue] + 1;
@@ -221,7 +221,7 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 #ifdef DEBUG
 		[self printRecognitionStats:animes];
 #endif
-		[self recognizeEpisodeByTryingNext:animes onName:_f_name];
+		[self recognizeEpisodeByTryingNext:animes onName:[self sanitize:_f_name]];
 	}
 }
 
