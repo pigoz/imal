@@ -1,0 +1,197 @@
+K 25
+svn:wc:ra_dav:version-url
+V 27
+/svn/!svn/ver/138/trunk/src
+END
+UIImage-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/44/trunk/src/UIImage-SQLitePersistence.m
+END
+NSString-UppercaseFirst.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/44/trunk/src/NSString-UppercaseFirst.h
+END
+NSString-UppercaseFirst.m
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/44/trunk/src/NSString-UppercaseFirst.m
+END
+SQLitePersistentObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/134/trunk/src/SQLitePersistentObject.h
+END
+NSObject-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/44/trunk/src/NSObject-SQLitePersistence.h
+END
+NSString-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/44/trunk/src/NSString-SQLitePersistence.h
+END
+NSObject-ClassName.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/50/trunk/src/NSObject-ClassName.h
+END
+SQLitePersistentObject.m
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/138/trunk/src/SQLitePersistentObject.m
+END
+NSObject-ClassName.m
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/50/trunk/src/NSObject-ClassName.m
+END
+NSString-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/44/trunk/src/NSString-SQLitePersistence.m
+END
+NSObject-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/59/trunk/src/NSObject-SQLitePersistence.m
+END
+SQLiteInstanceManager.h
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/!svn/ver/63/trunk/src/SQLiteInstanceManager.h
+END
+UIColor-SQLitePersistentObject.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/124/trunk/src/UIColor-SQLitePersistentObject.h
+END
+NSString-SQLiteColumnName.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/44/trunk/src/NSString-SQLiteColumnName.h
+END
+SQLiteInstanceManager.m
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/136/trunk/src/SQLiteInstanceManager.m
+END
+UIColor-SQLitePersistentObject.m
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/124/trunk/src/UIColor-SQLitePersistentObject.m
+END
+NSMutableData-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/44/trunk/src/NSMutableData-SQLitePersistence.h
+END
+NSMutableArray-MultipleSort.h
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/52/trunk/src/NSMutableArray-MultipleSort.h
+END
+NSString-SQLiteColumnName.m
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/116/trunk/src/NSString-SQLiteColumnName.m
+END
+NSMutableData-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/75/trunk/src/NSMutableData-SQLitePersistence.m
+END
+NSNumber-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/44/trunk/src/NSNumber-SQLitePersistence.h
+END
+NSMutableArray-MultipleSort.m
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/52/trunk/src/NSMutableArray-MultipleSort.m
+END
+NSNumber-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/71/trunk/src/NSNumber-SQLitePersistence.m
+END
+NSString-NumberStuff.h
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/43/trunk/src/NSString-NumberStuff.h
+END
+NSString-NumberStuff.m
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svn/!svn/ver/43/trunk/src/NSString-NumberStuff.m
+END
+NSData-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/44/trunk/src/NSData-SQLitePersistence.h
+END
+NSObject-MissingKV.h
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/68/trunk/src/NSObject-MissingKV.h
+END
+NSDate-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/44/trunk/src/NSDate-SQLitePersistence.h
+END
+NSData-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/44/trunk/src/NSData-SQLitePersistence.m
+END
+NSObject-MissingKV.m
+K 25
+svn:wc:ra_dav:version-url
+V 47
+/svn/!svn/ver/68/trunk/src/NSObject-MissingKV.m
+END
+UIImage-SQLitePersistence.h
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/44/trunk/src/UIImage-SQLitePersistence.h
+END
+NSDate-SQLitePersistence.m
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/44/trunk/src/NSDate-SQLitePersistence.m
+END
