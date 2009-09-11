@@ -11,10 +11,11 @@
 
 @implementation Trigram
 
-@synthesize trigram, score, anime_id;
+@synthesize trigram, title, score, anime_id;
 
 DECLARE_PROPERTIES(
 				   DECLARE_PROPERTY(@"trigram", @"@\"NSString\""),
+				   DECLARE_PROPERTY(@"title", @"@\"NSString\""),
 				   DECLARE_PROPERTY(@"score", @"@\"int\""),
 				   DECLARE_PROPERTY(@"anime_id", @"@\"int\"")
 )

@@ -10,7 +10,7 @@
 #import "PGZCallback.h"
 #import "NSManagedObjectContext+PGZUtils.h"
 #import "Entry.h";
-
+#import "Trigram.h"
 
 @implementation IndexOperation
 
@@ -101,6 +101,34 @@
 		NSLog(@"Old Trigram:%@", tg);
 #endif
 	}
+}
+
+-(void)indexTitle:(NSString *) title forAnime:(NSManagedObject *)anime
+{
+	if([title isEqual:nil] || [title isEqual:@""] || [title isEqual:@" "]) return;
+	NSArray * title_words = [title componentsSeparatedByString:@" "];
+	
+	for(NSString * word in title_words){
+		word = [@" " stringByAppendingString:word]; // this way the first trigram will notice it is a word start
+		if([word length]>=3)
+			for(int idx = 0; idx <= [word length]-3; idx++){
+				NSString * tg = [word substringWithRange:NSMakeRange(idx, 3)]; //trigram
+				
+				Trigram * trigram_model = (Trigram *)[Trigram findFirstByCriteria:
+										   [NSString stringWithFormat:@"WHERE anime_id = %d AND title = '%@'", 
+											[[anime valueForKey:@"id"] intValue], title]];
+				if(!trigram_model){
+					Trigram * trigram_model = [[Trigram alloc] init];
+					trigram_model.title = title;
+					trigram_model.trigram = tg;
+					trigram_model.anime_id = [[anime valueForKey:@"id"] intValue];
+					trigram_model.score = [[self scoreForAnime:anime] intValue];
+					[trigram_model save];
+				}
+				
+			}
+	}
+	
 }
 
 -(void)main

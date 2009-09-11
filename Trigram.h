@@ -11,11 +11,13 @@
 
 @interface Trigram : SQLitePersistentObject {
 	NSString * trigram;
+	NSString * title;
 	int score;
 	int anime_id;
 }
 
 @property (nonatomic, retain) NSString * trigram;
+@property (nonatomic, retain) NSString * title;
 @property (nonatomic, assign) int score;
 @property (nonatomic, assign) int anime_id;
 
