@@ -11,6 +11,7 @@
 #import "NSManagedObjectContext+PGZUtils.h"
 #import "MALHandler.h"
 #import "UpdateOperation.h"
+#import "Trigram.h"
 
 #import <Growl/GrowlApplicationBridge.h>
 
@@ -89,6 +90,21 @@
 	return array;
 }
 
+- (NSArray *) allAnimeWithMTrigrams:(NSArray *) trigrams
+{
+	NSString * commasep = @"";
+	for(NSString * tg in trigrams){
+		commasep = [commasep stringByAppendingFormat:@",'%@'",tg];
+	}
+	commasep = [commasep stringByMatching:@"^," replace:1 withReferenceString:@""];
+	NSString * inarray = [NSString stringWithFormat:@"(%@)", commasep];
+	NSLog(inarray);
+	
+	NSArray * _r = [Trigram findByCriteria:@"WHERE trigram IN %@"];
+	
+	return _r;
+}
+
 // sort the anime array first using descending score, if score is equal sort by 
 // ascending anime id (this way first seasons will be first when their
 // title is a substring of the second season)
@@ -112,6 +128,53 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 	return NSOrderedSame;
 }
 
+- (NSArray *) recognizemtg: (NSString *)name
+{
+	/// Compute trigrams for given name
+	NSMutableArray * tgs = [[[NSMutableArray alloc] init] autorelease];
+	NSArray * words = [name componentsSeparatedByString:@" "];
+	for(NSString * word in words){
+		word = [@" " stringByAppendingString:word]; // this way the first trigram will notice it is a word start
+		if([word length]>=3)
+			for(int idx = 0; idx <= [word length]-3; idx++){
+				[tgs addObject: [word substringWithRange:NSMakeRange(idx, 3)]]; //trigram
+			}
+	}
+	
+	/// Compute title with maximum 
+	NSArray * animes_tgs = [self allAnimeWithMTrigrams:tgs];
+	NSMutableArray * anime_title_score = [[NSMutableArray alloc] init];
+	for(Trigram * tg in anime_tgs){
+		BOOL found = NO;
+		NSMutableDictionary * cur;
+		for(NSMutableDictionary * temp in anime_title_score){
+			cur = temp;
+			if(tg.anime_id == [[temp valueForKey:@"anime_id"] intValue] && [tg.title isEqual:[temp valueForKey:@"title"]]){
+				found = YES; break;
+			}
+		}
+		
+		if(found){
+			int score = tg.score + [[cur valueForKey:@"score"] intValue];
+			[cur setValue:[NSNumber numberWithInt:score] forKey:@"score"];
+		} else {
+			NSNumber * anime = [NSNumber numberWithInt:tg.anime_id];
+			NSNumber * score = [NSNumber numberWithInt:tg.score];
+			[animes addObject:[NSMutableDictionary dictionaryWithObjects:[NSArray arrayWithObjects:anime,tg.title,score,nil]
+																 forKeys:[NSArray arrayWithObjects:@"anime_id",@"title",@"score",nil]]];
+		}
+	}
+	NSArray * ordered_animes = [animes sortedArrayUsingFunction:arraySortDesc context:@"score"];
+	NSArray * _result;
+	@try{
+		_result = [ordered_animes subarrayWithRange:NSMakeRange(0, 6)];
+	}
+	@catch (NSException *e){
+		_result = ordered_animes;
+	} @finally { }
+	return _result;
+}
+
 - (NSArray *) recognizetg: (NSString *)name
 {
 	NSMutableArray * tgs = [[[NSMutableArray alloc] init] autorelease];
@@ -127,6 +190,7 @@ NSInteger arraySortDesc(id ob1, id ob2, void *keyForSorting)
 	// will do group by myself since core data sucks
 	NSMutableArray * animes = [[NSMutableArray alloc] init];
 	NSArray * animes_tgs = [self allAnimeWithTrigrams:tgs];
+	[self allAnimeWithMTrigrams:tgs];
 	for(NSManagedObject * o in animes_tgs){ // single anime tag
 		BOOL found = NO;
 		NSMutableDictionary * cur;

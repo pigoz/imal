@@ -114,20 +114,49 @@
 			for(int idx = 0; idx <= [word length]-3; idx++){
 				NSString * tg = [word substringWithRange:NSMakeRange(idx, 3)]; //trigram
 				
-				Trigram * trigram_model = (Trigram *)[Trigram findFirstByCriteria:
-										   [NSString stringWithFormat:@"WHERE anime_id = %d AND title = '%@'", 
-											[[anime valueForKey:@"id"] intValue], title]];
-				if(!trigram_model){
-					Trigram * trigram_model = [[Trigram alloc] init];
-					trigram_model.title = title;
-					trigram_model.trigram = tg;
-					trigram_model.anime_id = [[anime valueForKey:@"id"] intValue];
-					trigram_model.score = [[self scoreForAnime:anime] intValue];
-					[trigram_model save];
+				Trigram * trigram_model = [[Trigram alloc] init];
+				trigram_model.title = title;
+				trigram_model.trigram = tg;
+				trigram_model.anime_id = [[anime valueForKey:@"id"] intValue];
+				trigram_model.score = [[self scoreForAnime:anime] intValue];
+				[trigram_model save];				
+			}
+	}
+	
+}
+
+/// Separate indexing for each synonym
+-(void)altmain
+{
+	
+	NSArray * animes = [self allAnime];
+	for(Entry * e in animes){
+		if(![[e valueForKey:@"indexed"] boolValue]){
+			[__update performWithObject:[NSDictionary dictionaryWithObjectsAndKeys:@"Indexing animelist",@"title", 
+										 [NSString stringWithFormat:@"indexing: %@", [e imageTitle]], @"message", nil]];
+			
+			/// Index title
+#ifdef DEBUG
+			NSLog(@"Indexing title:%@", [self sanitize: [e imageTitle]]);
+#endif
+			[self indexTitle:[e imageTitle] forAnime:e];
+			
+			/// Index synonyms
+			if([e valueForKey:@"synonyms"] && ![[e valueForKey:@"synonyms"] isEqual:@""]){
+#ifdef DEBUG
+				NSLog(@"Indexing synonyms:%@", [self sanitize: [e valueForKey:@"synonyms"]]);
+#endif
+				NSArray * synonyms = [[e valueForKey:@"synonyms"] componentsSeparatedByString:@";"]; // split by ;
+				for(NSString * s in synonyms){
+					[self indexTitle:[self sanitize:s] forAnime:e];
 				}
 				
 			}
-	}
+			[e setValue:[NSNumber numberWithBool:YES] forKey:@"indexed"];
+		} // if
+	} // for
+	
+	[__done perform];
 	
 }
 
